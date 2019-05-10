@@ -1,13 +1,15 @@
 
 package dreamco;
 
+import java.io.IOException;
+
 public class DreamCo {
 
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         DataFile objectDataFile = new DataFile();
         
-        objectDataFile.fileEncryption();
+        DataFile.fileEncryption();
     }
 
 }
