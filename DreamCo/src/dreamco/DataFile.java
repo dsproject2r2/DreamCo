@@ -35,17 +35,16 @@ public static void closeFile(){
     }
 
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////ENCRYPTION ALGORITHM//////////////////////////////////////////////////////
 public static void fileEncryption() throws IOException{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
     StringBuffer br = new StringBuffer();
     String line = null;
+    int key=25;
     
     while((line =bufferedreader.readLine())!=null){
     br.append(line).append("\n");
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////// ENCRYPTION ALGORITHM ////////////////////////////////////////////////
-    int key=25;
 
     for(int i=0; i<br.length();i++){
         int a=br.charAt(i);
@@ -61,16 +60,17 @@ public static void fileEncryption() throws IOException{
 }
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////DECRYPTION ALGORITHM ///////////////////////////////////////////////////////
 public static void fileDecryption() throws FileNotFoundException, IOException{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
     StringBuffer br = new StringBuffer();
     String line = null;
+    int key=25;
     
     while((line =bufferedreader.readLine())!=null){
     br.append(line).append("\n");
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////// DECRYPTION ALGORITHM //////////////////////////////////////////////
-    int key=25;
+
 
     for(int i=0; i<br.length();i++){
         int a=br.charAt(i);
