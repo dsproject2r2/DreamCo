@@ -14,13 +14,18 @@ public class DoublyLinkedList {
     public java.util.ArrayList<Node> Nodee =  new java.util.ArrayList<>();
     public int total;
     public Node root;
+    double fee=50;
             
     public DoublyLinkedList(){
         total=0;
         root=null;
     }
     
-    public void addLoad(String name, String parents, int Money, int ID){
+    public void setFee(double fee){
+        this.fee=fee;
+    }
+    
+    public void addLoad(String name, String parents, double Money, int ID){
         Node temp = new Node(name, null, null, Money, ID);
         if(root==null){
             Nodee.add(temp);
@@ -38,12 +43,8 @@ public class DoublyLinkedList {
                     temp.prev=Nodee.get(i);
                     System.out.println("Adding: " + name + " to " + parents );
                     notfound = false;
-                    
-                    Node current = temp;
-                    while(current.prev!=null){
-                    current = current.prev;
                     total++;
-                    }
+//                    Node current = temp;
                     break;
                 }
             }
@@ -54,6 +55,7 @@ public class DoublyLinkedList {
     
     public void add(String name, String parents){
         Node temp = new Node(name, null, null);
+        temp.addMoney(fee);
         //Nodee.add(temp);
         
         if(root==null){
@@ -75,24 +77,29 @@ public class DoublyLinkedList {
                     
                     Node current = temp;
                     int level = 0;
+                    total++;
                     while(current.prev!=null){
                     current = current.prev;
-                    total++;
+                    
                         switch (level) {
                             case 0:
-                                current.addMoney(25);
+                                current.addMoney(fee*0.5);
                                 level++;
                                 break;
                             case 1:
-                                current.addMoney(10);
+                                current.addMoney(fee*0.12);
                                 level++;
                                 break;
                             case 2:
-                                current.addMoney(6);
+                                current.addMoney(fee*0.09);
+                                level++;
+                                break;
+                            case 3:
+                                current.addMoney(fee*0.06);
                                 level++;
                                 break;
                             default:
-                                current.addMoney(1);
+                                current.addMoney(fee*0.03);
                                 level++;
                                 break;
                         }
@@ -105,7 +112,7 @@ public class DoublyLinkedList {
         }
     }
     
-    public int getMoney(String name){
+    public double getMoney(String name){
         for (int i = 0; i < Nodee.size(); i++) {
             if(Nodee.get(i).name.equalsIgnoreCase(name)){
                 return  Nodee.get(i).money;
@@ -163,6 +170,23 @@ public class DoublyLinkedList {
         
         sb.append(" ]");
         return sb.toString();
+    }
+    
+    public void remove(int ID){
+        Node current =  new Node();
+        for (int i = 0; i < Nodee.size(); i++) {
+                if(Nodee.get(i).ID==(ID)){
+                    current = Nodee.get(i);
+                    break;
+                }
+        }
+        if(current.equals(root)){
+            root = new Node();
+        }
+        else{
+            current.prev.next=null;
+            current.prev=null;
+        }
         
     }
     
