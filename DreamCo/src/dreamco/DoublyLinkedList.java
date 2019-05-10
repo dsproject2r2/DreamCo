@@ -73,16 +73,23 @@ public class DoublyLinkedList {
         }
     }
     
-    public void contain (String name){
+    public int getMoney(String name){
+        for (int i = 0; i < Nodee.size(); i++) {
+            if(Nodee.get(i).name.equalsIgnoreCase(name)){
+                return  Nodee.get(i).money;
+            }
+        }
+        return 0;
+    }
+    
+    public boolean contain (String name){
         Node current =  root;
-        
         for (int i = 0; i < Nodee.size(); i++) {
                 if(Nodee.get(i).name.equalsIgnoreCase(name)){
-                    System.out.println("Node found");
+                    return true;
                 }
-                else
-                    System.out.println("Node not found");
         }
+        return false;
     }
     
     @Override
