@@ -4,6 +4,7 @@ package dreamco;
 //THIS CLASS CONTAINS THE METHODS TO READ AND ALTER THE NAME FILE 
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Formatter;
@@ -36,7 +37,6 @@ public static void closeFile(){
 
 
 public static void fileEncryption() throws IOException{
-/////////////////////////////////////////////////////////////////////////////////////////////////////// BUFFERED READER SEGMENT NOT IMPORTANT  ////////////////////////////////
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
     StringBuffer br = new StringBuffer();
     String line = null;
@@ -44,7 +44,7 @@ public static void fileEncryption() throws IOException{
     while((line =bufferedreader.readLine())!=null){
     br.append(line).append("\n");
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////// ENCRYPTION ALGORITHM 
+////////////////////////////////////////////////////////////////////////////////////////////////////// ENCRYPTION ALGORITHM ////////////////////////////////////////////////
     int key=25;
 
     for(int i=0; i<br.length();i++){
@@ -59,11 +59,30 @@ public static void fileEncryption() throws IOException{
     
     System.out.println(encryptedtxt);
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-public void fileDecryption(){
+public static void fileDecryption() throws FileNotFoundException, IOException{
+    BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
+    StringBuffer br = new StringBuffer();
+    String line = null;
     
+    while((line =bufferedreader.readLine())!=null){
+    br.append(line).append("\n");
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////// DECRYPTION ALGORITHM //////////////////////////////////////////////
+    int key=25;
+
+    for(int i=0; i<br.length();i++){
+        int a=br.charAt(i);
+        a=a-(key%2);
+        encryptedtxt=encryptedtxt+(char) a;
+    }
+    
+    openFile();
+    writeToFile();
+    closeFile();
+    
+    System.out.println(encryptedtxt);
 }
 
 
