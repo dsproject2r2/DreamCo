@@ -6,6 +6,7 @@ package dreamco;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -16,8 +17,9 @@ public class DataFile {
 
 private Scanner x;
 String tempstring; 
+static String encryptedtxt="";
     
-public void writeToFile(){
+public static void writeToFile(){
     try{
         File file = new File("Userdata.txt");
             
@@ -26,13 +28,14 @@ public void writeToFile(){
     }
             
     PrintWriter pw = new PrintWriter(file);
+    pw.println(encryptedtxt);
     }
     catch (IOException e){
         System.out.println("FILE DOES NOT EXIST!");
     }
 }
        
-public void readFile(){
+public static void readFile(){
     try{
         x= new Scanner (new File("Userdata.txt"));
             
@@ -50,51 +53,38 @@ public void readFile(){
     }       
 }
     
-public void closeFile(){
+public static void closeFile(){
         x.close();
     }
    
 
 
 
-public void fileEncryption() throws IOException{
+public static void fileEncryption() throws IOException{
 /////////////////////////////////////////////////////////////////////////////////////////////////////// BUFFERED READER SEGMENT NOT IMPORTANT  ////////////////////////////////
-    BufferedReader bufferedReader = new BufferedReader(new FileReader("Userdata.txt"));
+    BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
     StringBuffer br = new StringBuffer();
     String line = null;
     
-    while((line =bufferedReader.readLine())!=null){
+    while((line =bufferedreader.readLine())!=null){
     br.append(line).append("\n");
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////// ENCRYPTION ALGORITHM ////////////////////////////////////////
     int key=25;
-    String encryptedtxt="";
-    
+
     for(int i=0; i<br.length();i++){
         int a=br.charAt(i);
-        a=a+(key%26);
+        a=a+(key%2);
         encryptedtxt=encryptedtxt+(char) a;
-
-
     }
-    
-    try{
-        File file = new File("Userdata.txt");
-            
-        if(!file.exists()){
-            file.createNewFile();
-    }
-            
-    PrintWriter pw = new PrintWriter(file);
-    }
-    catch (IOException e){
-        System.out.println("FILE DOES NOT EXIST!");
-    }
-
     
     System.out.println(encryptedtxt);
-
 }
+
+
+
+
+
 
 
 public void fileDecryption(){
