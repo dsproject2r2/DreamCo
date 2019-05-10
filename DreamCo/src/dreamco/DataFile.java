@@ -4,7 +4,6 @@ package dreamco;
 //THIS CLASS CONTAINS THE METHODS TO READ AND ALTER THE NAME FILE 
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Formatter;
