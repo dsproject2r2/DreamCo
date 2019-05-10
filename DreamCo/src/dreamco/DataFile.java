@@ -27,7 +27,7 @@ public static void openFile(){
 }
     
 public static void writeToFile(){
-    x.format("%s", encryptedtxt);
+    
 }
 
 public static void closeFile(){
@@ -43,46 +43,63 @@ public static void fileEncryption() throws IOException{
     int key=25;
     
     while((line =bufferedreader.readLine())!=null){
-    br.append(line).append("\n");
+         br.append(line).append("\n");
     }
-
+                  
     for(int i=0; i<br.length();i++){
         int a=br.charAt(i);
-        a=a+(key%2);
+            if(Character.isUpperCase(a)){
+                a=a+(key%26);
+                if(a>'Z')
+                     a=a-26;
+        }
+        else if(Character.isLowerCase(a)){
+            a=a+(key%26);
+            if(a>'z')
+                a=a-26;
+        }
         encryptedtxt=encryptedtxt+(char) a;
     }
     
     openFile();
-    writeToFile();
+    x.format(encryptedtxt);
     closeFile();
     
-    System.out.println(encryptedtxt);
+    System.out.print(encryptedtxt);
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////DECRYPTION ALGORITHM ///////////////////////////////////////////////////////
-public static void fileDecryption() throws FileNotFoundException, IOException{
+public static void fileDecryption() throws IOException{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
     StringBuffer br = new StringBuffer();
     String line = null;
     int key=25;
     
     while((line =bufferedreader.readLine())!=null){
-    br.append(line).append("\n");
+        br.append(line).append("\n");
     }
-
 
     for(int i=0; i<br.length();i++){
         int a=br.charAt(i);
-        a=a-(key%2);
+        if(Character.isUpperCase(a)){
+            a=a-(key%26);        
+            if(a<'A')
+                a=a+26;
+        }
+        else if(Character.isLowerCase(a)){
+            a=a-(key%26);
+            if(a<'a')
+                a=a+26;
+        }
         encryptedtxt=encryptedtxt+(char) a;
     }
     
     openFile();
-    writeToFile();
+    x.format(encryptedtxt);
     closeFile();
     
-    System.out.println(encryptedtxt);
+    System.out.print(encryptedtxt);
 }
 
 
