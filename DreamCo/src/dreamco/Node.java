@@ -36,6 +36,10 @@ public class Node {
     public void addMoney(int money){
         this.money = this.money+ money;
     }
+    
+    public void setRegisterationFee(int money){
+        this.money=money;
+    }
    
     
 }
