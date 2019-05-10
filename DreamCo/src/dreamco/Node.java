@@ -18,13 +18,22 @@ public class Node {
     java.util.ArrayList<Node> next = new java.util.ArrayList<>();
     //java.util.ArrayList<Node> prev = new java.util.ArrayList<>();
     Node prev;
+    int ID;
     
     public Node(String name, Node next, Node prev){
         this.name=name;
         this.next.add(next);
         this.prev = prev;
-        this.money=50;
     }
+    
+    public Node(String name, Node next, Node prev, int Money, int ID){
+        this.name=name;
+        this.next.add(next);
+        this.prev = prev;
+        this.money=money;
+        this.ID=ID;
+    }
+    
     
     public Node(){
         this.name=null;

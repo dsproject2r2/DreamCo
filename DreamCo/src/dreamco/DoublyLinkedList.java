@@ -20,6 +20,38 @@ public class DoublyLinkedList {
         root=null;
     }
     
+    public void addLoad(String name, String parents, int Money, int ID){
+        Node temp = new Node(name, null, null, Money, ID);
+        if(root==null){
+            Nodee.add(temp);
+            root=temp;
+            total++;
+            System.out.println("Root: " + name);
+        }
+        else{
+            boolean notfound = true;
+            for (int i = 0; i < Nodee.size(); i++) {
+                if(Nodee.get(i).name.equalsIgnoreCase(parents)){
+                    
+                    Nodee.add(temp);
+                    Nodee.get(i).next.add(temp);
+                    temp.prev=Nodee.get(i);
+                    System.out.println("Adding: " + name + " to " + parents );
+                    notfound = false;
+                    
+                    Node current = temp;
+                    while(current.prev!=null){
+                    current = current.prev;
+                    total++;
+                    }
+                    break;
+                }
+            }
+            if(notfound)
+                System.out.println("Parents not found");
+        }
+    }
+    
     public void add(String name, String parents){
         Node temp = new Node(name, null, null);
         //Nodee.add(temp);
@@ -27,6 +59,7 @@ public class DoublyLinkedList {
         if(root==null){
             Nodee.add(temp);
             root=temp;
+            total++;
             System.out.println("Root: " + name);
         }
         else{
@@ -44,6 +77,7 @@ public class DoublyLinkedList {
                     int level = 0;
                     while(current.prev!=null){
                     current = current.prev;
+                    total++;
                         switch (level) {
                             case 0:
                                 current.addMoney(25);
@@ -63,10 +97,8 @@ public class DoublyLinkedList {
                                 break;
                         }
                     }
-                    
                     break;
                 }
-                    
             }
             if(notfound)
                 System.out.println("Parents not found");
