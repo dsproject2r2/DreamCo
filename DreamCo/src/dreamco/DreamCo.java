@@ -5,13 +5,13 @@ import java.io.IOException;
 
 public class DreamCo {
 
-    
-    public static void main(String[] args) throws IOException {
-        DataFile objectDataFile = new DataFile();
+ /////////////////////////////////////////////////////////////////////////////////////This Class Serves as a tester class for now!   
+public static void main(String[] args) throws IOException {
+    DataEncryptionFile objectDataFile = new DataEncryptionFile();
         
-        DataFile.fileEncryption();
-        DataFile.appendFile();
-
+    DataEncryptionFile.fileEncryption();
+    DataEncryptionFile.fileDecryption();
+    DataEncryptionFile.appendFile();    
     }
 
 }
