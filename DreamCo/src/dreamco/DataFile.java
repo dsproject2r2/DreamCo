@@ -4,41 +4,36 @@ package dreamco;
 //THIS CLASS CONTAINS THE METHODS TO READ AND ALTER THE NAME FILE 
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Formatter;
+import java.io.PrintWriter;
 
 
 public class DataFile {
 
-private static Formatter x;
-String tempstring; 
-static String encryptedtxt="";
+private static String encryptedtxt="";
 
-
-public static void openFile(){
-    try{
-        x=new Formatter ("Userdata.txt");
-    }
-    catch (Exception e){
-        System.out.println("FILE NOT FOUND");
-    }
-}
-    
-public static void writeToFile(){
-    
+public static void writeEncryptionFile() throws IOException{
+    PrintWriter pw= new PrintWriter(new FileWriter(new File("Userdata.txt")));
+    pw.print(encryptedtxt);
+    pw.close();
 }
 
-public static void closeFile(){
-        x.close();
+public static void appendFile() throws IOException{
+    BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Userdata.txt"),true));
+    bw.write("hello");
+    bw.close();
     }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////ENCRYPTION ALGORITHM//////////////////////////////////////////////////////
 public static void fileEncryption() throws IOException{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
-    StringBuffer br = new StringBuffer();
-    String line = null;
+    StringBuilder br = new StringBuilder();
+    String line;
     int key=25;
     
     while((line =bufferedreader.readLine())!=null){
@@ -58,21 +53,16 @@ public static void fileEncryption() throws IOException{
                 a=a-26;
         }
         encryptedtxt=encryptedtxt+(char) a;
-    }
-    
-    openFile();
-    x.format(encryptedtxt);
-    closeFile();
-    
-    System.out.print(encryptedtxt);
+    } 
+    writeEncryptionFile();
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////DECRYPTION ALGORITHM ///////////////////////////////////////////////////////
 public static void fileDecryption() throws IOException{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
-    StringBuffer br = new StringBuffer();
-    String line = null;
+    StringBuilder br= new StringBuilder();
+    String line;
     int key=25;
     
     while((line =bufferedreader.readLine())!=null){
@@ -93,12 +83,7 @@ public static void fileDecryption() throws IOException{
         }
         encryptedtxt=encryptedtxt+(char) a;
     }
-    
-    openFile();
-    x.format(encryptedtxt);
-    closeFile();
-    
-    System.out.print(encryptedtxt);
+    writeEncryptionFile();
 }
 
 
