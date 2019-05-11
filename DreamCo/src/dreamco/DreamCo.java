@@ -9,7 +9,9 @@ public class DreamCo {
     public static void main(String[] args) throws IOException {
         DataFile objectDataFile = new DataFile();
         
-        DataFile.fileDecryption();
+        DataFile.fileEncryption();
+        DataFile.appendFile();
+
     }
 
 }
