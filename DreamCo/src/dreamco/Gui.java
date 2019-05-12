@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
 
 public class Gui extends JFrame{
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
+    
 public static void dialogBox(){    
     String fn= JOptionPane.showInputDialog("Enter Name");
     String sn= JOptionPane.showInputDialog("Enter Password");    
@@ -28,7 +28,7 @@ public static void dialogBox(){
     JOptionPane.showMessageDialog(null, "The answer is " , "The title", JOptionPane.PLAIN_MESSAGE); //shows tat a message box
     }
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////// BUILDER DECLARATIONS 
 private JLabel item1;
 private JTextField fld1;
 private JTextField fld2;
