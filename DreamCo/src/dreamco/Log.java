@@ -1,21 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dreamco;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author MX-15
- */
 public class Log extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Log
-     */
     public Log() {
         initComponents();
     }
@@ -58,6 +47,11 @@ public class Log extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTextField1.setToolTipText("Username");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +150,10 @@ public class Log extends javax.swing.JFrame {
             char[] pwd = jPasswordField1.getPassword();
             String password = new String(pwd);
             if(name.equals("admin")&&(password.equals("login"))){
-                JOptionPane.showMessageDialog(null,"Welcome Admin!");
+                Admin adminframe=new Admin();
+                adminframe.runAdminFrame();
+                setVisible(false);
+
             }else
                 JOptionPane.showMessageDialog(null,"Valid User");
         }catch(Exception e){
@@ -164,10 +161,11 @@ public class Log extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    public static void runLoginFrame() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
