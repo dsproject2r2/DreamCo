@@ -13,11 +13,14 @@ import java.util.Stack;
  */
 public class MyTree {
     
-    public java.util.ArrayList<NodeTree> Nodee =  new java.util.ArrayList<>();
     public int total;
     public NodeTree root;
     double fee=50;
             
+    public int getTotal(){
+        return total;
+    }
+    
     public MyTree(){
         total=0;
         root=null;
@@ -28,10 +31,9 @@ public class MyTree {
     }
     
     //add method to use when  load file
-    public void addLoad(String name, String parents, double Money, int ID){
-        NodeTree temp = new NodeTree(name, null, null, Money, ID);
+    public void addLoad(String name, String parents, double Money, String password){
+        NodeTree temp = new NodeTree(name, null, null, Money, password);
         if(root==null){
-            Nodee.add(temp);
             root=temp;
             total++;
             System.out.println("Root: " + name);
@@ -50,11 +52,9 @@ public class MyTree {
     // add method to use when to create new user
     public void add(String name, String parents){
         NodeTree temp = new NodeTree(name, null, null);
-        temp.addMoney(fee);
         //Nodee.add(temp);
         
         if(root==null){
-            Nodee.add(temp);
             root=temp;
             total++;
             System.out.println("Root: " + name);
@@ -64,6 +64,35 @@ public class MyTree {
             getNode(parents).child.add(temp);
             getNode(name).prev=getNode(parents);
             System.out.println("Adding: " + getNode(name).name + " to " + getNode(parents).name);
+            NodeTree current = temp;
+                    int level = 0;
+                    total++;
+                    while(current.prev!=null){
+                    current = current.prev;
+                    
+                        switch (level) {
+                            case 1:
+                                current.addMoney(fee*0.5);
+                                level++;
+                                break;
+                            case 2:
+                                current.addMoney(fee*0.12);
+                                level++;
+                                break;
+                            case 3:
+                                current.addMoney(fee*0.09);
+                                level++;
+                                break;
+                            case 4:
+                                current.addMoney(fee*0.06);
+                                level++;
+                                break;
+                            default:
+                                current.addMoney(fee*0.03);
+                                level++;
+                                break;
+                        }
+                    }
             }
             else
                 System.out.println("Cannot add, parent not found");
@@ -72,12 +101,7 @@ public class MyTree {
     
     // get money balance from user, return 0 if user not exist
     public double getMoney(String name){
-        for (int i = 0; i < Nodee.size(); i++) {
-            if(Nodee.get(i).name.equalsIgnoreCase(name)){
-                return  Nodee.get(i).money;
-            }
-        }
-        return 0;
+        return getNode(name).money;
     }
     
     public boolean contain (String name){
@@ -112,9 +136,17 @@ public class MyTree {
             for (int i = 0; i < temp.child.size(); i++) {
                 s.push(temp.child.get(i));
             }
-            
         }
         return null;
+    }
+    
+    public double getTotalMoney(){
+        if(root==null)
+            return 0;
+        else{
+            
+            return 0;
+        }
     }
     
     public void displayAllNodes(){
@@ -127,7 +159,7 @@ public class MyTree {
         if(contain(name)){
             while(temp.prev!=null){
 
-                System.out.print(temp.name + " ");        
+                System.out.print(' '+temp.name + " -RM" + temp.money);        
                 temp = temp.prev;
             }
             System.out.print(temp.name);
@@ -145,7 +177,7 @@ public class MyTree {
             temp = s.pop();
             if(temp==null)
                 continue;
-            System.out.print(temp.name + " ");
+            System.out.print(' '+ temp.name + " -RM" + temp.money);
             for (int i = 0; i < temp.child.size(); i++) {
                 s.push(temp.child.get(i));
             }
@@ -155,71 +187,90 @@ public class MyTree {
     public void dfstack(){
         Stack<NodeTree> s = new Stack();
         
-        s.push(root);
-        NodeTree temp = root;
-        while(s.size()!=0){
-            temp = s.pop();
-            if(temp==null)
-                continue;
-            System.out.print(temp.name + " ");
-            for (int i = 0; i < temp.child.size(); i++) {
-                s.push(temp.child.get(i));
+        if(root==null)
+            System.out.println("No user");
+        else{        
+            s.push(root);
+            NodeTree temp = root;
+            while(s.size()!=0){
+                temp = s.pop();
+                if(temp==null)
+                    continue;
+                System.out.print(' '+ temp.name + " -RM" + temp.money);
+                for (int i = 0; i < temp.child.size(); i++) {
+                    s.push(temp.child.get(i));
+                }
+
             }
-            
-        }
         System.out.println("");
+        }
     }
-    
     
     public void bfsQueue() {
         MyQueue<NodeTree> queue = new MyQueue<NodeTree>();
-        queue.enqueue(root);
-        while (queue.getSize()!= 0) {
-            NodeTree temp = queue.dequeue(); // return null if the queue is empty
-            if(temp==null)
-                continue;
-            System.out.print(temp.name + " ");
-                for (int i = 0; i<temp.child.size(); i++) {
-                    queue.enqueue(temp.child.get(i));
-            }
-        }
-        System.out.println("");
-    }
-    
-    public int returnIndex(NodeTree node){
-        for (int i = 0; i < Nodee.size(); i++) {
-                if(node.equals(Nodee.get(i))){
-                    return i;
+        
+        if(root==null)
+            System.out.println("No user");
+        else{
+            queue.enqueue(root);
+            while (queue.getSize()!= 0) {
+                NodeTree temp = queue.dequeue(); // return null if the queue is empty
+                if(temp==null)
+                    continue;
+                System.out.print(temp.name + " ");
+                    for (int i = 0; i<temp.child.size(); i++) {
+                        queue.enqueue(temp.child.get(i));
                 }
             }
-        return -1;
+            System.out.println("");
+        }
     }
     
     public void clear(){
-        root=null;
+        root=null; 
+        total=0;
+        System.out.println("All user have been deleted");
     }
     
-    public void remove(String name){
-        NodeTree temp = getNode(name).prev;
-        
-        if(contain(name)){
-            if(root==getNode(name)){
-                clear();
-            }else{
-                for (int i = 0; i < temp.child.size(); i++) {
-
-                    if(temp.child.get(i)==null){
-                        continue;
-                    }
-
-                    if(temp.child.get(i).equals(getNode(name))){
-                        getNode(temp.name).child.remove(i);
-                    }
-                }
-            }
-        }else
-            System.out.println("User not found");
-
+//    public void remove(String name){
+//        
+//        if(contain(name)){
+//            if(root==getNode(name)){
+//                clear();
+//            }else{
+//              //  NodeTree temp = getNode(name).prev;
+//                for (int i = 0; i < getNode(name).prev.child.size(); i++) {
+//
+//                    if(getNode(name).prev.child.get(i)==null){
+//                        continue;
+//                    }
+//
+//                    if(getNode(name).prev.child.get(i).equals(getNode(name))){
+//                        getNode(getNode(name).prev.name).child.remove(i);
+//                    }
+//                }
+//                getNode(name).prev=null;
+//                
+//                for (int i = 0; i < getNode(name).child.size(); i++) {
+//                    getNode(name).child.get(i).prev=getNode(name).prev;
+//                    getNode(name).prev.child.add(getNode(name).child.get(i));
+//                    
+//                }
+////                for (int i = 0; i < getNode(name).child.size(); i++) {
+////                    if(temp.child.get(i)==null){
+////                        continue;
+////                    }
+////                    getNode(name).child.get(i).prev=temp;
+////                }
+//                total--;
+//            }
+//        }else
+//            System.out.println("User not found");
+//    }
+    
+    public void setPassword(String name, String password){
+        getNode(name).setPassword(password);
+        System.out.println("Password has been set");    
     }
     
 }

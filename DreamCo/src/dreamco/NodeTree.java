@@ -5,8 +5,6 @@
  */
 package dreamco;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Raihan
@@ -16,9 +14,9 @@ public class NodeTree {
     double money=0;
     String name;
     java.util.ArrayList<NodeTree> child = new java.util.ArrayList<>();
-    //java.util.ArrayList<Node> prev = new java.util.ArrayList<>();
     NodeTree prev;
     int ID;
+    String password;
     
     public NodeTree(String name, NodeTree next, NodeTree prev){
         this.name=name;
@@ -26,12 +24,20 @@ public class NodeTree {
         this.prev = prev;
     }
     
-    public NodeTree(String name, NodeTree next, NodeTree prev, double Money, int ID){
+    public NodeTree(String name, NodeTree next, NodeTree prev, double Money, String password){
         this.name=name;
         this.child.add(next);
         this.prev = prev;
         this.money=Money;
-        this.ID=ID;
+        this.password=password;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     public NodeTree(){
