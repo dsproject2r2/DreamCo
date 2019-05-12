@@ -39,15 +39,17 @@ private JButton yesbutton;
 private JButton nobutton;
 private JButton custombutton;
 
+
 ///////////////////////////////// /////////////////////////////////////////////////////////////This is just a constructor for the STARTUP Gui Frame/////////////////////////////////
 public Gui(){
     super("2R2 DreamCo Scam"); //The 
     setLayout(new FlowLayout());
     
-    Icon b= new ImageIcon(getClass().getResource("b.png"));
-    custombutton=new JButton("Custom",b);
-    custombutton.setRolloverIcon(b);
+//    Icon b= new ImageIcon(getClass().getResource("b.png"));
+//    custombutton=new JButton("Custom",b);
+//    custombutton.setRolloverIcon(b);
     
+
     item1=new JLabel("This is a sentence");
     item1.setToolTipText("This is going to show up on hover");
     add(item1);
@@ -69,6 +71,7 @@ public Gui(){
     add(yesbutton);
     nobutton=new JButton("no");
     add(nobutton);
+//    nobutton.setVisible(false);
     
     
     ActHandler handler= new ActHandler();
@@ -97,6 +100,12 @@ private class ActHandler implements ActionListener{  //This class is a subclass 
 }
 /////////////////////////////////////////////////////////////////////////////////////////////// THIS IS WHERE STARTUP Gui Frame ENDS //////////////////////////////////////////////////////////
 
-
+public static void runStartupFrame(){
+    Gui startupGui=new Gui();
+    startupGui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    startupGui.setSize(400,700);
+    startupGui.setLocationRelativeTo(null);
+    startupGui.setVisible(true);
+}
 
 }
