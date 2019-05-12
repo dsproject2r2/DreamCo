@@ -1,6 +1,7 @@
 
 package dreamco;
 
+//by JERRY <3
 //THIS CLASS CONTAINS THE METHODS TO READ AND ALTER THE NAME FILE      -The encryption will also only encrypt letters and not numbers
 
 import java.io.BufferedReader;
