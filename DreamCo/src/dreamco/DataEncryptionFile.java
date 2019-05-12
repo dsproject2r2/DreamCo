@@ -27,7 +27,7 @@ public static void writeEncryptionFile() throws IOException{
 /////////////////////////////////////////////////////This method is to add any names or entries to the file.........................................
 public static void appendFile() throws IOException{
     BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Userdata.txt"),true));
-    bw.write("hello");
+    bw.write("\nhello");
     bw.close();
     }
 
