@@ -14,11 +14,8 @@ public static void main(String[] args) throws IOException {
     DataEncryptionFile objectDataFile = new DataEncryptionFile();
     Gui startupGui= new Gui();
     
-    //programGui.dialogBox();    
-    startupGui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    startupGui.setSize(400,700);
-    startupGui.setLocationRelativeTo(null);
-    startupGui.setVisible(true);
+    Gui.runStartupFrame();
+
     }
 
 }
