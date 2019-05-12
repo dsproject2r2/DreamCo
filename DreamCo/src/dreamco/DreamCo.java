@@ -4,8 +4,10 @@ package dreamco;
 import java.io.IOException;
 import javax.swing.JFrame;
 
-public class DreamCo {
+//by JERRY <#
 
+public class DreamCo {
+    
  /////////////////////////////////////////////////////////////////////////////////////    This Class Serves as a tester class for now!   ////////////////////////////////////////
 public static void main(String[] args) throws IOException {
     //////////////////////////////////////////////////////////////////These are the objects to use other classes in the package...............
