@@ -5,8 +5,6 @@
  */
 package dreamco;
 
-import java.util.Stack;
-
 /**
  *
  * @author Raihan
@@ -105,10 +103,10 @@ public class MyTree {
     }
     
     public boolean contain (String name){
-        Stack<NodeTree> s = new Stack();
+        MyStack<NodeTree> s = new MyStack();
         s.push(root);
         NodeTree temp = root;;
-        while(s.size()!=0){
+        while(s.getSize()!=0){
             temp = s.pop();
             if(temp==null)
                 continue;
@@ -123,11 +121,11 @@ public class MyTree {
     }
     
     public NodeTree getNode(String name){
-        Stack<NodeTree> s = new Stack();
+        MyStack<NodeTree> s = new MyStack();
         
         s.push(root);
         NodeTree temp = root;
-        while(s.size()!=0){
+        while(s.getSize()!=0){
             temp = s.pop();
             if(temp==null)
                 continue;
@@ -150,7 +148,7 @@ public class MyTree {
     }
     
     public void displayAllNodes(){
-        dfstack();
+        DFSdisplayAll();
     }
     
     //display all parents from the child
@@ -169,11 +167,11 @@ public class MyTree {
     }
 
     public void dfstackUser(String name){
-        Stack<NodeTree> s = new Stack();
+        MyStack<NodeTree> s = new MyStack();
         
         s.push(getNode(name));
         NodeTree temp = getNode(name);;
-        while(s.size()!=0){
+        while(s.getSize()!=0){
             temp = s.pop();
             if(temp==null)
                 continue;
@@ -184,15 +182,15 @@ public class MyTree {
         }System.out.println("");
     }
     
-    public void dfstack(){
-        Stack<NodeTree> s = new Stack();
+    public void DFSdisplayAll(){
+        MyStack<NodeTree> s = new MyStack();
         
         if(root==null)
             System.out.println("No user");
         else{        
             s.push(root);
             NodeTree temp = root;
-            while(s.size()!=0){
+            while(s.getSize()!=0){
                 temp = s.pop();
                 if(temp==null)
                     continue;
@@ -206,7 +204,7 @@ public class MyTree {
         }
     }
     
-    public void bfsQueue() {
+    public void BFSdisplayAll() {
         MyQueue<NodeTree> queue = new MyQueue<NodeTree>();
         
         if(root==null)
@@ -232,41 +230,40 @@ public class MyTree {
         System.out.println("All user have been deleted");
     }
     
-//    public void remove(String name){
-//        
-//        if(contain(name)){
-//            if(root==getNode(name)){
-//                clear();
-//            }else{
-//              //  NodeTree temp = getNode(name).prev;
-//                for (int i = 0; i < getNode(name).prev.child.size(); i++) {
-//
-//                    if(getNode(name).prev.child.get(i)==null){
-//                        continue;
-//                    }
-//
-//                    if(getNode(name).prev.child.get(i).equals(getNode(name))){
-//                        getNode(getNode(name).prev.name).child.remove(i);
-//                    }
-//                }
-//                getNode(name).prev=null;
-//                
-//                for (int i = 0; i < getNode(name).child.size(); i++) {
-//                    getNode(name).child.get(i).prev=getNode(name).prev;
-//                    getNode(name).prev.child.add(getNode(name).child.get(i));
-//                    
-//                }
-////                for (int i = 0; i < getNode(name).child.size(); i++) {
-////                    if(temp.child.get(i)==null){
-////                        continue;
-////                    }
-////                    getNode(name).child.get(i).prev=temp;
-////                }
-//                total--;
-//            }
-//        }else
-//            System.out.println("User not found");
-//    }
+    public void remove(String name){
+        if(contain(name)){
+            if(root==getNode(name)){
+                clear();
+            }else{
+               NodeTree []temp = new NodeTree[getNode(name).child.size()];
+                boolean remove=false;
+                String prev = getNode(name).prev.name;
+                if(getNode(name).child.size()!=0){
+                    remove=true;
+                        for (int i = 0; i < getNode(name).child.size(); i++) {
+                            temp[i] = getNode(name).child.get(i);
+                        }
+                }
+                int numbtemp=-1;
+                    for (int i = 0; i < getNode(name).prev.child.size(); i++) {
+                        if(getNode(prev).child.get(i)==(getNode(name))){
+                            numbtemp = i;
+                            break;
+                        }
+                    }
+                if(numbtemp!=-1){    
+                    getNode(name).prev.child.remove(numbtemp);
+                }
+                if(remove){
+                    for (int i = 0; i < temp.length; i++) {
+                        getNode(prev).child.add(temp[i]);
+                    }
+                }
+                System.out.println("Removed: "+ name);
+            }
+        }else
+            System.out.println("User not found");
+    }
     
     public void setPassword(String name, String password){
         getNode(name).setPassword(password);
