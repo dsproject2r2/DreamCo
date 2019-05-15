@@ -19,7 +19,7 @@ import javax.swing.ImageIcon;
 
 public class Gui extends JFrame{
 
-    
+    ////////////////////////////////////////////////////////////////////////////////////////////Basic input setting
 public static void dialogBox(){    
     String fn= JOptionPane.showInputDialog("Enter Name");
     String sn= JOptionPane.showInputDialog("Enter Password");    
