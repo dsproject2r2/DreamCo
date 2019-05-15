@@ -176,7 +176,7 @@ public class Login extends javax.swing.JFrame {
                 setVisible(false);
                 }
             else if(name.equals("admin")&&(password.equals("login"))){
-                Admin adminframe=new Admin();
+                AdminFrame adminframe=new AdminFrame();
                 adminframe.runAdminFrame();
                 setVisible(false);
             }else                    
