@@ -17,7 +17,10 @@ public class NodeTree {
     NodeTree prev;
     int ID;
     String password;
-    
+    public NodeTree(String name){
+        this.name=name;
+      //  this.prev=null;
+    }
     public NodeTree(String name, NodeTree next, NodeTree prev){
         this.name=name;
         this.child.add(next);

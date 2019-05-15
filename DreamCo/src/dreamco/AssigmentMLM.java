@@ -16,6 +16,7 @@ public class AssigmentMLM {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+
         MyTree dll =  new MyTree();
         
         dll.add("a", "Tasnim");

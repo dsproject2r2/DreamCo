@@ -58,7 +58,7 @@ public class Load {
             
             for(int i=0; i<list.Nodee.size(); i++){  
                 
-                bw.write(list.Nodee.get(i).money);
+                bw.write((int) list.Nodee.get(i).money);
 //                String pa = list.Nodee.get(i).prev.name;
 //                p.println(pa);
                // p.print(list.Nodee.get(i).name);

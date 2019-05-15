@@ -1,6 +1,8 @@
 
 package dreamco;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import javax.swing.JOptionPane;
 
 public class Log extends javax.swing.JFrame {
@@ -155,13 +157,30 @@ public class Log extends javax.swing.JFrame {
             String name = jTextField1.getText();
             char[] pwd = jPasswordField1.getPassword();
             String password = new String(pwd);
-            if(name.equals("admin")&&(password.equals("login"))){
+            String pass="",line;
+            
+            DataEncryptionFile def= new DataEncryptionFile();
+            def.fileDecryption();
+            BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
+            while((line =bufferedreader.readLine())!=null){
+                if(name.equals(line)){
+                    pass=bufferedreader.readLine();
+                    break;
+                }
+            }
+            def.fileEncryption();
+            
+            if(name.equals(line)&&(password.equals(pass))){
+                UserFrame userframe=new UserFrame();
+                userframe.runUserFrame();
+                setVisible(false);
+                }
+            else if(name.equals("admin")&&(password.equals("login"))){
                 Admin adminframe=new Admin();
                 adminframe.runAdminFrame();
                 setVisible(false);
-
-            }else
-                JOptionPane.showMessageDialog(null,"Valid User");
+            }else                    
+                JOptionPane.showMessageDialog(null,"Authentication failed.");
         }catch(Exception e){
             System.out.println(e.getMessage()); 
         }

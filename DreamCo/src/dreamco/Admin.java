@@ -29,6 +29,8 @@ public class Admin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        setSize(new java.awt.Dimension(450, 600));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -36,14 +38,14 @@ public class Admin extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Myriad Pro", 1, 22)); // NOI18N
         jLabel2.setText("Admin");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(160, 170, 70, 23);
+        jLabel2.setBounds(190, 170, 70, 23);
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Dream Corporation");
         jLabel5.setToolTipText("");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(0, 0, 400, 150);
+        jLabel5.setBounds(30, 0, 400, 150);
 
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setForeground(new java.awt.Color(204, 204, 204));
@@ -54,7 +56,7 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(30, 280, 330, 50);
+        jButton1.setBounds(60, 280, 330, 50);
 
         jButton2.setBackground(new java.awt.Color(102, 102, 102));
         jButton2.setForeground(new java.awt.Color(204, 204, 204));
@@ -65,7 +67,7 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(30, 350, 330, 50);
+        jButton2.setBounds(60, 350, 330, 50);
 
         jButton3.setBackground(new java.awt.Color(102, 102, 102));
         jButton3.setForeground(new java.awt.Color(204, 204, 204));
@@ -76,7 +78,7 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(30, 420, 330, 50);
+        jButton3.setBounds(60, 420, 330, 50);
 
         jButton4.setBackground(new java.awt.Color(102, 102, 102));
         jButton4.setForeground(new java.awt.Color(204, 204, 204));
@@ -87,30 +89,31 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(30, 210, 330, 50);
+        jButton4.setBounds(60, 210, 330, 50);
 
         jLabel4.setFont(new java.awt.Font("Myriad Pro", 1, 22)); // NOI18N
         jLabel4.setText("userRevenueVariable");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(150, 490, 220, 23);
+        jLabel4.setBounds(180, 490, 220, 23);
 
         jLabel3.setFont(new java.awt.Font("Myriad Pro", 1, 22)); // NOI18N
         jLabel3.setText("Revenue");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(30, 490, 140, 23);
+        jLabel3.setBounds(60, 490, 140, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(468, 647));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

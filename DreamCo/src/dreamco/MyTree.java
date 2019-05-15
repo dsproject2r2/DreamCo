@@ -5,6 +5,8 @@
  */
 package dreamco;
 
+import java.io.IOException;
+
 /**
  *
  * @author Raihan
@@ -12,7 +14,7 @@ package dreamco;
 public class MyTree {
     
     public int total;
-    public NodeTree root;
+    public NodeTree root = new NodeTree("DreamCo");
     double fee=50;
             
     public int getTotal(){
@@ -21,47 +23,52 @@ public class MyTree {
     
     public MyTree(){
         total=0;
-        root=null;
+     //   root=null;
     }
     
     public void setFee(double fee){
         this.fee=fee;
     }
     
-    //add method to use when  load file
-    public void addLoad(String name, String parents, double Money, String password){
-        NodeTree temp = new NodeTree(name, null, null, Money, password);
-        if(root==null){
-            root=temp;
-            total++;
-            System.out.println("Root: " + name);
-        }
-        else{
-            if(contain(parents)){
-            getNode(parents).child.add(temp);
-            getNode(name).prev=getNode(parents);
-                System.out.println("Adding: " + getNode(name).name + " to " + getNode(parents).name);
-            }
-            else
-                System.out.println("Cannot add, parent not found");
-        }
-    }
+//    //add method to use when  load file
+//    public void addLoad(String name, String parents, double Money, String password){
+//        NodeTree temp = new NodeTree(name, null, null, Money, password);
+//        if(root==null){
+//            root=temp;
+//            total++;
+//            System.out.println("Root: " + name);
+//        }
+//        else{
+//            if(contain(parents)){
+//            getNode(parents).child.add(temp);
+//            getNode(name).prev=getNode(parents);
+//                System.out.println("Adding: " + getNode(name).name + " to " + getNode(parents).name);
+//            }
+//            else
+//                System.out.println("Cannot add, parent not found");
+//        }
+//    }
     
     // add method to use when to create new user
-    public void add(String name, String parents){
+    public void add(String name,String password, String parents) throws IOException{
         NodeTree temp = new NodeTree(name, null, null);
+        temp.setPassword(password);
+        DataEncryptionFile def= new DataEncryptionFile();
         //Nodee.add(temp);
-        
-        if(root==null){
-            root=temp;
-            total++;
-            System.out.println("Root: " + name);
+       // System.out.println("afaf"+root.name);
+        if(root.child.isEmpty()){
+            root.child.add(temp);
+            System.out.println("Adding: " + name + " to " + root.name);
+            def.appendFile(name, password, root.name);
+           def.fileEncryption();
+//           def.fileDecryption();
         }
         else{
             if(contain(parents)){
             getNode(parents).child.add(temp);
             getNode(name).prev=getNode(parents);
             System.out.println("Adding: " + getNode(name).name + " to " + getNode(parents).name);
+             def.appendFile(name, password,parents);
             NodeTree current = temp;
                     int level = 0;
                     total++;
@@ -225,7 +232,7 @@ public class MyTree {
     }
     
     public void clear(){
-        root=null; 
+        root= new NodeTree("DreamCo"); 
         total=0;
         System.out.println("All user have been deleted");
     }
@@ -269,5 +276,6 @@ public class MyTree {
         getNode(name).setPassword(password);
         System.out.println("Password has been set");    
     }
+    
     
 }
