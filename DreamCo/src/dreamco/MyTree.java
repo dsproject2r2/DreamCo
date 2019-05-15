@@ -30,24 +30,6 @@ public class MyTree {
         this.fee=fee;
     }
     
-//    //add method to use when  load file
-//    public void addLoad(String name, String parents, double Money, String password){
-//        NodeTree temp = new NodeTree(name, null, null, Money, password);
-//        if(root==null){
-//            root=temp;
-//            total++;
-//            System.out.println("Root: " + name);
-//        }
-//        else{
-//            if(contain(parents)){
-//            getNode(parents).child.add(temp);
-//            getNode(name).prev=getNode(parents);
-//                System.out.println("Adding: " + getNode(name).name + " to " + getNode(parents).name);
-//            }
-//            else
-//                System.out.println("Cannot add, parent not found");
-//        }
-//    }
     
     // add method to use when to create new user
     public void add(String name,String password, String parents) throws IOException{
@@ -60,8 +42,8 @@ public class MyTree {
             root.child.add(temp);
             System.out.println("Adding: " + name + " to " + root.name);
             def.appendFile(name, password, root.name);
-           def.fileEncryption();
-//           def.fileDecryption();
+            def.fileEncryption();
+//          def.fileDecryption();
         }
         else{
             if(contain(parents)){
@@ -272,6 +254,7 @@ public class MyTree {
             System.out.println("User not found");
     }
     
+    //method to be used for password reset
     public void setPassword(String name, String password){
         getNode(name).setPassword(password);
         System.out.println("Password has been set");    
