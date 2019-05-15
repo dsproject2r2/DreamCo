@@ -5,9 +5,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import javax.swing.JOptionPane;
 
-public class Login extends javax.swing.JFrame {
+public class LoginFrame extends javax.swing.JFrame {
 
-    public Login() {
+    public LoginFrame() {
         initComponents();
     }
 
@@ -212,7 +212,7 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         
