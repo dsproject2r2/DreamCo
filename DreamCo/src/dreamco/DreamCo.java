@@ -23,7 +23,7 @@ public static void main(String[] args) throws IOException {
     String parents =s.nextLine();
     tree.add(name, password,parents);
   
-    Log login = new Log();
+    Login login = new Login();
     login.runLoginFrame();
     
 
