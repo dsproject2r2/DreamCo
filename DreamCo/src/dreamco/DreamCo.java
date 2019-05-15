@@ -11,7 +11,7 @@ public class DreamCo {
     
  /////////////////////////////////////////////////////////////////////////////////////    This Class Serves as a tester class for now!   ////////////////////////////////////////
 public static void main(String[] args) throws IOException {
-    ///////////////////////////////////////////These are the objects to use other classes in the package...............
+    ///////////////////////////////////////////These are the OBJECTS to use OTHER classes in the package...............
     DataEncryptionFile objectDataFile = new DataEncryptionFile();
     MyTree tree= new MyTree();
 
