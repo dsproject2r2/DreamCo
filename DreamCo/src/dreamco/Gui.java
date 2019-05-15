@@ -1,7 +1,8 @@
 
 package dreamco;
 
-//by JERRY <3
+//by JERRY <3  
+//////////////////////////////////////////////////////////////////////////////////////////////// THIS CLASS IS BASICALLY A GUI BUILDER/ FRAMERWORK TO PRODUCE GUIs
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
