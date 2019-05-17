@@ -12,23 +12,38 @@ import java.io.IOException;
  * @author Raihan
  */
 public class MyTree {
-    
+
     public int total;
     public NodeTree root = new NodeTree("DreamCo");
-    double fee=50;
-            
+    double fee;
+    
+    //Objects for the other classes
+    public AdminFrame adminframe= new AdminFrame();
+    public UserFrame userframe= new UserFrame();
+    
     public int getTotal(){
         return total;
     }
     
     public MyTree(){
         total=0;
+        this.fee=50;
      //   root=null;
     }
     
-    public void setFee(double fee){
-        this.fee=fee;
+    public void setFee(){
+        double temp  = adminframe.changeRegistrationFee();
+        
+        if(fee!=-1)
+        this.fee=temp;
+        
     }
+
+    public double getFee() {
+        return fee;
+    }
+    
+ 
     
     
     // add method to use when to create new user
