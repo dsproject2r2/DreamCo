@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dreamco;
 
 import java.io.IOException;
@@ -32,11 +28,7 @@ public class MyTree {
     }
     
     public void setFee(){
-        double temp  = adminframe.changeRegistrationFee();
-        
-        if(fee!=-1)
-        this.fee=temp;
-        
+        this.fee = adminframe.changeRegistrationFee();
     }
 
     public double getFee() {
@@ -58,7 +50,7 @@ public class MyTree {
             System.out.println("Adding: " + name + " to " + root.name);
             def.appendFile(name, password, root.name);
             def.fileEncryption();
-//          def.fileDecryption();
+         //def.fileDecryption();
         }
         else{
             if(contain(parents)){
