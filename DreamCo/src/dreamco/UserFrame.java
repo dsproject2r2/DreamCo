@@ -5,6 +5,8 @@
  */
 package dreamco;
 
+import java.util.Random;
+
 /**
  *
  * @author Jeremiah
@@ -30,18 +32,18 @@ public class UserFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         jPanel1 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         jScrollPane1.setViewportView(jTree1);
 
@@ -53,44 +55,64 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(450, 600));
         jPanel1.setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setForeground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("Register User");
+        jButton4.setVisible(false);
+        jButton4.setText("Cancel");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4);
+        jButton4.setBounds(230, 470, 90, 32);
+
+        jCheckBox1.setVisible(false);
+        jCheckBox1.setBackground(new java.awt.Color(117, 230, 218));
+        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setText("Agree to terms and conditions");
+        jCheckBox1.setToolTipText("TERMS AND CONDITIONS: RM 50 Will be collected upon registration. Tick if you agree.");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox1);
+        jCheckBox1.setBounds(20, 470, 210, 24);
+
+        jButton3.setText("Register a NEW CLIENT!");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3);
+        jButton3.setBounds(90, 400, 280, 50);
+
+        jButton1.setBackground(new java.awt.Color(5, 68, 94));
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(204, 255, 255));
+        jButton1.setText("Register User and get that bread!");
+        jButton1.setVisible(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(60, 400, 330, 50);
-
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
-        jLabel1.setText("User  ID:");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(70, 500, 90, 29);
-
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
-        jLabel2.setText("Revenue:");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(60, 540, 100, 29);
+        jButton1.setBounds(90, 520, 280, 50);
 
         jLabel3.setFont(new java.awt.Font("Myriad Pro", 1, 22)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(153, 153, 255));
         jLabel3.setText("userIDvariable");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(170, 500, 170, 30);
+        jLabel3.setBounds(150, 220, 170, 30);
 
         jLabel4.setFont(new java.awt.Font("Myriad Pro", 1, 22)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(102, 153, 255));
         jLabel4.setText("userRevenueVariable");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(170, 540, 220, 23);
+        jLabel4.setBounds(120, 250, 220, 30);
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Dream Corporation");
-        jLabel5.setToolTipText("");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(30, 10, 400, 150);
-
+        jTextField2.setVisible(false);
         jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,37 +120,66 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTextField2);
-        jTextField2.setBounds(170, 320, 260, 40);
+        jTextField2.setBounds(170, 420, 260, 40);
 
+        jTextField3.setVisible(false);
         jTextField3.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextField3);
-        jTextField3.setBounds(170, 260, 260, 40);
+        jTextField3.setBounds(170, 370, 260, 40);
 
+        jLabel6.setVisible(false);
         jLabel6.setBackground(new java.awt.Color(102, 102, 102));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("New Username");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 260, 150, 40);
+        jLabel6.setBounds(20, 370, 150, 40);
 
+        jLabel7.setVisible(false);
         jLabel7.setBackground(new java.awt.Color(102, 102, 102));
         jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("New Password");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(20, 320, 150, 40);
+        jLabel7.setBounds(20, 420, 150, 40);
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel8.setFont(new java.awt.Font("Myriad Pro", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Myriad Pro", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 204));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("It's All About Our Perception! Build Your Empire.");
+        jLabel8.setText("Daily Message");
+        Random r= new Random();
+        int randomselector;
+        randomselector=r.nextInt(4);
+        switch (randomselector){
+            case 0:
+            jLabel8.setText("It's all about your perception! Build your empire now!");
+            break;
+            case 1:
+            jLabel8.setText("register now for a special surprise <3");
+            break;
+            case 2:
+            jLabel8.setText("Money money money, must be funny, in a rich man's world");
+            break;
+            case 3:
+            jLabel8.setText("Bring me the money!");
+            break;
+            case 4:
+            jLabel8.setText("Get more people into the mlm sca...did I say scam? I mean business...");
+            break;
+        }
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(0, 160, 450, 30);
+        jLabel8.setBounds(0, 120, 450, 30);
 
-        jLabel9.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Register your customer here");
-        jLabel9.setToolTipText("");
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(0, 200, 450, 20);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/UserFrameBackground.png"))); // NOI18N
+        jLabel10.setText("jLabel10");
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(0, 0, 450, 600);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,9 +204,38 @@ public class UserFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        jButton1.setVisible(true);
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jButton3.setVisible(false);
+        jButton4.setVisible(true);
+        jCheckBox1.setVisible(true);
+        jTextField2.setVisible(true);
+        jTextField3.setVisible(true);
+        jLabel6.setVisible(true);
+        jLabel7.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        jButton3.setVisible(true);
+        jButton4.setVisible(false);
+        jButton1.setVisible(false);
+        jCheckBox1.setVisible(false);
+        jTextField2.setVisible(false);
+        jTextField3.setVisible(false);
+        jLabel6.setVisible(false);
+        jLabel7.setVisible(false);
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////MAIN METHOD TO RUN THIS JFRAME /////////////////////////////////////////////
     public void runUserFrame() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -167,22 +247,29 @@ public class UserFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+
                 new UserFrame().setVisible(true);
             }
         });
     }
+    
+
+
+        
+        
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel10;
+    private static javax.swing.JLabel jLabel3;
+    private static javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
