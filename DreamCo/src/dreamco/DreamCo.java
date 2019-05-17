@@ -13,15 +13,14 @@ public class DreamCo {
 public static void main(String[] args) throws IOException {
     ///////////////////////////////////////////These are the OBJECTS to use OTHER classes in the package...............
     DataEncryptionFile objectDataFile = new DataEncryptionFile();
-    MyTree tree= new MyTree();
+    MyTree mytree= new MyTree();
     SplashScreen splashscreen= new SplashScreen();
     AdminFrame adminframe= new AdminFrame();
+    UserFrame userframe= new UserFrame();
     
-    System.out.println(tree.getFee());
-    adminframe.changeRegistrationFee();
-    System.out.println(tree.getFee());
+    adminframe.runAdminFrame();
+    userframe.runUserFrame();
 //    splashscreen.startupSplashScreen();
-    
     
 //    Scanner s=new Scanner(System.in);
 //    System.out.println("enter name");
@@ -29,11 +28,6 @@ public static void main(String[] args) throws IOException {
 //    String password=s.nextLine();
 //    String parents =s.nextLine();
 //    tree.add(name, password,parents);
-//  
-//    LoginFrame login = new LoginFrame();
-//    login.runLoginFrame();
-    
-
     }
 
 }
