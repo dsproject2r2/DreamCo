@@ -163,13 +163,26 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
     }
-    
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// METHOD TO CHANGE REGISTRATION FEE ///////////////////////////////////////    
     public static double changeRegistrationFee(){   
     String fee= JOptionPane.showInputDialog("Enter new Registration Fee");
-//   feereturn =Integer.parseInt(fee);
-    return feereturn;
+    double feereturn;
+    if(fee!=null){
+        feereturn =Integer.parseInt(fee);        
+        JOptionPane.showMessageDialog(null, "New Registration Fee of RM"+ feereturn+ " has been set!" , "Success!", JOptionPane.PLAIN_MESSAGE); //shows tat a message box
     }
-
+    else{
+        feereturn=mytree.getFee();
+    }
+        return feereturn;
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
