@@ -1,10 +1,13 @@
 
 package dreamco;
 
+import javax.swing.JOptionPane;
+
 
 public class AdminFrame extends javax.swing.JFrame {
-
-
+   
+   public static MyTree mytree= new MyTree();
+    
     public AdminFrame() {
         initComponents();
     }
@@ -159,6 +162,12 @@ public class AdminFrame extends javax.swing.JFrame {
                 new AdminFrame().setVisible(true);
             }
         });
+    }
+    
+    public static double changeRegistrationFee(){   
+    String fee= JOptionPane.showInputDialog("Enter new Registration Fee");
+//   feereturn =Integer.parseInt(fee);
+    return feereturn;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
