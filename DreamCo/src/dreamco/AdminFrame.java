@@ -159,7 +159,9 @@ public class AdminFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminFrame().setVisible(true);
+                AdminFrame adminframe= new AdminFrame();
+                adminframe.setVisible(true);
+                adminframe.setResizable(false);
             }
         });
     }
@@ -170,14 +172,16 @@ public class AdminFrame extends javax.swing.JFrame {
     String fee= JOptionPane.showInputDialog("Enter new Registration Fee");
     double feereturn;
     if(fee!=null){
-        feereturn =Integer.parseInt(fee);        
-        JOptionPane.showMessageDialog(null, "New Registration Fee of RM"+ feereturn+ " has been set!" , "Success!", JOptionPane.PLAIN_MESSAGE); //shows tat a message box
+        feereturn =Double.parseDouble(fee);        
+        JOptionPane.showMessageDialog(null, "New Registration Fee of RM"+ feereturn+ " has been set!" , " SCAM SUCCESS!", JOptionPane.PLAIN_MESSAGE); //shows tat a message box
     }
     else{
         feereturn=mytree.getFee();
     }
         return feereturn;
     }
+    
+    
 ////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     
     
