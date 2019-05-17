@@ -1,19 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dreamco;
 
-/**
- *
- * @author Jeremiah
- */
+//by JERRY <3
 public class SplashScreen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SplashScreen
-     */
+
     public SplashScreen() {
         initComponents();
     }
@@ -29,29 +20,28 @@ public class SplashScreen extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         loadingbar = new javax.swing.JProgressBar();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setLayout(null);
         jPanel1.add(loadingbar);
-        loadingbar.setBounds(10, 590, 610, 20);
+        loadingbar.setBounds(0, 360, 700, 20);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(490, 210, 77, 32);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/2r2.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setBackground(new java.awt.Color(204, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 102));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Loading Resources");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 638, 640);
+        jLabel1.setBounds(0, 390, 700, 20);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/DreamCoSplash.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(0, 0, 700, 460);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,19 +54,15 @@ public class SplashScreen extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(638, 640));
+        setSize(new java.awt.Dimension(700, 460));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     
     
     
     
-    public static void startupSplashScreen() {
+    public void startupSplashScreen() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -109,26 +95,44 @@ public class SplashScreen extends javax.swing.JFrame {
             }
         });
         
-        Gui gui=new Gui(); //declare gui object to run another box
-        
         ///////////////////////////////////////////////////////////////////Progress Counter Starts here
         try{
             for(int i=0;i<=100;i++){
-                Thread.sleep(40);
+                Thread.sleep(100);
                 sc.loadingbar.setValue(i);
+                
+                
+                if(i<20){
+                    jLabel1.setText("Initializing features to get an A+");
+                }
+                if(i<40 && i>20){
+                    jLabel1.setText("Hoping that these features will get us an A+");
+                }
+                if(i<60 && i>40){
+                    jLabel1.setText("Implementing algorithms to save our grades this semester");
+                }
+                if(i<80 && i>60){
+                    jLabel1.setText("Please have mercy on us Dr Liew");
+                }
+                if(i<100 && i>80){
+                    jLabel1.setText("Loading Complete");
+                }                
+                
+                
+                    
             }
         }
         catch(Exception e){
         }
-        new SplashScreen().setVisible(false);
-        Gui.runStartupFrame();
+        sc.setVisible(false);
+        LoginFrame.runLoginFrame();
         sc.dispose();        
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private static javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar loadingbar;
     // End of variables declaration//GEN-END:variables
