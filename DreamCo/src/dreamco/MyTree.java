@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,11 +33,17 @@ public class MyTree {
      //   root=null;
     }
     
-    public static void setFee(double fee) throws IOException{
+    public static void setFee(double fee) {
         classvariablefee = fee;
+        try{
         PrintWriter pw= new PrintWriter(new FileWriter(new File("Fee.txt")));
         pw.print(classvariablefee);
         pw.close();
+        }
+        catch (IOException e){
+            JOptionPane.showMessageDialog(null, "FILE NOT FOUND!", " ERROR!", JOptionPane.PLAIN_MESSAGE);
+        }
+
     }
 
     public static double getFee() {
