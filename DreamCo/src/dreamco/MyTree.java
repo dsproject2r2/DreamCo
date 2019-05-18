@@ -37,7 +37,6 @@ public class MyTree {
     
  
     
-    
     // add method to use when to create new user
     public void add(String name,String password, String parents) throws IOException{
         NodeTree temp = new NodeTree(name, null, null);
@@ -48,8 +47,8 @@ public class MyTree {
         if(root.child.isEmpty()){
             root.child.add(temp);
             System.out.println("Adding: " + name + " to " + root.name);
-            def.appendFile(name, password, root.name);
-            def.fileEncryption();
+            def.appendFile(name, password, root.name, total);
+          //  def.fileEncryption();
          //def.fileDecryption();
         }
         else{
@@ -57,7 +56,7 @@ public class MyTree {
             getNode(parents).child.add(temp);
             getNode(name).prev=getNode(parents);
             System.out.println("Adding: " + getNode(name).name + " to " + getNode(parents).name);
-             def.appendFile(name, password,parents);
+             def.appendFile(name, password,parents, total);
             NodeTree current = temp;
                     int level = 0;
                     total++;
