@@ -1,9 +1,12 @@
 
 package dreamco;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -29,8 +32,11 @@ public class MyTree {
      //   root=null;
     }
     
-    public static void setFee(double fee){
+    public static void setFee(double fee) throws IOException{
         classvariablefee = fee;
+        PrintWriter pw= new PrintWriter(new FileWriter(new File("Fee.txt")));
+        pw.print(classvariablefee);
+        pw.close();
     }
 
     public static double getFee() {
@@ -273,7 +279,7 @@ public class MyTree {
     }
     
     //method to read FEE from textfile
-    public void readFee() throws FileNotFoundException{
+    public void readFee() throws FileNotFoundException, IOException{
         Scanner s= new Scanner(new FileReader("Fee.txt"));
         while(s.hasNext()){
             setFee(Double.parseDouble(s.next()));
