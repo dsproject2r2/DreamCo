@@ -18,8 +18,9 @@ public static void main(String[] args) throws IOException {
     AdminFrame adminframe= new AdminFrame();
     UserFrame userframe= new UserFrame();
     
+
     adminframe.runAdminFrame();
-    userframe.runUserFrame();
+//    userframe.runUserFrame();
 //    splashscreen.startupSplashScreen();
     
 //    Scanner s=new Scanner(System.in);
