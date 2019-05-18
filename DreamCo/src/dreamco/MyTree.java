@@ -1,7 +1,10 @@
 
 package dreamco;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  *
@@ -11,11 +14,8 @@ public class MyTree {
 
     public int total;
     public NodeTree root = new NodeTree("DreamCo");
-    double fee;
+    private static double classvariablefee;
     
-    //Objects for the other classes
-    public AdminFrame adminframe= new AdminFrame();
-    public UserFrame userframe= new UserFrame();
     
     public int getTotal(){
         return total;
@@ -23,19 +23,25 @@ public class MyTree {
     
     public MyTree(){
         total=0;
-        this.fee=50;
+        classvariablefee=50;
+        
+        
      //   root=null;
     }
     
-    public void setFee(){
-        this.fee = adminframe.changeRegistrationFee();
+    public static void setFee(double fee){
+        classvariablefee = fee;
     }
 
-    public double getFee() {
-        return fee;
+    public static double getFee() {
+        return classvariablefee;
     }
     
  
+    
+    
+    
+    
     
     // add method to use when to create new user
     public void add(String name,String password, String parents) throws IOException{
@@ -65,23 +71,23 @@ public class MyTree {
                     
                         switch (level) {
                             case 1:
-                                current.addMoney(fee*0.5);
+                                current.addMoney(classvariablefee*0.5);
                                 level++;
                                 break;
                             case 2:
-                                current.addMoney(fee*0.12);
+                                current.addMoney(classvariablefee*0.12);
                                 level++;
                                 break;
                             case 3:
-                                current.addMoney(fee*0.09);
+                                current.addMoney(classvariablefee*0.09);
                                 level++;
                                 break;
                             case 4:
-                                current.addMoney(fee*0.06);
+                                current.addMoney(classvariablefee*0.06);
                                 level++;
                                 break;
                             default:
-                                current.addMoney(fee*0.03);
+                                current.addMoney(classvariablefee*0.03);
                                 level++;
                                 break;
                         }
@@ -264,6 +270,15 @@ public class MyTree {
     public void setPassword(String name, String password){
         getNode(name).setPassword(password);
         System.out.println("Password has been set");    
+    }
+    
+    //method to read FEE from textfile
+    public void readFee() throws FileNotFoundException{
+        Scanner s= new Scanner(new FileReader("Fee.txt"));
+        while(s.hasNext()){
+            setFee(Double.parseDouble(s.next()));
+        }
+        s.close();
     }
     
     

@@ -133,7 +133,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String fee= JOptionPane.showInputDialog("Enter new fee");
+        String fee= JOptionPane.showInputDialog(null,"Enter new registration fee", "New Registration Fee", JOptionPane.INFORMATION_MESSAGE);
         if(fee!=null){
             MyTree.setFee(Double.parseDouble(fee));
             JOptionPane.showMessageDialog(null, "New Registration Fee of RM"+ MyTree.getFee()+ " has been set!" , " SCAM SUCCESS!", JOptionPane.PLAIN_MESSAGE); 
