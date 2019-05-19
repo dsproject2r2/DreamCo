@@ -7,6 +7,7 @@ package dreamco;
 
 import java.util.Random;
 
+
 /**
  *
  * @author Jeremiah
@@ -138,7 +139,8 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(102, 102, 102));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("New Username");
+        jLabel6.setText("Enter Full Name");
+        jLabel6.setToolTipText("This will be your username when logging in");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(20, 360, 150, 40);
 
@@ -147,6 +149,7 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("New Password");
+        jLabel7.setToolTipText("make sure your password is secure but easy to  remember as well!");
         jPanel1.add(jLabel7);
         jLabel7.setBounds(20, 410, 150, 40);
 
@@ -268,6 +271,9 @@ public class UserFrame extends javax.swing.JFrame {
     
 
 
+    
+   
+    
         
         
     

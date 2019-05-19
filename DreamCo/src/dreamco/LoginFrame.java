@@ -3,6 +3,8 @@ package dreamco;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class LoginFrame extends javax.swing.JFrame {
@@ -236,7 +238,7 @@ public class LoginFrame extends javax.swing.JFrame {
     
     
     
-    
+    /////////////////////////////////////////////////////////// CALL THIS METHOD TO RUN THE LOGIN FRAME //////////////////////////////////////////////
     public static void runLoginFrame() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -266,6 +268,22 @@ public class LoginFrame extends javax.swing.JFrame {
                 lf.setResizable(false);
             }
         });
+    }
+    
+    
+    ///////////////////////////////////////////////////////////  METHOD TO LOOP THROUGH THE TEXT FILE TO LOOK FOR USER ID /////////////////////////////
+    private void userFileReader(){
+        try{
+        Scanner s= new Scanner(new FileReader("Userdata.txt"));
+        while(s.hasNext()){
+            
+        }
+        
+        }
+        catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Userdata File Not Found!", "File Not Found Error!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
