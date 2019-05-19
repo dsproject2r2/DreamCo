@@ -63,7 +63,7 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(340, 470, 90, 32);
+        jButton4.setBounds(340, 460, 90, 32);
 
         jCheckBox1.setVisible(false);
         jCheckBox1.setBackground(new java.awt.Color(117, 230, 218));
@@ -76,8 +76,10 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jCheckBox1);
-        jCheckBox1.setBounds(20, 470, 210, 24);
+        jCheckBox1.setBounds(20, 460, 200, 30);
 
+        jButton3.setBackground(new java.awt.Color(5, 68, 94));
+        jButton3.setForeground(new java.awt.Color(255, 255, 204));
         jButton3.setText("Register a NEW CLIENT!");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,11 +87,11 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(90, 400, 280, 50);
+        jButton3.setBounds(90, 390, 280, 50);
 
-        jButton1.setBackground(new java.awt.Color(5, 68, 94));
+        jButton1.setBackground(new java.awt.Color(24, 154, 180));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(204, 255, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Register User and get that bread!");
         jButton1.setVisible(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +122,7 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTextField2);
-        jTextField2.setBounds(170, 420, 260, 40);
+        jTextField2.setBounds(170, 410, 260, 40);
 
         jTextField3.setVisible(false);
         jTextField3.setBackground(new java.awt.Color(255, 255, 255));
@@ -130,7 +132,7 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTextField3);
-        jTextField3.setBounds(170, 370, 260, 40);
+        jTextField3.setBounds(170, 360, 260, 40);
 
         jLabel6.setVisible(false);
         jLabel6.setBackground(new java.awt.Color(102, 102, 102));
@@ -138,7 +140,7 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("New Username");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 370, 150, 40);
+        jLabel6.setBounds(20, 360, 150, 40);
 
         jLabel7.setVisible(false);
         jLabel7.setBackground(new java.awt.Color(102, 102, 102));
@@ -146,11 +148,11 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("New Password");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(20, 420, 150, 40);
+        jLabel7.setBounds(20, 410, 150, 40);
 
         jLabel8.setBackground(new java.awt.Color(0, 0, 0));
         jLabel8.setFont(new java.awt.Font("Myriad Pro", 1, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 204));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 153));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Daily Message");
         Random r= new Random();
@@ -209,7 +211,12 @@ public class UserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if(jCheckBox1.isSelected()){
         jButton1.setVisible(true);
+        }
+        else{
+        jButton1.setVisible(false);
+        }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -231,12 +238,13 @@ public class UserFrame extends javax.swing.JFrame {
         jTextField3.setVisible(false);
         jLabel6.setVisible(false);
         jLabel7.setVisible(false);
+        jCheckBox1.setSelected(false);
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
     ///////////////////////////////////////////////////////////////////////////////////////MAIN METHOD TO RUN THIS JFRAME /////////////////////////////////////////////
-    public void runUserFrame() {
+    public static void runUserFrame() {
         /* Set the Nimbus look and feel */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
