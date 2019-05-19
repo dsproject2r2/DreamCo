@@ -12,13 +12,7 @@ public class DreamCo {
  /////////////////////////////////////////////////////////////////////////////////////    This Class Serves as a tester class for now!   ////////////////////////////////////////
 public static void main(String[] args) throws IOException {
     ///////////////////////////////////////////These are the OBJECTS to use OTHER classes in the package...............
-    DataEncryptionFile objectDataFile = new DataEncryptionFile();
-    SplashScreen splashscreen= new SplashScreen();
-    AdminFrame adminframe= new AdminFrame();
-    UserFrame userframe= new UserFrame();
     
-
-
     AdminFrame.runAdminFrame();
     MyTree.readFee();
     System.out.println(MyTree.getFee());
