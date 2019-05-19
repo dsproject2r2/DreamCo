@@ -14,9 +14,9 @@ public static void main(String[] args) throws IOException {
     ///////////////////////////////////////////These are the OBJECTS to use OTHER classes in the package...............
     
     SplashScreen.runSplashScreen();
-    AdminFrame.runAdminFrame();
-    MyTree.readFee();
-    System.out.println(MyTree.getFee());
+//    AdminFrame.runAdminFrame();
+//    MyTree.readFee();
+//    System.out.println(MyTree.getFee());
     
 
 //    userframe.runUserFrame();
