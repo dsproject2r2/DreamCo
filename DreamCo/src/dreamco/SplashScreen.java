@@ -62,7 +62,7 @@ public class SplashScreen extends javax.swing.JFrame {
     
     
     
-    public void startupSplashScreen() {
+    public static void runSplashScreen() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

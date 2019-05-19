@@ -137,6 +137,7 @@ public class AdminFrame extends javax.swing.JFrame {
         if(fee!=null){
             MyTree.setFee(Double.parseDouble(fee));
             JOptionPane.showMessageDialog(null, "New Registration Fee of RM"+ MyTree.getFee()+ " has been set!" , " SCAM SUCCESS!", JOptionPane.PLAIN_MESSAGE); 
+            System.out.println(MyTree.getFee());
         }
         else{
             MyTree.setFee(MyTree.getFee());
