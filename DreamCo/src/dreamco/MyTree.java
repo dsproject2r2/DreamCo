@@ -285,8 +285,8 @@ public class MyTree {
         System.out.println("Password has been set");    
     }
     
-    //method to read FEE from textfile
-    public void readFee() throws FileNotFoundException, IOException{
+    //method to read FEE from textfile upon startup
+    public static void readFee() throws FileNotFoundException, IOException{
         Scanner s= new Scanner(new FileReader("Fee.txt"));
         while(s.hasNext()){
             setFee(Double.parseDouble(s.next()));

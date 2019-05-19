@@ -13,13 +13,17 @@ public class DreamCo {
 public static void main(String[] args) throws IOException {
     ///////////////////////////////////////////These are the OBJECTS to use OTHER classes in the package...............
     DataEncryptionFile objectDataFile = new DataEncryptionFile();
-    MyTree mytree= new MyTree();
     SplashScreen splashscreen= new SplashScreen();
     AdminFrame adminframe= new AdminFrame();
     UserFrame userframe= new UserFrame();
     
 
-    adminframe.runAdminFrame();
+
+    AdminFrame.runAdminFrame();
+    MyTree.readFee();
+    System.out.println(MyTree.getFee());
+    
+
 //    userframe.runUserFrame();
 //    splashscreen.startupSplashScreen();
     

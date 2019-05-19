@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class AdminFrame extends javax.swing.JFrame {
    
-   public static MyTree mytree= new MyTree();
+    
     
     public AdminFrame() {
         initComponents();

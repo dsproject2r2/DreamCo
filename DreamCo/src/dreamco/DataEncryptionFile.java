@@ -25,7 +25,7 @@ public static void writeEncryptionFile() throws IOException{
 }
 
 /////////////////////////////////////////////////////This method is to add any names or entries to the file.........................................
-public static void appendFile(String name, String password, String parent ) throws IOException{
+public static void appendFile(String name, String password, String parent, double total ) throws IOException{
     BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Userdata.txt"),true));
     bw.write(name);
     bw.write("\n" + password);
