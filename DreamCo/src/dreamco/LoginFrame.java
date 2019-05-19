@@ -6,7 +6,12 @@ import java.io.FileReader;
 import javax.swing.JOptionPane;
 
 public class LoginFrame extends javax.swing.JFrame {
-
+    
+    //To instantiate the LoginFrame
+    private static LoginFrame lf=new LoginFrame();
+    private String adminuserinput;
+    private String adminpassinput;
+    
     public LoginFrame() {
         initComponents();
     }
@@ -31,11 +36,6 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
-            }
-        });
 
         jPanel2.setLayout(null);
 
@@ -58,7 +58,6 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(204, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome to Dream Corporation! ");
-        jLabel1.setToolTipText("");
         jPanel2.add(jLabel1);
         jLabel1.setBounds(6, 17, 467, 32);
 
@@ -72,17 +71,41 @@ public class LoginFrame extends javax.swing.JFrame {
         jButton1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color1"));
         jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("Sign In");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
         jPanel2.add(jButton1);
         jButton1.setBounds(190, 200, 117, 32);
 
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setToolTipText("Username");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jTextField1);
         jTextField1.setBounds(111, 92, 338, 39);
 
         jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyPressed(evt);
+            }
+        });
         jPanel2.add(jPasswordField1);
         jPasswordField1.setBounds(111, 149, 338, 39);
 
@@ -106,14 +129,94 @@ public class LoginFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == evt.VK_ENTER){
-            
+    
+    
+    
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
 
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+///////////////////////////////////////////////////////////////////////////////////// Algorithm to check for admin //////////////////////////////////////////
+        adminuserinput=jTextField1.getText();
+        adminpassinput=jPasswordField1.getText();
+        System.out.println(adminuserinput);
+        System.out.println(adminpassinput);
+        
+        if(adminuserinput.equals("admin")){
+            AdminFrame.runAdminFrame();
+            lf.dispose();
+            JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_formKeyPressed
+        if(adminuserinput.equals("") && adminpassinput.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+            JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+            JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+        }        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        if(evt.getKeyCode()==evt.VK_ENTER){
+            adminuserinput=jTextField1.getText();
+            adminpassinput=jPasswordField1.getText();
+            System.out.println(adminuserinput);
+            System.out.println(adminpassinput);
+        
+            if(adminuserinput.equals("admin")){
+                AdminFrame.runAdminFrame();
+                lf.dispose();
+                JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if(adminuserinput.equals("") && adminpassinput.equals("")){
+                JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+                JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+                JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+            }    
+        }
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
+        if(evt.getKeyCode()==evt.VK_ENTER){
+            adminuserinput=jTextField1.getText();
+            adminpassinput=jPasswordField1.getText();
+            System.out.println(adminuserinput);
+            System.out.println(adminpassinput);
+        
+            if(adminuserinput.equals("admin")){
+                AdminFrame.runAdminFrame();
+                lf.dispose();
+                JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if(adminuserinput.equals("") && adminpassinput.equals("")){
+                JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+                JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+                JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+            }    
+        }
+    }//GEN-LAST:event_jPasswordField1KeyPressed
+
+    
+    
+    
+    
+    
     public static void runLoginFrame() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -135,7 +238,7 @@ public class LoginFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        LoginFrame lf=new LoginFrame();
+
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
