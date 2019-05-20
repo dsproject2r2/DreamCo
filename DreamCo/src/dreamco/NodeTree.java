@@ -17,22 +17,24 @@ public class NodeTree {
     NodeTree prev;
     int ID;
     String password;
+    
     public NodeTree(String name){
         this.name=name;
       //  this.prev=null;
     }
-    public NodeTree(String name, NodeTree next, NodeTree prev){
+    
+    public NodeTree(String name, NodeTree next, NodeTree prev, int id){
         this.name=name;
         this.child.add(next);
         this.prev = prev;
+        this.ID=id;
     }
     
-    public NodeTree(String name, NodeTree next, NodeTree prev, double Money, String password){
+    public NodeTree(String name, String password, double Money, int id){
         this.name=name;
-        this.child.add(next);
-        this.prev = prev;
         this.money=Money;
         this.password=password;
+        this.ID=id;
     }
     
     public String getPassword() {

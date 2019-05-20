@@ -19,17 +19,19 @@ public class MyTree {
     ///////////////////////////////////////////////////////////// Static VARIABLE and OBJECT declarations //////////////////////////////////////////////////////////////////////
 
     public NodeTree root = new NodeTree("DreamCo");
-    public int total;    
+    public int idCounter;    
     private static double classvariablefee;
     private static double commission_gen1, commission_gen2, commission_gen3, commission_gen4, commission_gen5;
     
     //private double hello=root.getMoney();
-    
+    public int getidGenerator(){
+        return idCounter;
+    }
     
 
    ////////////////////////////////////////////////////////////////////////////////// CONSTRUCTOR for variable instatiation upon calling NEW CBJECT /////////////////////////////////////////////////// 
     public MyTree(){
-        total=0;
+        idCounter=0;
         classvariablefee=50;
         commission_gen1=0.5;
         commission_gen3=0.12;
@@ -91,26 +93,18 @@ public class MyTree {
     }
     
     public double getTotal(){
-        return total;
+        return idCounter;
     }
     
  
-    
-    
-    
-    
-    
-    // add method to use when to create new user
-    public void add(String name,String password, String parents) throws IOException{
-        NodeTree temp = new NodeTree(name, null, null);
-        temp.setPassword(password);
-        DataEncryptionFile def= new DataEncryptionFile();
-        //Nodee.add(temp);
-       // System.out.println("afaf"+root.name);
+    public void addFromFile(String name,String password, String parents, double Money, int id){
+        
+        NodeTree temp = new NodeTree(name, password, Money, id);
+        
         if(root.child.isEmpty()){
             root.child.add(temp);
             System.out.println("Adding: " + name + " to " + root.name);
-            def.appendFile(name, password, root.name, total);
+          //  def.appendFile(name, password, root.name, idCounter);
           //  def.fileEncryption();
          //def.fileDecryption();
         }
@@ -119,10 +113,38 @@ public class MyTree {
             getNode(parents).child.add(temp);
             getNode(name).prev=getNode(parents);
             System.out.println("Adding: " + getNode(name).name + " to " + getNode(parents).name);
-             def.appendFile(name, password,parents, total);
+           //  def.appendFile(name, password,parents, idCounter);
+            }
+            else
+                System.out.println("Cannot add, parent not found");
+        }
+    }
+    
+    
+    // add method to use when to create new user
+    public void add(String name,String password, String parents) throws IOException{
+        idCounter++;
+        NodeTree temp = new NodeTree(name, null, null, idCounter);
+        temp.setPassword(password);
+        //DataEncryptionFile def= new DataEncryptionFile();
+        //Nodee.add(temp);
+       // System.out.println("afaf"+root.name);
+        if(root.child.isEmpty()){
+            root.child.add(temp);
+            System.out.println("Adding: " + name + " to " + root.name);
+        //    def.appendFile(name, password, root.name, idCounter);
+          //  def.fileEncryption();
+         //def.fileDecryption();
+        }
+        else{
+            if(contain(parents)){
+            getNode(parents).child.add(temp);
+            getNode(name).prev=getNode(parents);
+            System.out.println("Adding: " + getNode(name).name + " to " + getNode(parents).name);
+            // def.appendFile(name, password,parents, idCounter);
             NodeTree current = temp;
                     int level = 0;
-                    total++;
+                    idCounter++;
                     while(current.prev!=null){
                     current = current.prev;
                     
@@ -284,7 +306,7 @@ public class MyTree {
     
     public void clear(){
         root= new NodeTree("DreamCo"); 
-        total=0;
+        idCounter=0;
         System.out.println("All user have been deleted");
     }
     

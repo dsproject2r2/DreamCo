@@ -17,21 +17,22 @@ public class Node {
     String name;
     java.util.ArrayList<Node> next = new java.util.ArrayList<>();
     //java.util.ArrayList<Node> prev = new java.util.ArrayList<>();
+    String password;
     Node prev;
     int ID;
     
-    public Node(String name, Node next, Node prev){
+    public Node(String name, Node next, Node prev, int idCounter){
         this.name=name;
         this.next.add(next);
         this.prev = prev;
+        this.ID=idCounter;
     }
     
-    public Node(String name, Node next, Node prev, double Money, int ID){
+    public Node(String name, String password, double Money, int ID){
         this.name=name;
-        this.next.add(next);
-        this.prev = prev;
         this.money=Money;
         this.ID=ID;
+        this.password=password;
     }
     
     public Node(){
