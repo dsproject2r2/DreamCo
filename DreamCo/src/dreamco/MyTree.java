@@ -19,19 +19,15 @@ public class MyTree {
     ///////////////////////////////////////////////////////////// Static VARIABLE and OBJECT declarations //////////////////////////////////////////////////////////////////////
 
     public NodeTree root = new NodeTree("DreamCo");
-    public static int idCounter;    
+    public static int idcounter;    
     private static double classvariablefee;
     private static double commission_gen1, commission_gen2, commission_gen3, commission_gen4, commission_gen5;
     
     //private double hello=root.getMoney();
-    public int getidGenerator(){
-        return idCounter;
-    }
-    
 
    ////////////////////////////////////////////////////////////////////////////////// CONSTRUCTOR for variable instatiation upon calling NEW CBJECT /////////////////////////////////////////////////// 
     public MyTree(){
-        idCounter=0;
+        idcounter=0;
         classvariablefee=50;
         commission_gen1=0.5;
         commission_gen3=0.12;
@@ -41,16 +37,14 @@ public class MyTree {
      //   root=null;
     }
     
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////// SETTERS are all here !!! /////////////////////////////////////
+    public static void setIDCounter(int idcounter){
+
+    }
+    
     public static void setFee(double fee) {
         classvariablefee = fee;
-        try{
-        PrintWriter pw= new PrintWriter(new FileWriter(new File("Fee.txt")));
-        pw.print(classvariablefee);
-        pw.close();
-        }
-        catch (IOException e){
-            JOptionPane.showMessageDialog(null, "FILE NOT FOUND!", " ERROR!", JOptionPane.PLAIN_MESSAGE);
-        }
     }
     
     public static void setGen1Commission(double commission){
@@ -71,7 +65,12 @@ public class MyTree {
     public static void setGen5Commission(double commission){
         commission_gen5=commission;
     }
-      
+    
+    
+    ///////////////////////////////////////////////////////////////////////////////////// GETTERS are all here!!! /////////////////////////////////////////////////
+    public static int getIDCounter(){
+        return idcounter;
+    }
     public static double getFee() {
         return classvariablefee;
     }
@@ -92,9 +91,7 @@ public class MyTree {
         return commission_gen5;
     }
     
-    public double getTotal(){
-        return idCounter;
-    }
+
     
  
     public void addFromFile(String name,String password, String parents, double Money, int id){
@@ -123,8 +120,8 @@ public class MyTree {
     
     // add method to use when to create new user
     public void add(String name,String password, String parents) throws IOException{
-        idCounter++;
-        NodeTree temp = new NodeTree(name, null, null, idCounter);
+        idcounter++;
+        NodeTree temp = new NodeTree(name, null, null, idcounter);
         temp.setPassword(password);
         //DataEncryptionFile def= new DataEncryptionFile();
         //Nodee.add(temp);
@@ -144,7 +141,7 @@ public class MyTree {
             // def.appendFile(name, password,parents, idCounter);
             NodeTree current = temp;
                     int level = 0;
-                    idCounter++;
+                    idcounter++;
                     while(current.prev!=null){
                     current = current.prev;
                     
@@ -306,7 +303,7 @@ public class MyTree {
     
     public void clear(){
         root= new NodeTree("DreamCo"); 
-        idCounter=0;
+        idcounter=0;
         System.out.println("All user have been deleted");
     }
     
@@ -352,13 +349,32 @@ public class MyTree {
     }
     
     //method to read FEE from textfile upon startup
-    public static void readFee() throws FileNotFoundException, IOException{
-        Scanner s= new Scanner(new FileReader("Fee.txt"));
-        while(s.hasNext()){
+    public static void startupAdminConfigFile() throws FileNotFoundException, IOException{
+        Scanner s= new Scanner(new FileReader("AdminConfig.txt"));
+        while(s.hasNextLine()){
+            setIDCounter(Integer.parseInt(s.next()));
             setFee(Double.parseDouble(s.next()));
+            setGen1Commission(Double.parseDouble(s.next()));
+            setGen2Commission(Double.parseDouble(s.next()));
+            setGen3Commission(Double.parseDouble(s.next()));
+            setGen4Commission(Double.parseDouble(s.next()));
+            setGen5Commission(Double.parseDouble(s.next()));          
         }
         s.close();
     }
+    
+    public static void updateAdminConfigFile() throws IOException{  
+        PrintWriter pw= new PrintWriter(new FileWriter(new File("AdminConfig.txt")));
+        pw.print(getIDCounter());
+        pw.print("\n"+getFee());
+        pw.print("\n"+getGen1Commission());
+        pw.print("\n"+getGen2Commission());
+        pw.print("\n"+getGen3Commission());
+        pw.print("\n"+getGen4Commission());
+        pw.print("\n"+getGen5Commission());
+        pw.close();
+    }
+
     
     
 }

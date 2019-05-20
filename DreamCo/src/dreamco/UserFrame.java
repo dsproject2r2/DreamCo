@@ -1,23 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dreamco;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
-/**
- *
- * @author Jeremiah
- */
+// BY JERRY <#
 public class UserFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdminFrame
-     */
+    ////////////////////////////////////////////////////////////////////////Declaration of variables used in this class ////////////////////////////////////////
+    private static String newfullname;
+    private static String newpassword, confirmpassword;
+    private static int idcounter;
+    
+    
+    
     public UserFrame() {
         initComponents();
     }
@@ -40,11 +43,13 @@ public class UserFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordField2 = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
         jScrollPane1.setViewportView(jTree1);
@@ -88,7 +93,7 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(90, 390, 280, 50);
+        jButton3.setBounds(90, 350, 280, 50);
 
         jButton1.setBackground(new java.awt.Color(24, 154, 180));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -115,16 +120,6 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel4);
         jLabel4.setBounds(120, 250, 220, 30);
 
-        jTextField2.setVisible(false);
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField2);
-        jTextField2.setBounds(170, 410, 260, 40);
-
         jTextField3.setVisible(false);
         jTextField3.setBackground(new java.awt.Color(255, 255, 255));
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -133,22 +128,30 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTextField3);
-        jTextField3.setBounds(170, 360, 260, 40);
+        jTextField3.setBounds(170, 310, 260, 40);
+
+        jPasswordField1.setVisible(false);
+        jPanel1.add(jPasswordField1);
+        jPasswordField1.setBounds(170, 410, 260, 40);
+
+        jPasswordField2.setVisible(false);
+        jPanel1.add(jPasswordField2);
+        jPasswordField2.setBounds(170, 360, 260, 40);
 
         jLabel6.setVisible(false);
         jLabel6.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Enter Full Name");
         jLabel6.setToolTipText("This will be your username when logging in");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 360, 150, 40);
+        jLabel6.setBounds(20, 310, 150, 40);
 
         jLabel7.setVisible(false);
         jLabel7.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("New Password");
+        jLabel7.setText("Confirm Password");
         jLabel7.setToolTipText("make sure your password is secure but easy to  remember as well!");
         jPanel1.add(jLabel7);
         jLabel7.setBounds(20, 410, 150, 40);
@@ -181,6 +184,15 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel8);
         jLabel8.setBounds(0, 120, 450, 30);
 
+        jLabel9.setVisible(false);
+        jLabel9.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("New Password");
+        jLabel9.setToolTipText("make sure your password is secure but easy to  remember as well!");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(20, 360, 150, 40);
+
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/UserFrameBackground.png"))); // NOI18N
         jLabel10.setText("jLabel10");
         jPanel1.add(jLabel10);
@@ -202,17 +214,29 @@ public class UserFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        int key=25;
+        newfullname=jTextField3.getText();
+        newpassword=jPasswordField1.getText();
+        confirmpassword=jPasswordField2.getText();
+    
+        encryptNow();
+        MyTree.setIDCounter(MyTree.getIDCounter()+1);
+        try {
+            updatePendingFile(newfullname, newpassword);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Pending File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    
+        JOptionPane.showMessageDialog(null, "Thank-you for registering. Your registration request is pending and will be approved by an admin in 2-3 business days.", "  Registration Request Sent", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
+    
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+    
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if(jCheckBox1.isSelected()){
         jButton1.setVisible(true);
@@ -227,10 +251,12 @@ public class UserFrame extends javax.swing.JFrame {
         jButton3.setVisible(false);
         jButton4.setVisible(true);
         jCheckBox1.setVisible(true);
-        jTextField2.setVisible(true);
+        jPasswordField1.setVisible(true);
+        jPasswordField2.setVisible(true);
         jTextField3.setVisible(true);
         jLabel6.setVisible(true);
         jLabel7.setVisible(true);
+        jLabel9.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -238,10 +264,12 @@ public class UserFrame extends javax.swing.JFrame {
         jButton4.setVisible(false);
         jButton1.setVisible(false);
         jCheckBox1.setVisible(false);
-        jTextField2.setVisible(false);
+        jPasswordField1.setVisible(false);
+        jPasswordField2.setVisible(false);
         jTextField3.setVisible(false);
         jLabel6.setVisible(false);
         jLabel7.setVisible(false);
+        jLabel9.setVisible(false);
         jCheckBox1.setSelected(false);
         
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -270,6 +298,48 @@ public class UserFrame extends javax.swing.JFrame {
         });
     }
     
+    //////////////////////////////////////////////////////////////////// Method for Encrypting the text upon input before parsing///////////////////////////////////////////
+    private void encryptNow(){
+        int key=25;
+        for(int i=0; i<newfullname.length();i++){
+            int a=newfullname.charAt(i);
+            if(Character.isUpperCase(a)){
+                a=a+(key%26);
+                if(a>'Z')
+                     a=a-26;
+        }
+        else if(Character.isLowerCase(a)){
+            a=a+(key%26);
+            if(a>'z')
+                a=a-26;
+        }
+    }
+        for(int i=0; i<newpassword.length();i++){
+            int a=newpassword.charAt(i);
+            if(Character.isUpperCase(a)){
+                a=a+(key%26);
+                if(a>'Z')
+                     a=a-26;
+        }
+        else if(Character.isLowerCase(a)){
+            a=a+(key%26);
+            if(a>'z')
+                a=a-26;
+        }
+    }
+        
+    }
+    
+    
+    /////////////////////////////////////////////////////////////////// Method to write encrypted string from registration to PENDING file //////////////////////////////
+    public static void updatePendingFile(String name, String password) throws IOException{
+        BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Pending.txt"),true));
+        bw.write(String.valueOf(MyTree.getIDCounter()));
+        bw.write("\n" + newfullname);
+        bw.write("\n"+ newpassword+"\n");
+        bw.close();
+    }
+    
 
 
     
@@ -290,9 +360,11 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables

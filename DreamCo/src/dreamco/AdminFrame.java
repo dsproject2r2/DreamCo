@@ -1,6 +1,9 @@
 
 package dreamco;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -134,8 +137,14 @@ public class AdminFrame extends javax.swing.JFrame {
         String fee= JOptionPane.showInputDialog(null,"Enter new registration fee", "New Registration Fee", JOptionPane.INFORMATION_MESSAGE);
         if(fee!=null){
             MyTree.setFee(Double.parseDouble(fee));
+            try {
+                MyTree.updateAdminConfigFile();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "AdminConfig File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+            }
             JOptionPane.showMessageDialog(null, "New Registration Fee of RM"+ MyTree.getFee()+ " has been set!" , " SCAM SUCCESS!", JOptionPane.PLAIN_MESSAGE); 
-            System.out.println(MyTree.getFee());
+            
+            
         }
         else{
             MyTree.setFee(MyTree.getFee());

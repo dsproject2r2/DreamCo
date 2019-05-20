@@ -9,18 +9,21 @@ import javax.swing.JFrame;
 
 public class DreamCo {
     
-public static int user_id_counter=000;
+;
     
  /////////////////////////////////////////////////////////////////////////////////////    This Class Serves as a tester class for now!   ////////////////////////////////////////
 public static void main(String[] args) throws IOException {
     ///////////////////////////////////////////These are the OBJECTS to use OTHER classes in the package...............
-    
-      
+
+//     LoginFrame.runLoginFrame(); 
+    //MyTree.startupAdminConfigFile();
+   // System.out.println(MyTree.getIDCounter() );
+ 
 //    AdminFrame.runAdminFrame();
 //    MyTree.readFee();
 //    System.out.println(MyTree.getFee());
     
-      UserFrame.runUserFrame();
+     UserFrame.runUserFrame();
 //    SplashScreen.runSplashScreen();
     
 //    Scanner s=new Scanner(System.in);

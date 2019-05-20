@@ -61,6 +61,7 @@ public static void fileEncryption() throws IOException{
     bufferedreader.close();
     writeEncryptionFile();
     encryptedtxt="";
+
 }
 
 

@@ -153,8 +153,6 @@ public class LoginFrame extends javax.swing.JFrame {
 ///////////////////////////////////////////////////////////////////////////////////// Algorithm to check for admin //////////////////////////////////////////
         adminuserinput=jTextField1.getText();
         adminpassinput=jPasswordField1.getText();
-        System.out.println(adminuserinput);
-        System.out.println(adminpassinput);
         
         /////////////////////////////////////////to read user data from file/////////////////////////////////////
         String username="";
@@ -181,18 +179,19 @@ public class LoginFrame extends javax.swing.JFrame {
             AdminFrame.runAdminFrame();
             lf.dispose();
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-        }else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
-//            UserFrame.runUserFrame();
-          //  lf.dispose();
-            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println("YESS NI USER FRAME");
-            
-        }else if(adminuserinput.equals("") && adminpassinput.equals("")){
-            JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
-        }else if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-            JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
-        }else /*if(!adminuserinput.equals("admin") && !adminpassinput.equals("123"))*/{
-            JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
+            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.ERROR_MESSAGE);
+            System.out.println("YESS NI USER FRAME");            
+        }
+        if(adminuserinput.equals("") && adminpassinput.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
+        }
+        if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+            JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
+        }
+        if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+            JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
         }        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -200,8 +199,6 @@ public class LoginFrame extends javax.swing.JFrame {
         if(evt.getKeyCode()==evt.VK_ENTER){
             adminuserinput=jTextField1.getText();
             adminpassinput=jPasswordField1.getText();
-            System.out.println(adminuserinput);
-            System.out.println(adminpassinput);
         
             if(adminuserinput.equals("admin") && adminpassinput.equals("123")){
                 AdminFrame.runAdminFrame();
@@ -209,10 +206,10 @@ public class LoginFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
             }
             if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-                JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
             }
             if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-                JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
             }    
         }
     }//GEN-LAST:event_jButton1KeyPressed
@@ -221,8 +218,7 @@ public class LoginFrame extends javax.swing.JFrame {
         if(evt.getKeyCode()==evt.VK_ENTER){
             adminuserinput=jTextField1.getText();
             adminpassinput=jPasswordField1.getText();
-            System.out.println(adminuserinput);
-            System.out.println(adminpassinput);
+
         
             if(adminuserinput.equals("admin") && adminpassinput.equals("123")){
                 AdminFrame.runAdminFrame();
@@ -230,10 +226,10 @@ public class LoginFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
             }
             if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-                JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
             }
             if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-                JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
             }    
         }
     }//GEN-LAST:event_jPasswordField1KeyPressed
@@ -242,8 +238,7 @@ public class LoginFrame extends javax.swing.JFrame {
         if(evt.getKeyCode()==evt.VK_ENTER){
             adminuserinput=jTextField1.getText();
             adminpassinput=jPasswordField1.getText();
-            System.out.println(adminuserinput);
-            System.out.println(adminpassinput);
+
         
             if(adminuserinput.equals("admin") && adminpassinput.equals("123")){
                 AdminFrame.runAdminFrame();
@@ -251,10 +246,10 @@ public class LoginFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
             }
             if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-                JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
             }
             if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-                JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
             }    
         }
     }//GEN-LAST:event_jTextField1KeyPressed
