@@ -55,6 +55,10 @@ public class NodeTree {
     public void setMoney(double money){
         this.money=money;
     }
+
+    public double getMoney() {
+        return money;
+    }
    
     
 }

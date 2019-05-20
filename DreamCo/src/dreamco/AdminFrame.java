@@ -45,8 +45,8 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(190, 130, 70, 23);
 
-        jButton2.setBackground(new java.awt.Color(102, 102, 102));
-        jButton2.setForeground(new java.awt.Color(204, 204, 204));
+        jButton2.setBackground(new java.awt.Color(5, 68, 94));
+        jButton2.setForeground(new java.awt.Color(255, 255, 204));
         jButton2.setText("View Tree");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,10 +112,12 @@ public class AdminFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    ViewGraphFrame.runViewGraphFrame();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String fee= JOptionPane.showInputDialog(null,"Enter new registration fee", "New Registration Fee", JOptionPane.INFORMATION_MESSAGE);
         if(fee!=null){

@@ -13,13 +13,13 @@ public class DreamCo {
 public static void main(String[] args) throws IOException {
     ///////////////////////////////////////////These are the OBJECTS to use OTHER classes in the package...............
     
-//    SplashScreen.runSplashScreen();
-    AdminFrame.runAdminFrame();
+      
+//    AdminFrame.runAdminFrame();
 //    MyTree.readFee();
 //    System.out.println(MyTree.getFee());
     
-      UserFrame.runUserFrame();
-//    splashscreen.startupSplashScreen();
+//      UserFrame.runUserFrame();
+    SplashScreen.runSplashScreen();
     
 //    Scanner s=new Scanner(System.in);
 //    System.out.println("enter name");

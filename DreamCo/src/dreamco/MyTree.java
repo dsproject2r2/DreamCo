@@ -19,6 +19,7 @@ public class MyTree {
     public int total;
     public NodeTree root = new NodeTree("DreamCo");
     private static double classvariablefee;
+    private double hello=root.getMoney();
     
     
     public int getTotal(){
