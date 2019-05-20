@@ -1,7 +1,8 @@
 
 package dreamco;
 
-import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
@@ -155,18 +156,42 @@ public class LoginFrame extends javax.swing.JFrame {
         System.out.println(adminuserinput);
         System.out.println(adminpassinput);
         
+        /////////////////////////////////////////to read user data from file/////////////////////////////////////
+        String username="";
+        String password = "-";
+        try{
+            Scanner scan = new Scanner(new FileInputStream("Userdata.txt"));
+            while (scan.hasNextLine()) {
+                username = scan.nextLine();
+                password = scan.nextLine();
+                System.out.println("user: " + username);
+                System.out.println("pass: "+ password);
+                if(password.equals(adminpassinput) && username.equals(adminuserinput))
+                    break;
+                scan.nextLine();
+                scan.nextLine();
+                scan.nextLine();
+            }
+            
+        }catch(FileNotFoundException e){
+            System.out.println("Error: "+e);
+        } 
+        /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
         if(adminuserinput.equals("admin") && adminpassinput.equals("123")){
             AdminFrame.runAdminFrame();
             lf.dispose();
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-        }
-        if(adminuserinput.equals("") && adminpassinput.equals("")){
+        }else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
+//            UserFrame.runUserFrame();
+          //  lf.dispose();
+            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println("YESS NI USER FRAME");
+            
+        }else if(adminuserinput.equals("") && adminpassinput.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
-        }
-        if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+        }else if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
             JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
-        }
-        if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+        }else /*if(!adminuserinput.equals("admin") && !adminpassinput.equals("123"))*/{
             JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.INFORMATION_MESSAGE);
         }        
     }//GEN-LAST:event_jButton1ActionPerformed
