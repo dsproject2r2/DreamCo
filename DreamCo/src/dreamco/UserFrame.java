@@ -17,8 +17,6 @@ public class UserFrame extends javax.swing.JFrame {
     ////////////////////////////////////////////////////////////////////////Declaration of variables used in this class ////////////////////////////////////////
     private static String newfullname;
     private static String newpassword, confirmpassword;
-    private static int idcounter;
-    
     
     
     public UserFrame() {
