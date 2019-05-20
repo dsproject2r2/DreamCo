@@ -27,6 +27,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,14 +48,14 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(5, 68, 94));
         jButton2.setForeground(new java.awt.Color(255, 255, 204));
-        jButton2.setText("View Tree");
+        jButton2.setText("View DreamCo Company Tree");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(60, 410, 330, 50);
+        jButton2.setBounds(60, 350, 330, 50);
 
         jButton3.setBackground(new java.awt.Color(5, 68, 94));
         jButton3.setForeground(new java.awt.Color(255, 255, 204));
@@ -65,7 +66,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(60, 510, 330, 50);
+        jButton3.setBounds(60, 420, 330, 50);
 
         jButton4.setBackground(new java.awt.Color(102, 102, 102));
         jButton4.setForeground(new java.awt.Color(204, 204, 204));
@@ -76,18 +77,29 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(60, 230, 330, 50);
+        jButton4.setBounds(60, 210, 330, 50);
 
         jButton5.setBackground(new java.awt.Color(5, 68, 94));
         jButton5.setForeground(new java.awt.Color(255, 255, 204));
-        jButton5.setText("Client Registration and Information");
+        jButton5.setText(" Client Registration and Information");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton5);
-        jButton5.setBounds(60, 320, 330, 50);
+        jButton5.setBounds(60, 280, 330, 50);
+
+        jButton6.setBackground(new java.awt.Color(5, 68, 94));
+        jButton6.setForeground(new java.awt.Color(255, 255, 204));
+        jButton6.setText("Change Commission Percentage");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6);
+        jButton6.setBounds(60, 490, 330, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/UserFrameBackground.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -138,6 +150,10 @@ public class AdminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     ////////////////////////////////////////////////////////////////////////////////////////////////MAIN METHOD TO RUN THIS CLASS JFRAME ////////////////////////
     public static void runAdminFrame() {
 
@@ -176,6 +192,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

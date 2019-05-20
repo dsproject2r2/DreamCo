@@ -6,6 +6,7 @@
 package dreamco;
 
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -70,7 +71,6 @@ public class UserFrame extends javax.swing.JFrame {
         jCheckBox1.setBackground(new java.awt.Color(117, 230, 218));
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setText("Agree to terms and conditions");
-        jCheckBox1.setToolTipText("TERMS AND CONDITIONS: RM 50 Will be collected upon registration. Tick if you agree.");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox1ActionPerformed(evt);
@@ -216,6 +216,7 @@ public class UserFrame extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if(jCheckBox1.isSelected()){
         jButton1.setVisible(true);
+        JOptionPane.showMessageDialog(null, "You agree to the collection of a one-off payment of RM50 to register as a member of DreamCo. A membership card will given upon registration.", "  Terms & Conditions", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
         jButton1.setVisible(false);

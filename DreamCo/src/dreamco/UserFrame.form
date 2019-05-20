@@ -95,7 +95,6 @@
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JCheckBox()"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jCheckBox1.setToolTipText(&quot;TERMS AND CONDITIONS: RM 50 Will be collected upon registration. Tick if you agree.&quot;);"/>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jCheckBox1.setVisible(false);"/>
           </AuxValues>
           <Constraints>

@@ -16,21 +16,26 @@ import javax.swing.JOptionPane;
  */
 public class MyTree {
 
-    public int total;
+    ///////////////////////////////////////////////////////////// Static VARIABLE and OBJECT declarations //////////////////////////////////////////////////////////////////////
+
     public NodeTree root = new NodeTree("DreamCo");
+    public int total;    
     private static double classvariablefee;
-    private double hello=root.getMoney();
+    private static double commission_gen1, commission_gen2, commission_gen3, commission_gen4, commission_gen5;
+    
+    //private double hello=root.getMoney();
     
     
-    public int getTotal(){
-        return total;
-    }
-    
+
+   ////////////////////////////////////////////////////////////////////////////////// CONSTRUCTOR for variable instatiation upon calling NEW CBJECT /////////////////////////////////////////////////// 
     public MyTree(){
         total=0;
         classvariablefee=50;
-        
-        
+        commission_gen1=0.5;
+        commission_gen3=0.12;
+        commission_gen2=0.09;
+        commission_gen4=0.06;
+        commission_gen5=0.03;
      //   root=null;
     }
     
@@ -44,11 +49,49 @@ public class MyTree {
         catch (IOException e){
             JOptionPane.showMessageDialog(null, "FILE NOT FOUND!", " ERROR!", JOptionPane.PLAIN_MESSAGE);
         }
-
     }
-
+    
+    public static void setGen1Commission(double commission){
+        commission_gen1= commission;
+    }
+            
+    public static void setGen2Commission(double commission){
+        commission_gen2= commission;
+    }
+    
+    public static void setGen3Commission(double commission){
+        commission_gen3=commission;
+    }
+            
+    public static void setGen4Commission(double commission){
+        commission_gen4=commission;
+    }
+    public static void setGen5Commission(double commission){
+        commission_gen5=commission;
+    }
+      
     public static double getFee() {
         return classvariablefee;
+    }
+    
+    public static double getGen1Commission(){
+        return commission_gen1;
+    }
+    public static double getGen2Commission(){
+        return commission_gen2;
+    }
+    public static double getGen3Commission(){
+        return commission_gen3;
+    }
+    public static double getGen4Commission(){
+        return commission_gen4;
+    }
+    public static double getGen5Commission(){
+        return commission_gen5;
+    }
+    
+    public double getTotal(){
+        return total;
     }
     
  
@@ -85,23 +128,23 @@ public class MyTree {
                     
                         switch (level) {
                             case 1:
-                                current.addMoney(classvariablefee*0.5);
+                                current.addMoney(classvariablefee*getGen1Commission());
                                 level++;
                                 break;
                             case 2:
-                                current.addMoney(classvariablefee*0.12);
+                                current.addMoney(classvariablefee*getGen2Commission());
                                 level++;
                                 break;
                             case 3:
-                                current.addMoney(classvariablefee*0.09);
+                                current.addMoney(classvariablefee*getGen3Commission());
                                 level++;
                                 break;
                             case 4:
-                                current.addMoney(classvariablefee*0.06);
+                                current.addMoney(classvariablefee*getGen4Commission());
                                 level++;
                                 break;
                             default:
-                                current.addMoney(classvariablefee*0.03);
+                                current.addMoney(classvariablefee*getGen5Commission());
                                 level++;
                                 break;
                         }
