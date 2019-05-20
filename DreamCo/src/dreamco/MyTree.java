@@ -19,7 +19,7 @@ public class MyTree {
     ///////////////////////////////////////////////////////////// Static VARIABLE and OBJECT declarations //////////////////////////////////////////////////////////////////////
 
     public NodeTree root = new NodeTree("DreamCo");
-    public int idCounter;    
+    public static int idCounter;    
     private static double classvariablefee;
     private static double commission_gen1, commission_gen2, commission_gen3, commission_gen4, commission_gen5;
     
