@@ -101,7 +101,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel1.add(jButton6);
         jButton6.setBounds(60, 490, 330, 50);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/UserFrameBackground.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/DC.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(450, 600));
         jLabel1.setMinimumSize(new java.awt.Dimension(450, 600));
