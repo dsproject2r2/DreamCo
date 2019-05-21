@@ -5,15 +5,25 @@
  */
 package dreamco;
 
+import static dreamco.UserFrame.updatePendingFile;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jeremiah
  */
 public class AdminRegistrationFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdminRegistrationFrame
-     */
+
+    private static String newfullname;
+    private static String newpassword, confirmpassword;
+    
+    
+    
     public AdminRegistrationFrame() {
         initComponents();
     }
@@ -28,33 +38,142 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        namefield = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        newpasswordfield = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
+        confirmpasswordfield = new javax.swing.JPasswordField();
+        checkboxtc = new javax.swing.JCheckBox();
+        cancelbutton = new javax.swing.JButton();
+        registrationbutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        namefield.setBackground(new java.awt.Color(255, 255, 255));
+        namefield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                namefieldActionPerformed(evt);
+            }
+        });
+        jPanel1.add(namefield);
+        namefield.setBounds(200, 60, 260, 40);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(150, 240, 260, 230);
+        jLabel6.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Enter Full Name");
+        jLabel6.setToolTipText("This will be your username when logging in");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(50, 60, 150, 40);
+
+        jLabel9.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("New Password");
+        jLabel9.setToolTipText("make sure your password is secure but easy to  remember as well!");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(50, 110, 150, 40);
+        jPanel1.add(newpasswordfield);
+        newpasswordfield.setBounds(200, 110, 260, 40);
+
+        jLabel7.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Confirm Password");
+        jLabel7.setToolTipText("make sure your password is secure but easy to  remember as well!");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(50, 160, 150, 40);
+        jPanel1.add(confirmpasswordfield);
+        confirmpasswordfield.setBounds(200, 160, 260, 40);
+
+        checkboxtc.setBackground(new java.awt.Color(117, 230, 218));
+        checkboxtc.setForeground(new java.awt.Color(255, 255, 255));
+        checkboxtc.setText("Agree to terms and conditions");
+        checkboxtc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkboxtcActionPerformed(evt);
+            }
+        });
+        jPanel1.add(checkboxtc);
+        checkboxtc.setBounds(50, 210, 200, 30);
+
+        cancelbutton.setText("Cancel");
+        cancelbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelbuttonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cancelbutton);
+        cancelbutton.setBounds(370, 210, 90, 32);
+
+        registrationbutton.setBackground(new java.awt.Color(24, 154, 180));
+        registrationbutton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        registrationbutton.setForeground(new java.awt.Color(255, 255, 255));
+        registrationbutton.setText("Register User and get that bread!");
+        registrationbutton.setVisible(false);
+        registrationbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrationbuttonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(registrationbutton);
+        registrationbutton.setBounds(120, 270, 280, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 989, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void namefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namefieldActionPerformed
+ 
+    }//GEN-LAST:event_namefieldActionPerformed
+
+    private void checkboxtcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxtcActionPerformed
+        if(checkboxtc.isSelected()){
+        registrationbutton.setVisible(true);
+        JOptionPane.showMessageDialog(null, "You agree to the collection of a one-off payment of RM50 to register as a member of DreamCo. A membership card will given upon registration.", "  Terms & Conditions", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+        registrationbutton.setVisible(false);
+        }
+    }//GEN-LAST:event_checkboxtcActionPerformed
+
+    private void cancelbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelbuttonActionPerformed
+
+    }//GEN-LAST:event_cancelbuttonActionPerformed
+
+    private void registrationbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrationbuttonActionPerformed
+        int key=25;
+        newfullname=namefield.getText();
+        newpassword=newpasswordfield.getText();
+        confirmpassword=confirmpasswordfield.getText();
+
+        MyTree.setIDCounter(MyTree.getIDCounter()+1);
+        
+        try {
+            updatePendingFile(newfullname, newpassword);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Pending File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+        }
+        newfullname="";
+        newpassword="";
+        confirmpassword="";
+        
+    
+        JOptionPane.showMessageDialog(null, "Thank-you for registering. Your registration request is pending and will be approved by an admin in 2-3 business days.", "  Registration Request Sent", JOptionPane.INFORMATION_MESSAGE);  
+    }//GEN-LAST:event_registrationbuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,10 +209,29 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    /////////////////////////////////////////////////////////////////// Method to write encrypted string from registration to PENDING file //////////////////////////////
+    public static void updatePendingFile(String name, String password) throws IOException{
+        BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Userdata.txt"),true));
+        bw.write(String.valueOf(MyTree.getIDCounter()));
+        bw.write("\n"+ newpassword);
+        bw.write("\n"+ MyTree.getIDCounter());        
+        bw.write("\n" + newfullname);
+        bw.write("\n" + String.valueOf(0));
+        bw.close();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelbutton;
+    private javax.swing.JCheckBox checkboxtc;
+    private javax.swing.JPasswordField confirmpasswordfield;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField namefield;
+    private javax.swing.JPasswordField newpasswordfield;
+    private javax.swing.JButton registrationbutton;
     // End of variables declaration//GEN-END:variables
 }

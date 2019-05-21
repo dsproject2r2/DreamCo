@@ -18,12 +18,12 @@ public static void main(String[] args) throws IOException {
 //    LoginFrame.runLoginFrame(); 
     //MyTree.startupAdminConfigFile();
    // System.out.println(MyTree.getIDCounter() );
- 
+ AdminRegistrationFrame.runAdminRegistrationFrame();
 //    AdminFrame.runAdminFrame();
 //    MyTree.readFee();
 //    System.out.println(MyTree.getFee());
     
-     UserFrame.runUserFrame();
+//     UserFrame.runUserFrame();
 //    SplashScreen.runSplashScreen();
     
 //    Scanner s=new Scanner(System.in);
