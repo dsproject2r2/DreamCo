@@ -11,7 +11,7 @@ import org.graphstream.graph.implementations.SingleGraph;
 
 public class DreamCo {
     
-;
+
     
  /////////////////////////////////////////////////////////////////////////////////////    This Class Serves as a tester class for now!   ////////////////////////////////////////
 public static void main(String[] args) throws IOException {
