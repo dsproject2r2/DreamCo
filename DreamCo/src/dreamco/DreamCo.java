@@ -27,25 +27,14 @@ public static void main(String[] args) throws IOException {
     }
 
     MyTree.startupAdminConfigFiles();
-   // SplashScreen.runSplashScreen();        
+    SplashScreen.runSplashScreen();        
         
-    LoginFrame.runLoginFrame(); 
-    //MyTree.startupAdminConfigFile();
-   // System.out.println(MyTree.getIDCounter() );
 
   // AdminRegistrationFrame.runAdminRegistrationFrame();
-//    MyTree.readFee();
-//    System.out.println(MyTree.getFee());
+
+
    //  AdminFrame.runAdminFrame();
 //    UserFrame.runUserFrame();
-
-    
-//    Scanner s=new Scanner(System.in);
-//    System.out.println("enter name");
-//    String name=s.nextLine();
-//    String password=s.nextLine();
-//    String parents =s.nextLine();
-//    tree.add(name, password,parents);
     }
 
 }
