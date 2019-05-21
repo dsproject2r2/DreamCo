@@ -27,7 +27,6 @@ public class ViewGraphFrame {
                 g.addNode("y");
                 g.addEdge("ay", "a", "y");
         g.display();
-        
     }
     
     

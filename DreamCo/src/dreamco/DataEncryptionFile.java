@@ -25,14 +25,23 @@ public static void writeEncryptionFile() throws IOException{
 }
 
 /////////////////////////////////////////////////////This method is to add any names or entries to the file.........................................
-public static void appendFile(String name, String password, String parent, double total ) throws IOException{
-    BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Userdata.txt"),true));
-    bw.write(name);
-    bw.write("\n" + password);
-    bw.write("\n"+parent +"\n");
-    bw.close();
-    }
+//public static void appendFile(String name, String password, String parent, double total ) throws IOException{
+//    BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Userdata.txt"),true));
+//    bw.write(name);
+//    bw.write("\n" + password);
+//    bw.write("\n"+parent +"\n");
+//    bw.close();
+//    }
 
+public static void appendUserIntoFile(int ID, String password, String parent, String name, double money  ) throws IOException{
+    PrintWriter pw=new PrintWriter(new FileWriter(new File("Userdata.txt"),true));
+    pw.write(ID);
+    pw.write("\n" + password);
+    pw.write("\n" + parent);
+    pw.write("\n" + name);
+    pw.write("\n"+money +"\n");
+    pw.close();
+    }
 
 public static void fileEncryption() throws IOException{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
@@ -61,7 +70,6 @@ public static void fileEncryption() throws IOException{
     bufferedreader.close();
     writeEncryptionFile();
     encryptedtxt="";
-
 }
 
 
