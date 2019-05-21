@@ -35,6 +35,7 @@ private static void writeMetadataFile() throws IOException {
     PrintWriter pw= new PrintWriter(new FileWriter(new File("Metadata.txt")));
     pw.print(encryptedtxt3);
     pw.close();
+    System.out.println(encryptedtxt3);
 }
 
 
@@ -245,7 +246,7 @@ public static void metadataDecryption() {
         encryptedtxt3=encryptedtxt3+(char) a;
     }
     bufferedreader.close();
-    writeUserDataFile();
+    writeMetadataFile();
     encryptedtxt3="";
     }
     catch(IOException e){

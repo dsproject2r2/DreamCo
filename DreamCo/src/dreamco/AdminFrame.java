@@ -34,7 +34,7 @@ public class AdminFrame extends javax.swing.JFrame implements WindowListener {
         jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 450, 600));
         setPreferredSize(new java.awt.Dimension(450, 600));
         setResizable(false);
@@ -166,7 +166,7 @@ public class AdminFrame extends javax.swing.JFrame implements WindowListener {
             public void run() {                
                 adminframe.setVisible(true);
                 adminframe.setSize(455,635);
- //               adminframe.addWindowListener(adminframe);
+                adminframe.addWindowListener(adminframe);
                  
             }
         });
@@ -193,9 +193,11 @@ public class AdminFrame extends javax.swing.JFrame implements WindowListener {
     public void windowClosing(WindowEvent e) {
         int prompt=JOptionPane.showConfirmDialog(this, "Are you sure you want to exit sir?", "  Confirm Exit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(prompt==JOptionPane.YES_OPTION){
+
             DataEncryptionFile.pendingEncryption();
             DataEncryptionFile.userdataEncryption();  
             DataEncryptionFile.metadataEncryption();
+
             System.exit(0);
         }
         else{

@@ -184,7 +184,8 @@ public class LoginFrame extends javax.swing.JFrame {
             lf.dispose();
             DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
-            DataEncryptionFile.metadataEncryption();
+            DataEncryptionFile.metadataDecryption();
+            System.out.println(MyTree.getAdminID());
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
@@ -236,7 +237,7 @@ public class LoginFrame extends javax.swing.JFrame {
             lf.dispose();
             DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
-            DataEncryptionFile.metadataEncryption();
+            DataEncryptionFile.metadataDecryption();
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
@@ -288,7 +289,7 @@ public class LoginFrame extends javax.swing.JFrame {
             lf.dispose();
             DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
-            DataEncryptionFile.metadataEncryption();
+            DataEncryptionFile.metadataDecryption();
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
@@ -340,7 +341,7 @@ public class LoginFrame extends javax.swing.JFrame {
             lf.dispose();
             DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
-            DataEncryptionFile.metadataEncryption();
+            DataEncryptionFile.metadataDecryption();
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }

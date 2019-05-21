@@ -444,6 +444,8 @@ public class MyTree {
         while(f.hasNextLine()){
             setAdminID(f.next());
             setAdminPass(f.next());
+            break;
+
         }
         f.close();
         }

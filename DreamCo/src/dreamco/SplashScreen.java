@@ -73,7 +73,7 @@ public class SplashScreen extends javax.swing.JFrame {
         ///////////////////////////////////////////////////////////////////Progress Counter Starts here
         try{
             for(int i=0;i<=100;i++){
-                Thread.sleep(1);
+                Thread.sleep(20);
                 sc.loadingbar.setValue(i);
                 
                 
