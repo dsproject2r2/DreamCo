@@ -43,14 +43,18 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Myriad Pro", 1, 22)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Fax", 1, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 153));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Admin");
+        jLabel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(190, 130, 70, 23);
+        jLabel2.setBounds(140, 130, 190, 60);
 
-        jButton2.setBackground(new java.awt.Color(5, 68, 94));
-        jButton2.setForeground(new java.awt.Color(255, 255, 204));
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(51, 51, 51));
         jButton2.setText("View DreamCo Company Tree");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,8 +64,9 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel1.add(jButton2);
         jButton2.setBounds(60, 350, 330, 50);
 
-        jButton3.setBackground(new java.awt.Color(5, 68, 94));
-        jButton3.setForeground(new java.awt.Color(255, 255, 204));
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(51, 51, 51));
         jButton3.setText("Change Registration Fee");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,8 +76,9 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel1.add(jButton3);
         jButton3.setBounds(60, 420, 330, 50);
 
-        jButton4.setBackground(new java.awt.Color(102, 102, 102));
-        jButton4.setForeground(new java.awt.Color(204, 204, 204));
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(51, 51, 51));
         jButton4.setText("View DreamCo Financials");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,8 +88,9 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel1.add(jButton4);
         jButton4.setBounds(60, 210, 330, 50);
 
-        jButton5.setBackground(new java.awt.Color(5, 68, 94));
-        jButton5.setForeground(new java.awt.Color(255, 255, 204));
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(51, 51, 51));
         jButton5.setText(" Client Registration and Information");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,8 +100,9 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel1.add(jButton5);
         jButton5.setBounds(60, 280, 330, 50);
 
-        jButton6.setBackground(new java.awt.Color(5, 68, 94));
-        jButton6.setForeground(new java.awt.Color(255, 255, 204));
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jButton6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(51, 51, 51));
         jButton6.setText("Change Commission Percentage");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +112,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel1.add(jButton6);
         jButton6.setBounds(60, 490, 330, 50);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/UserFrameBackground.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/DC.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(450, 600));
         jLabel1.setMinimumSize(new java.awt.Dimension(450, 600));
