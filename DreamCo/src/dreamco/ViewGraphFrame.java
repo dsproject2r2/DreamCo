@@ -3,6 +3,7 @@ package dreamco;
 
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
 //BY JERRY <3
 public class ViewGraphFrame {
     
@@ -26,7 +27,9 @@ public class ViewGraphFrame {
                 g.addEdge("ax", "a", "x");
                 g.addNode("y");
                 g.addEdge("ay", "a", "y");
-        g.display();
+        
+         Viewer viewer=g.display();
+         viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
     }
     
     

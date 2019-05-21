@@ -508,7 +508,7 @@ public class MyTree {
         }
     }
 /////////////////////////display graph in visual///////////////////////////////////////////
-    public  void displayGraph(){
+    public void displayGraph(){
         clear();
         addUser();
         Graph g= new SingleGraph("MLM");
@@ -589,6 +589,7 @@ public class MyTree {
         //g.getEachNode();
        //g.setStrict(true);
        Viewer viewer = g.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
 // Let the layout work ...
 //viewer.disableAutoLayout();
 // Do some work ...
