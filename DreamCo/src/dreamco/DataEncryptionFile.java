@@ -39,7 +39,7 @@ private static void writeMetadataFile() throws IOException {
 }
 
 
-public static void appendUserIntoFile(int ID, String password, String parent, String name, double money  ) throws IOException{
+public static void appendUserIntoFile(String ID, String password, String parent, String name, double money  ) throws IOException{
     PrintWriter pw=new PrintWriter(new FileWriter(new File("Userdata.txt"),true));
     pw.write(ID);
     pw.write("\n" + password);
@@ -48,6 +48,11 @@ public static void appendUserIntoFile(int ID, String password, String parent, St
     pw.write("\n"+money +"\n");
     pw.close();
     }
+
+public static void clearFile() throws IOException{
+    PrintWriter pw=new PrintWriter(new FileWriter(new File("Userdata.txt")));
+}
+
 
 public static void userdataEncryption(){
     try{

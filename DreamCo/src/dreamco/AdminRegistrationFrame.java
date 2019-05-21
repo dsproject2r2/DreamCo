@@ -10,6 +10,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -52,7 +54,6 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
-        namefield.setBackground(new java.awt.Color(255, 255, 255));
         namefield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namefieldActionPerformed(evt);
@@ -107,7 +108,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cancelbutton);
-        cancelbutton.setBounds(370, 210, 90, 32);
+        cancelbutton.setBounds(370, 210, 90, 25);
 
         registrationbutton.setBackground(new java.awt.Color(24, 154, 180));
         registrationbutton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -159,17 +160,28 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
         newfullname=namefield.getText();
         newpassword=newpasswordfield.getText();
         confirmpassword=confirmpasswordfield.getText();
-
-        MyTree.setIDCounter(MyTree.getIDCounter()+1);
-        
+            MyTree t = new MyTree();
+            t.addUser();
+           // String zero = String.valueOf(0);
+            
         try {
-            updatePendingFile(newfullname, newpassword);
+            //t.a
+            t.add(newfullname, newpassword, String.valueOf(0));
+            t.appendUserClearFile();
+            
+            //MyTree.setIDCounter(MyTree.getIDCounter()+1);
+        
+//        try {
+//            updatePendingFile(newfullname, newpassword);
+//        } catch (IOException ex) {
+//            JOptionPane.showMessageDialog(null, "Pending File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+//        }
+//        newfullname="";
+//        newpassword="";
+//        confirmpassword="";
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Pending File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(AdminRegistrationFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        newfullname="";
-        newpassword="";
-        confirmpassword="";
         
     
         JOptionPane.showMessageDialog(null, "Thank-you for registering. Welcome to DreamCo!", "  Registration Complete!", JOptionPane.PLAIN_MESSAGE);  

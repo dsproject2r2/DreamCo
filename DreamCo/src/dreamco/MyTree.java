@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
 
 /**
  *
@@ -19,7 +23,7 @@ public class MyTree {
 
     ///////////////////////////////////////////////////////////// Static VARIABLE and OBJECT declarations //////////////////////////////////////////////////////////////////////
 
-    public NodeTree root = new NodeTree("DreamCo",null,new NodeTree("temp"),idCounter);
+    public NodeTree root = new NodeTree("DreamCo",new NodeTree("Admin"),0);
     public static String adminid, adminpass;
     public static int idCounter;    
     private static double classvariablefee;
@@ -113,21 +117,20 @@ public class MyTree {
         try{
             Scanner scan = new Scanner(new FileInputStream("Userdata.txt"));
             while (scan.hasNextLine()) {
-                String IDs=scan.nextLine();
-                int ID = Integer.parseInt(IDs);
+                String ID=scan.nextLine();
                 
                 String password = scan.nextLine();
                 String parent=scan.nextLine();
                 String username = scan.nextLine();
                 
                 String moneys=scan.nextLine();
-                double money = Double.parseDouble(moneys);
-                
-                addFromFile(username,password,parent,money,ID);
+                //double money = Double.parseDouble(moneys);
+                idCounter++;
+                addFromFile(username,password,parent,Double.parseDouble(moneys),ID);
                 System.out.println("user: " + username);
                 System.out.println("pass: "+ password);
                 System.out.println("ID: " + ID);
-                System.out.println("mponey: "+ money);
+                System.out.println("mooney: "+ Double.parseDouble(moneys));
                 
             }
             
@@ -137,23 +140,56 @@ public class MyTree {
     }
     
  
-    public void addFromFile(String name,String password, String parent, double Money, int id){
+    public void addFromFile(String name,String password, String parentid, double Money, String id){
+        int idint = Integer.parseInt(id);
         
-        NodeTree temp = new NodeTree(name, password, Money, id);
         
-        if(root.child.isEmpty()){
-            root.child.add(temp);
-            temp.prev=root;
-            System.out.println("Adding: " + name + " to " + root.name);
+        if(parentid.equals("Admin")){
+            NodeTree temp = new NodeTree(name, password, Money, idint);
+            temp.prev=new NodeTree("Admin");
+            root=temp;
+            System.out.println("Root: " + name + " to Admin" );
         }
         else{
-            if(contain(parent)){
-            getNode(parent).child.add(temp);
-            getNode(name).prev=getNode(parent);
-            System.out.println("Adding: " + getNode(name).name + " to " + getNode(parent).name);
+            if(contain(parentid)){
+                NodeTree temp = new NodeTree(name, password, Money, idint);
+            getNode(parentid).child.add(temp);
+            temp.prev=getNode(parentid);
+            System.out.println("Adding: " + temp.name + " to " + temp.prev.name);
+            System.out.println("ID  :   " + temp.ID);
             }
             else
                 System.out.println("Cannot add, parent not found");
+        }
+    }
+    
+     public void appendUserClearFile() throws IOException{
+       // DFSdisplayAll();
+        DataEncryptionFile.clearFile();
+        MyStack<NodeTree> s = new MyStack();
+        
+        if(root==null)
+            System.out.println("No user");
+        else{        
+            s.push(root);
+            NodeTree temp = root;
+            //DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, "DreamCo", temp.name, temp.money);
+            while(s.getSize()!=0){
+                temp = s.pop();
+                if(temp==null){
+                    System.out.println("aaaa");
+                    continue;}
+                if(temp.name.equals("DreamCo")){
+                    DataEncryptionFile.appendUserIntoFile(temp.ID, "123", "Admin", temp.name, temp.money);
+                }else{
+                    DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, temp.prev.ID, temp.name, temp.money);
+                }
+                    System.out.print(' '+ temp.name + " -RM" + temp.money);
+                    for (int i = 0; i < temp.child.size(); i++) {
+                        s.push(temp.child.get(i));
+                    }
+            }
+        System.out.println("");
         }
     }
     
@@ -174,9 +210,9 @@ public class MyTree {
                     System.out.println("aaaa");
                     continue;}
                 if(temp.name.equals("DreamCo")){
-                    DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, "DreamCo", temp.name, temp.money);
+                    DataEncryptionFile.appendUserIntoFile(temp.ID, "123", "Admin", temp.name, temp.money);
                 }else{
-                    DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, temp.prev.name, temp.name, temp.money);
+                    DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, temp.prev.ID, temp.name, temp.money);
                 }
                     System.out.print(' '+ temp.name + " -RM" + temp.money);
                     for (int i = 0; i < temp.child.size(); i++) {
@@ -189,30 +225,31 @@ public class MyTree {
      
      
     // add method to use when to create new user
-    public void add(String name,String password, String parent) throws IOException{
-        idCounter++;
-        NodeTree temp = new NodeTree(name, null, null, idCounter);
-        temp.setPassword(password);
-       // DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, temp.prev.name, temp.name, temp.money);
-        //Nodee.add(temp);
-       // System.out.println("afaf"+root.name);
+    public void add(String name,String password, String parentId) throws IOException{
+       
+       // NodeTree temp = new NodeTree(name, null, idCounter);
+        
         if(root.child.isEmpty()){
+            idCounter++;
+            NodeTree temp = new NodeTree(name, null, idCounter);
+            temp.setPassword(password);
             root.child.add(temp);
             temp.prev=root;
             System.out.println("Adding: " + name + " to " + temp.prev.name);
             System.out.println("ID  :   " + temp.ID);
-            //DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, temp.prev.name, temp.name, temp.money);
         }
         else{
-            if(contain(parent)){
-            getNode(parent).child.add(temp);
-            temp.prev=getNode(parent);
+            if(contain(parentId)){
+                 idCounter++;
+            NodeTree temp = new NodeTree(name, null, idCounter);
+            temp.setPassword(password);
+            getNode(parentId).child.add(temp);
+            temp.prev=getNode(parentId);
             System.out.println("Adding: " + temp.name + " to " + temp.prev.name);
             System.out.println("ID  :   " + temp.ID);
             
             NodeTree current = temp;
                     int level = 0;
-                    idCounter++;
                     while(current.prev!=null){
                     current = current.prev;
                     
@@ -239,7 +276,6 @@ public class MyTree {
                                 break;
                         }
                     }
-            //DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, temp.prev.name, temp.name, temp.money);
             }
             else
                 System.out.println("Cannot add, parent not found");
@@ -247,11 +283,11 @@ public class MyTree {
     }
     
     // get money balance from user, return 0 if user not exist
-    public double getMoney(String name){
-        return getNode(name).money;
+    public double getMoney(String id){
+        return getNode(id).money;
     }
     
-    public boolean contain (String name){
+    public boolean contain (String id){
         MyStack<NodeTree> s = new MyStack();
         s.push(root);
         NodeTree temp = root;;
@@ -259,7 +295,7 @@ public class MyTree {
             temp = s.pop();
             if(temp==null)
                 continue;
-            else if(temp.equals(getNode(name))){
+            else if(temp.equals(getNode(id))){
                 return true;
             }
             for (int i = 0; i < temp.child.size(); i++) {
@@ -269,7 +305,7 @@ public class MyTree {
         return false;
     }
     
-    public NodeTree getNode(String name){
+    public NodeTree getNode(String id){
         MyStack<NodeTree> s = new MyStack();
         
         s.push(root);
@@ -278,7 +314,7 @@ public class MyTree {
             temp = s.pop();
             if(temp==null)
                 continue;
-            else if(temp.name.equalsIgnoreCase(name))
+            else if(temp.ID.equalsIgnoreCase(id))
                 return temp;
             for (int i = 0; i < temp.child.size(); i++) {
                 s.push(temp.child.get(i));
@@ -343,7 +379,7 @@ public class MyTree {
                 temp = s.pop();
                 if(temp==null)
                     continue;
-                System.out.print(' '+ temp.name + " -RM" + temp.money);
+                System.out.println(" "+ temp.name + " -RM " + temp.money  + " ID: " + temp.ID  + " password: " + temp.password  + " parents: " + temp.prev.ID  );
                 for (int i = 0; i < temp.child.size(); i++) {
                     s.push(temp.child.get(i));
                 }
@@ -354,7 +390,7 @@ public class MyTree {
     }
     
     public void BFSdisplayAll() {
-        MyQueue<NodeTree> queue = new MyQueue<NodeTree>();
+       MyQueue<NodeTree> queue = new MyQueue<NodeTree>(); 
         
         if(root==null)
             System.out.println("No user");
@@ -374,41 +410,41 @@ public class MyTree {
     }
     
     public void clear(){
-        root= new NodeTree("DreamCo",null,new NodeTree("temp"),idCounter);
+        root= new NodeTree("DreamCo",new NodeTree("Admin"),0);
         idCounter=0;
         System.out.println("All user have been deleted");
     }
     
-    public void remove(String name){
-        if(contain(name)){
-            if(root==getNode(name)){
+    public void remove(String id){
+        if(contain(id)){
+            if(root==getNode(id)){
                 clear();
             }else{
-               NodeTree []temp = new NodeTree[getNode(name).child.size()];
+               NodeTree []temp = new NodeTree[getNode(id).child.size()];
                 boolean remove=false;
-                String prev = getNode(name).prev.name;
-                if(getNode(name).child.size()!=0){
+                String prev = getNode(id).prev.name;
+                if(getNode(id).child.size()!=0){
                     remove=true;
-                        for (int i = 0; i < getNode(name).child.size(); i++) {
-                            temp[i] = getNode(name).child.get(i);
+                        for (int i = 0; i < getNode(id).child.size(); i++) {
+                            temp[i] = getNode(id).child.get(i);
                         }
                 }
                 int numbtemp=-1;
-                    for (int i = 0; i < getNode(name).prev.child.size(); i++) {
-                        if(getNode(prev).child.get(i)==(getNode(name))){
+                    for (int i = 0; i < getNode(id).prev.child.size(); i++) {
+                        if(getNode(prev).child.get(i)==(getNode(id))){
                             numbtemp = i;
                             break;
                         }
                     }
                 if(numbtemp!=-1){    
-                    getNode(name).prev.child.remove(numbtemp);
+                    getNode(id).prev.child.remove(numbtemp);
                 }
                 if(remove){
                     for (int i = 0; i < temp.length; i++) {
                         getNode(prev).child.add(temp[i]);
                     }
                 }
-                System.out.println("Removed: "+ name);
+                System.out.println("Removed: "+ id);
             }
         }else
             System.out.println("User not found");
@@ -471,7 +507,95 @@ public class MyTree {
             JOptionPane.showMessageDialog(null, "System File Not Found!", "  System Error!", JOptionPane.ERROR_MESSAGE);
         }
     }
+/////////////////////////display graph in visual///////////////////////////////////////////
+    public  void displayGraph(){
+        clear();
+        addUser();
+        Graph g= new SingleGraph("MLM");
+        g.addAttribute("ui.stylesheet", "graph { fill-color: lightblue; } node { shape: box;\n" +
+"	size: 20px, 20px;\n" +
+"	fill-mode: plain;   \n" +
+"	fill-color: black;    \n" +
+                "text-size: 15px;"+
+                "text-color: darkblue;"+
+"	stroke-mode: plain; \n" +
+"	stroke-color: black; } edge { fill-color: darkblue; } node#0 {fill-color: red; text-color: red;}");
+        
+        MyStack<NodeTree> s = new MyStack();
+        
+        if(root==null)
+            System.out.println("No user");
+        else{        
+            s.push(root);
+            NodeTree temp = root;
+            while(s.getSize()!=0){
+                temp = s.pop();
+                if(temp==null)
+                    continue;
+                
+                
+                g.addNode(temp.ID);
+                g.getNode(temp.ID).addAttribute("ui.label", "Name: "+ temp.name + "\n  RM" + temp.money  + "\n ID: " + temp.ID );
+                
+                //System.out.println(" "+ temp.name + " -RM " + temp.money  + " ID: " + temp.ID  + " password: " + temp.password  + " parents: " + temp.prev.ID  );
+                for (int i = 0; i < temp.child.size(); i++) {
+                    s.push(temp.child.get(i));
+                }
 
+            }
+        System.out.println("");
+        }
+        
+        g.getNode(0).setAttribute("xy", 50,50);
+        
+        MyStack<NodeTree> s1 = new MyStack();
+        
+        if(root==null)
+            System.out.println("No user");
+        else{        
+            s1.push(root);
+            NodeTree temp = root;
+            while(s1.getSize()!=0){
+                temp = s1.pop();
+                if(temp==null)
+                    continue;
+                
+                if(temp.ID==null || temp.prev.ID==null){
+                    
+                }else{
+                    g.addEdge(temp.ID+temp.prev.ID, temp.ID, temp.prev.ID);
+                    
+                    System.out.println(" "+ temp.name + " -RM " + temp.money  + " ID: " + temp.ID  + " password: " + temp.password  + " parents: " + temp.prev.ID  );
+                }
+                    
+                for (int i = 0; i < temp.child.size(); i++) {
+                    s1.push(temp.child.get(i));
+                }
+
+            }
+        System.out.println("");
+        }
+        
+//        for (Node i = 0; i < 2; i++) {
+//            
+//        }
+//        
+//        for (Node node : g) {
+//                node.addAttribute("ui.label", "yy");
+//                
+//            }
+        //g.addAttribute("ui.quality");
+        //g.addAttribute("ui.antialias");
+        //g.getEachNode();
+       //g.setStrict(true);
+       Viewer viewer = g.display();
+// Let the layout work ...
+//viewer.disableAutoLayout();
+// Do some work ...
+viewer.enableAutoLayout();
+     //   g.display();
+       // viewer.getGraphicGraph();
+    }
     
     
 }

@@ -1,11 +1,16 @@
 
 package dreamco;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class LoginFrame extends javax.swing.JFrame {
@@ -53,9 +58,9 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel3.setText("Username");
+        jLabel3.setText("UserID");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(15, 101, 78, 19);
+        jLabel3.setBounds(15, 101, 52, 19);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
@@ -86,9 +91,8 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(190, 200, 117, 32);
+        jButton1.setBounds(190, 200, 117, 25);
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +108,6 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel2.add(jTextField1);
         jTextField1.setBounds(111, 92, 338, 39);
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
@@ -118,7 +121,6 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel2.add(jPasswordField1);
         jPasswordField1.setBounds(111, 149, 338, 39);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\jerry\\Desktop\\backgroundtemplate.png")); // NOI18N
         jLabel5.setText("jLabel5");
         jPanel2.add(jLabel5);
         jLabel5.setBounds(0, 0, 520, 270);

@@ -15,7 +15,7 @@ public class NodeTree {
     String name;
     java.util.ArrayList<NodeTree> child = new java.util.ArrayList<>();
     NodeTree prev;
-    int ID;
+    String ID;
     String password;
     
     public NodeTree(String name){
@@ -23,18 +23,17 @@ public class NodeTree {
       //  this.prev=null;
     }
     
-    public NodeTree(String name, NodeTree next, NodeTree prev, int id){
+    public NodeTree(String name, NodeTree prev, int id){
         this.name=name;
-        this.child.add(next);
         this.prev = prev;
-        this.ID=id;
+        this.ID=String.valueOf(id);
     }
     
     public NodeTree(String name, String password, double Money, int id){
         this.name=name;
         this.money=Money;
         this.password=password;
-        this.ID=id;
+        this.ID=String.valueOf(id);
     }
     
     public String getPassword() {
