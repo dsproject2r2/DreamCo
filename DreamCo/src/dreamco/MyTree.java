@@ -20,9 +20,11 @@ public class MyTree {
     ///////////////////////////////////////////////////////////// Static VARIABLE and OBJECT declarations //////////////////////////////////////////////////////////////////////
 
     public NodeTree root = new NodeTree("DreamCo",null,new NodeTree("temp"),idCounter);
+    public static String adminid, adminpass;
     public static int idCounter;    
     private static double classvariablefee;
     private static double commission_gen1, commission_gen2, commission_gen3, commission_gen4, commission_gen5;
+    
     
     //private double hello=root.getMoney();
 
@@ -39,8 +41,15 @@ public class MyTree {
     
     
     /////////////////////////////////////////////////////////////////////////////////////////////// SETTERS are all here !!! /////////////////////////////////////
+    public static void setAdminID(String id){
+        adminid=id;
+    }
+    public static void setAdminPass(String pass){
+        adminpass=pass;
+    }
+    
     public static void setIDCounter(int idcounter){
-
+        idCounter=idcounter;
     }
     
     public static void setParent(String parent){
@@ -72,14 +81,18 @@ public class MyTree {
     
     
     ///////////////////////////////////////////////////////////////////////////////////// GETTERS are all here!!! /////////////////////////////////////////////////
+    public static String getAdminID(){
+        return adminid;
+    }    
+    public static String getAdminPass(){
+        return adminpass;
+    }
     public static int getIDCounter(){
         return idCounter;
-    }
-    
+    }    
     public static double getFee() {
         return classvariablefee;
-    }
-    
+    } 
     public static double getGen1Commission(){
         return commission_gen1;
     }
@@ -408,7 +421,7 @@ public class MyTree {
     }
     
     //method to read FEE from textfile upon startup
-    public static void startupAdminConfigFile(){
+    public static void startupAdminConfigFiles(){
         try{
         Scanner s= new Scanner(new FileReader("AdminConfig.txt"));
         while(s.hasNextLine()){
@@ -425,6 +438,19 @@ public class MyTree {
         catch(IOException e){
             JOptionPane.showMessageDialog(null, "System File Not Found!", "  System Error!", JOptionPane.ERROR_MESSAGE);
         }
+        
+        try{
+        Scanner f= new Scanner(new FileReader("Metadata.txt"));
+        while(f.hasNextLine()){
+            setAdminID(f.next());
+            setAdminPass(f.next());
+        }
+        f.close();
+        }
+        catch(IOException e){
+            JOptionPane.showMessageDialog(null, "System File Not Found!", "  System Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
     
     public static void updateAdminConfigFile() {  //called by my adminframe class 

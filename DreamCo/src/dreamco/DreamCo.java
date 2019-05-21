@@ -15,20 +15,21 @@ public static void main(String[] args) throws IOException {
     
     
     /////////////////////////////////////////// SET LOOK AND FEEL ////////////////////////////////////////////////////////////////////////////////
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    }
 
-    SplashScreen.runSplashScreen();        
+    MyTree.startupAdminConfigFiles();
+   // SplashScreen.runSplashScreen();        
         
-//    LoginFrame.runLoginFrame(); 
+    LoginFrame.runLoginFrame(); 
     //MyTree.startupAdminConfigFile();
    // System.out.println(MyTree.getIDCounter() );
 
@@ -36,7 +37,7 @@ public static void main(String[] args) throws IOException {
 //    MyTree.readFee();
 //    System.out.println(MyTree.getFee());
    //  AdminFrame.runAdminFrame();
-//     UserFrame.runUserFrame();
+//    UserFrame.runUserFrame();
 
     
 //    Scanner s=new Scanner(System.in);

@@ -18,19 +18,24 @@ public class DataEncryptionFile {
 
 private static String encryptedtxt1="";
 private static String encryptedtxt2="";
+private static String encryptedtxt3="";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////METHODS ARE ALL BELOW THIS LINE //////////////////////////////////////////////////
-public static void writeUserDataFile() throws IOException{
+private static void writeUserDataFile() throws IOException{
     PrintWriter pw= new PrintWriter(new FileWriter(new File("Userdata.txt")));
     pw.print(encryptedtxt1);
     pw.close();
 }
-public static void writePendingFile() throws IOException{
+private static void writePendingFile() throws IOException{
     PrintWriter pw= new PrintWriter(new FileWriter(new File("Pending.txt")));
     pw.print(encryptedtxt2);
     pw.close();
 }
-
+private static void writeMetadataFile() throws IOException {
+    PrintWriter pw= new PrintWriter(new FileWriter(new File("Metadata.txt")));
+    pw.print(encryptedtxt3);
+    pw.close();
+}
 
 
 public static void appendUserIntoFile(int ID, String password, String parent, String name, double money  ) throws IOException{
@@ -43,7 +48,7 @@ public static void appendUserIntoFile(int ID, String password, String parent, St
     pw.close();
     }
 
-public static void userDataEncryption(){
+public static void userdataEncryption(){
     try{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
     StringBuilder br = new StringBuilder();
@@ -111,8 +116,42 @@ public static void pendingEncryption(){
     }
 }
 
+public static void metadataEncryption(){
+    try{
+    BufferedReader bufferedreader = new BufferedReader(new FileReader("Metadata.txt"));
+    StringBuilder br = new StringBuilder();
+    String line;
+    int key=25;
+    
+    while((line =bufferedreader.readLine())!=null){
+         br.append(line).append("\n");
+    }
+                  
+    for(int i=0; i<br.length();i++){
+        int a=br.charAt(i);
+            if(Character.isUpperCase(a)){
+                a=a+(key%26);
+                if(a>'Z')
+                     a=a-26;
+        }
+        else if(Character.isLowerCase(a)){
+            a=a+(key%26);
+            if(a>'z')
+                a=a-26;
+        }
+        encryptedtxt3=encryptedtxt3+(char) a;
+    } 
+    bufferedreader.close();
+    writeMetadataFile();
+    encryptedtxt3="";
+    }
+    catch(IOException e){
+        JOptionPane.showMessageDialog(null, "System File Not Found!", "  System Error!", JOptionPane.ERROR_MESSAGE);
+    }
+}
 
-public static void userDataDecryption() {
+
+public static void userdataDecryption() {
     try{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
     StringBuilder br= new StringBuilder();
@@ -174,6 +213,40 @@ public static void pendingDecryption() {
     bufferedreader.close();
     writePendingFile();
     encryptedtxt2="";
+    }
+    catch(IOException e){
+        JOptionPane.showMessageDialog(null, "System File Not Found!", "  System Error!", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+public static void metadataDecryption() {
+    try{
+    BufferedReader bufferedreader = new BufferedReader(new FileReader("Metadata.txt"));
+    StringBuilder br= new StringBuilder();
+    String line;
+    int key=25;
+    
+    while((line =bufferedreader.readLine())!=null){
+        br.append(line).append("\n");
+    }
+
+    for(int i=0; i<br.length();i++){
+        int a=br.charAt(i);
+        if(Character.isUpperCase(a)){
+            a=a-(key%26);        
+            if(a<'A')
+                a=a+26;
+        }
+        else if(Character.isLowerCase(a)){
+            a=a-(key%26);
+            if(a<'a')
+                a=a+26;
+        }
+        encryptedtxt3=encryptedtxt3+(char) a;
+    }
+    bufferedreader.close();
+    writeUserDataFile();
+    encryptedtxt3="";
     }
     catch(IOException e){
         JOptionPane.showMessageDialog(null, "System File Not Found!", "  System Error!", JOptionPane.ERROR_MESSAGE);

@@ -191,7 +191,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
         BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Userdata.txt"),true));
         bw.write(String.valueOf(MyTree.getIDCounter()));
         bw.write("\n"+ newpassword);
-        bw.write("\n"+ MyTree.getIDCounter());        
+        bw.write("\n"+ String.valueOf(0));        
         bw.write("\n" + newfullname);
         bw.write("\n" + String.valueOf(0));
         bw.close();

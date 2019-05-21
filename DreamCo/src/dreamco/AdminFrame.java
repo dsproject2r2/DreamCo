@@ -140,8 +140,6 @@ public class AdminFrame extends javax.swing.JFrame implements WindowListener {
             MyTree.setFee(Double.parseDouble(fee));
             MyTree.updateAdminConfigFile();
             JOptionPane.showMessageDialog(null, "New Registration Fee of RM"+ MyTree.getFee()+ " has been set!" , " SCAM SUCCESS!", JOptionPane.PLAIN_MESSAGE); 
-            
-            
         }
         else{
             MyTree.setFee(MyTree.getFee());
@@ -196,7 +194,8 @@ public class AdminFrame extends javax.swing.JFrame implements WindowListener {
         int prompt=JOptionPane.showConfirmDialog(this, "Are you sure you want to exit sir?", "  Confirm Exit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(prompt==JOptionPane.YES_OPTION){
             DataEncryptionFile.pendingEncryption();
-            DataEncryptionFile.userDataEncryption();            
+            DataEncryptionFile.userdataEncryption();  
+            DataEncryptionFile.metadataEncryption();
             System.exit(0);
         }
         else{

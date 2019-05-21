@@ -218,22 +218,22 @@ public class UserFrame extends javax.swing.JFrame {
         if(newfullname.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter a valid username and password!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
         }
-        if(newfullname.equals(newpassword)){
+        else if(newfullname.equals(newpassword)){
             JOptionPane.showMessageDialog(null, "Your name and password cannot match!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
         }
-        if(newfullname.length()<8){
+        else if(newfullname.length()<8){
             JOptionPane.showMessageDialog(null, "Please enter your REAL name. I doubt your name is less than 8 characters!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
         }
-        if(newpassword.length()<8){
+        else if(newpassword.length()<8){
             JOptionPane.showMessageDialog(null, "Please enter a password with a MINIMUM length of 8 characters!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
         }
-        if(!newfullname.equals("") && newpassword.equals("")){
+        else if(!newfullname.equals("") && newpassword.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter a valid password!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
         }
-        if(!newfullname.equals("") && !newpassword.equals(confirmpassword)){
+        else if(!newfullname.equals("") && !newpassword.equals(confirmpassword)){
             JOptionPane.showMessageDialog(null, "Passwords do not match!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
         }
-        if(!newfullname.equals("") && newpassword.equals(confirmpassword) && newpassword.length()>8){               
+        if(!newfullname.equals("") && newpassword.equals(confirmpassword) && newpassword.length()>=8){               
             encryptNow(newfullname, newpassword);
             MyTree.setIDCounter(MyTree.getIDCounter()+1);
         
@@ -250,7 +250,7 @@ public class UserFrame extends javax.swing.JFrame {
             jPasswordField2.setText("");
         
     
-            JOptionPane.showMessageDialog(null, "Thank-you for registering. Your registration request is pending and will be approved by an admin in 2-3 business days.", "  Registration Request Sent", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Thank-you for registering. Your registration request is pending and will be approved by an admin in 2-3 business days. \n\n Your userID is:  dcuser"+ MyTree.getIDCounter() , "  Registration Request Sent", JOptionPane.INFORMATION_MESSAGE);
             jButton3.setVisible(true);
             jButton4.setVisible(false);
             jButton1.setVisible(false);

@@ -152,136 +152,213 @@ public class LoginFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
 ///////////////////////////////////////////////////////////////////////////////////// Algorithm to check for admin //////////////////////////////////////////
+        System.out.println(MyTree.getAdminID());
+        System.out.println(MyTree.getAdminPass());
         adminuserinput=jTextField1.getText();
         adminpassinput=jPasswordField1.getText();
-        
+        encryptCheck(adminpassinput, adminuserinput);
         /////////////////////////////////////////to read user data from file/////////////////////////////////////
         String username="";
-        String password = "-";
+        String password ="";
         try{
-            Scanner scan = new Scanner(new FileInputStream("Userdata.txt"));
-            while (scan.hasNextLine()) {
-                username = scan.nextLine();
-                password = scan.nextLine();
+            Scanner s = new Scanner(new FileReader("Userdata.txt"));
+            while (s.hasNextLine()) {
+                username = s.nextLine();
+                password = s.nextLine();
                 System.out.println("user: " + username);
                 System.out.println("pass: "+ password);
-                if(password.equals(adminpassinput) && username.equals(adminuserinput))
+                if(password.equals(adminpassinput) && username.equals(adminuserinput)){
                     break;
-                scan.nextLine();
-                scan.nextLine();
-                scan.nextLine();
-            }
-            
-        }catch(FileNotFoundException e){
-            System.out.println("Error: "+e);
+                }   
+                s.nextLine();
+                s.nextLine();
+                s.nextLine();
+            }            
+        }
+        catch(FileNotFoundException e){
+            JOptionPane.showMessageDialog(null, "Program File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
         } 
         /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
-        if(adminuserinput.equals("admin") && adminpassinput.equals("123")){
+        if(adminuserinput.equals(MyTree.getAdminID()) && adminpassinput.equals(MyTree.getAdminPass())){
             AdminFrame.runAdminFrame();
             lf.dispose();
-            DataEncryptionFile.userDataDecryption();
+            DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
-
-            
+            DataEncryptionFile.metadataEncryption();
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
         else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
-            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.ERROR_MESSAGE);
-            System.out.println("YESS NI USER FRAME");            
+            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            UserFrame.runUserFrame();
         }
-        if(adminuserinput.equals("") && adminpassinput.equals("")){
+        else if(adminuserinput.equals("") && adminpassinput.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
         }
-        if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-            JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
-        }
-        if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+        else{
             JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
-        }        
+        }      
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
         if(evt.getKeyCode()==evt.VK_ENTER){
-            adminuserinput=jTextField1.getText();
-            adminpassinput=jPasswordField1.getText();
-        
-            if(adminuserinput.equals("admin") && adminpassinput.equals("123")){
-                AdminFrame.runAdminFrame();
-                lf.dispose();
-
-            DataEncryptionFile.userDataDecryption();
-            DataEncryptionFile.pendingDecryption();
-
+///////////////////////////////////////////////////////////////////////////////////// Algorithm to check for admin //////////////////////////////////////////
+        System.out.println(MyTree.getAdminID());
+        System.out.println(MyTree.getAdminPass());
+        adminuserinput=jTextField1.getText();
+        adminpassinput=jPasswordField1.getText();
+        encryptCheck(adminpassinput, adminuserinput);
+        /////////////////////////////////////////to read user data from file/////////////////////////////////////
+        String username="";
+        String password ="";
+        try{
+            Scanner s = new Scanner(new FileReader("Userdata.txt"));
+            while (s.hasNextLine()) {
+                username = s.nextLine();
+                password = s.nextLine();
+                System.out.println("user: " + username);
+                System.out.println("pass: "+ password);
+                if(password.equals(adminpassinput) && username.equals(adminuserinput)){
+                    break;
+                }   
+                s.nextLine();
+                s.nextLine();
+                s.nextLine();
+            }            
+        }
+        catch(FileNotFoundException e){
             JOptionPane.showMessageDialog(null, "Program File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+        } 
+        /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
+        if(adminuserinput.equals(MyTree.getAdminID()) && adminpassinput.equals(MyTree.getAdminPass())){
+            AdminFrame.runAdminFrame();
+            lf.dispose();
+            DataEncryptionFile.userdataDecryption();
+            DataEncryptionFile.pendingDecryption();
+            DataEncryptionFile.metadataEncryption();
             
-            
-            
-                JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-            }
-            
-            if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-                JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
-            }
-            if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-                JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
-            }    
+            JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
+        }
+        else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
+            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            UserFrame.runUserFrame();
+        }
+        else if(adminuserinput.equals("") && adminpassinput.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
+        }  
         }
     }//GEN-LAST:event_jButton1KeyPressed
 
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
         if(evt.getKeyCode()==evt.VK_ENTER){
-            adminuserinput=jTextField1.getText();
-            adminpassinput=jPasswordField1.getText();
-
-        
-            if(adminuserinput.equals("admin") && adminpassinput.equals("123")){
-                AdminFrame.runAdminFrame();
-                lf.dispose();
-
-            DataEncryptionFile.userDataDecryption();
+///////////////////////////////////////////////////////////////////////////////////// Algorithm to check for admin //////////////////////////////////////////
+        System.out.println(MyTree.getAdminID());
+        System.out.println(MyTree.getAdminPass());
+        adminuserinput=jTextField1.getText();
+        adminpassinput=jPasswordField1.getText();
+        encryptCheck(adminpassinput, adminuserinput);
+        /////////////////////////////////////////to read user data from file/////////////////////////////////////
+        String username="";
+        String password ="";
+        try{
+            Scanner s = new Scanner(new FileReader("Userdata.txt"));
+            while (s.hasNextLine()) {
+                username = s.nextLine();
+                password = s.nextLine();
+                System.out.println("user: " + username);
+                System.out.println("pass: "+ password);
+                if(password.equals(adminpassinput) && username.equals(adminuserinput)){
+                    break;
+                }   
+                s.nextLine();
+                s.nextLine();
+                s.nextLine();
+            }            
+        }
+        catch(FileNotFoundException e){
+            JOptionPane.showMessageDialog(null, "Program File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+        } 
+        /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
+        if(adminuserinput.equals(MyTree.getAdminID()) && adminpassinput.equals(MyTree.getAdminPass())){
+            AdminFrame.runAdminFrame();
+            lf.dispose();
+            DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
-                
-            JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-            }
+            DataEncryptionFile.metadataEncryption();
             
-            
-            if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-                JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
-            }
-            if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-                JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
-            }    
+            JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
+        }
+        else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
+            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            UserFrame.runUserFrame();
+        }
+        else if(adminuserinput.equals("") && adminpassinput.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
+        }   
         }
     }//GEN-LAST:event_jPasswordField1KeyPressed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         if(evt.getKeyCode()==evt.VK_ENTER){
-            adminuserinput=jTextField1.getText();
-            adminpassinput=jPasswordField1.getText();
-
-        
-            if(adminuserinput.equals("admin") && adminpassinput.equals("123")){
-                AdminFrame.runAdminFrame();
-                lf.dispose();            
-
-            DataEncryptionFile.userDataDecryption();
+///////////////////////////////////////////////////////////////////////////////////// Algorithm to check for admin //////////////////////////////////////////
+        System.out.println(MyTree.getAdminID());
+        System.out.println(MyTree.getAdminPass());
+        adminuserinput=jTextField1.getText();
+        adminpassinput=jPasswordField1.getText();
+        encryptCheck(adminpassinput, adminuserinput);
+        /////////////////////////////////////////to read user data from file/////////////////////////////////////
+        String username="";
+        String password ="";
+        try{
+            Scanner s = new Scanner(new FileReader("Userdata.txt"));
+            while (s.hasNextLine()) {
+                username = s.nextLine();
+                password = s.nextLine();
+                System.out.println("user: " + username);
+                System.out.println("pass: "+ password);
+                if(password.equals(adminpassinput) && username.equals(adminuserinput)){
+                    break;
+                }   
+                s.nextLine();
+                s.nextLine();
+                s.nextLine();
+            }            
+        }
+        catch(FileNotFoundException e){
+            JOptionPane.showMessageDialog(null, "Program File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+        } 
+        /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
+        if(adminuserinput.equals(MyTree.getAdminID()) && adminpassinput.equals(MyTree.getAdminPass())){
+            AdminFrame.runAdminFrame();
+            lf.dispose();
+            DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
-          
-            JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-            }
+            DataEncryptionFile.metadataEncryption();
             
-            
-            if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-                JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
-            }
-            if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
-                JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
-            }    
+            JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
+        }
+        else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
+            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            UserFrame.runUserFrame();
+        }
+        else if(adminuserinput.equals("") && adminpassinput.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
+        }    
+        
         }
     }//GEN-LAST:event_jTextField1KeyPressed
 
-    
+  
     
     
     
@@ -294,6 +371,42 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    ///////////////////////////////////////////////////////////Method to encrypt entered password to match in userdata file //////////////////////////////////
+     private void encryptCheck( String tempadminpassinput, String tempadminuserinput){
+        adminuserinput="";
+        adminpassinput="";
+        int key=25;
+        
+        for(int i=0; i<tempadminpassinput.length();i++){
+            int a=tempadminpassinput.charAt(i);
+            if(Character.isUpperCase(a)){
+                a=a+(key%26);
+                if(a>'Z')
+                     a=a-26;
+        }
+        else if(Character.isLowerCase(a)){
+            a=a+(key%26);
+            if(a>'z')
+                a=a-26;
+        }       
+        adminpassinput=adminpassinput +(char) a;                
+        }
+        for(int i=0; i<tempadminuserinput.length();i++){
+            int a=tempadminuserinput.charAt(i);
+            if(Character.isUpperCase(a)){
+                a=a+(key%26);
+                if(a>'Z')
+                     a=a-26;
+        }
+        else if(Character.isLowerCase(a)){
+            a=a+(key%26);
+            if(a>'z')
+                a=a-26;
+        }
+        adminuserinput=adminuserinput+(char) a;
+        }        
+}
     
     
 
