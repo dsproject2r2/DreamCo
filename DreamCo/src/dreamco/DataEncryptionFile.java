@@ -99,7 +99,7 @@ public static void fileDecryption() throws IOException{
     }
     bufferedreader.close();
     writeEncryptionFile();
-    encryptedtxt=null;
+    encryptedtxt="";
 }
 
 }

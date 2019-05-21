@@ -44,6 +44,10 @@ public class MyTree {
 
     }
     
+    public static void setParent(String parent){
+        
+    }
+    
     public static void setFee(double fee) {
         classvariablefee = fee;
     }
@@ -72,6 +76,7 @@ public class MyTree {
     public static int getIDCounter(){
         return idCounter;
     }
+    
     public static double getFee() {
         return classvariablefee;
     }
