@@ -190,7 +190,7 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel9);
         jLabel9.setBounds(20, 360, 150, 40);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/DC.jpg"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/UserFrameBackground.png"))); // NOI18N
         jLabel10.setText("jLabel10");
         jPanel1.add(jLabel10);
         jLabel10.setBounds(0, 0, 450, 600);
@@ -215,21 +215,54 @@ public class UserFrame extends javax.swing.JFrame {
         newpassword=jPasswordField1.getText();
         confirmpassword=jPasswordField2.getText();
 
-    
-        encryptNow(newfullname, newpassword);
-        MyTree.setIDCounter(MyTree.getIDCounter()+1);
-        
-        try {
-            updatePendingFile(newfullname, newpassword);
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Pending File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+        if(newfullname.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter a valid username and password!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
         }
-        newfullname="";
-        newpassword="";
-        confirmpassword="";
+        if(newfullname.equals(newpassword)){
+            JOptionPane.showMessageDialog(null, "Your name and password cannot match!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        if(newfullname.length()<8){
+            JOptionPane.showMessageDialog(null, "Please enter your REAL name. I doubt your name is less than 8 characters!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        if(newpassword.length()<8){
+            JOptionPane.showMessageDialog(null, "Please enter a password with a MINIMUM length of 8 characters!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        if(!newfullname.equals("") && newpassword.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter a valid password!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        if(!newfullname.equals("") && !newpassword.equals(confirmpassword)){
+            JOptionPane.showMessageDialog(null, "Passwords do not match!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        if(!newfullname.equals("") && newpassword.equals(confirmpassword) && newpassword.length()>8){               
+            encryptNow(newfullname, newpassword);
+            MyTree.setIDCounter(MyTree.getIDCounter()+1);
+        
+            try {
+                updatePendingFile(newfullname, newpassword);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Pending File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+            }
+            newfullname="";
+            newpassword="";
+            confirmpassword="";
+            jTextField3.setText("");
+            jPasswordField1.setText("");
+            jPasswordField2.setText("");
         
     
-        JOptionPane.showMessageDialog(null, "Thank-you for registering. Your registration request is pending and will be approved by an admin in 2-3 business days.", "  Registration Request Sent", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Thank-you for registering. Your registration request is pending and will be approved by an admin in 2-3 business days.", "  Registration Request Sent", JOptionPane.INFORMATION_MESSAGE);
+            jButton3.setVisible(true);
+            jButton4.setVisible(false);
+            jButton1.setVisible(false);
+            jCheckBox1.setVisible(false);
+            jPasswordField1.setVisible(false);
+            jPasswordField2.setVisible(false);
+            jTextField3.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel9.setVisible(false);
+            jCheckBox1.setSelected(false);
+        }    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
@@ -345,7 +378,7 @@ public class UserFrame extends javax.swing.JFrame {
         bw.write("\n"+ newpassword);
         bw.write("\n"+ MyTree.getIDCounter());        
         bw.write("\n" + newfullname);
-        bw.write("\n" + String.valueOf(0));
+        bw.write("\n" + String.valueOf(0)+"\n");
         bw.close();
     }
     
