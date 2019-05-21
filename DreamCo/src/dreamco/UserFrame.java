@@ -17,9 +17,18 @@ public class UserFrame extends javax.swing.JFrame {
     ////////////////////////////////////////////////////////////////////////Declaration of variables used in this class ////////////////////////////////////////
     private static String newfullname;
     private static String newpassword, confirmpassword;
+    private static String userId;
+    private static String userMoney;
+    
+    public UserFrame(String userID, String userMoney) {
+        initComponents();
+        this.userId=userID;
+        this.userMoney = userMoney;
+    }
     
     public UserFrame() {
         initComponents();
+        
     }
 
     /**
@@ -67,7 +76,7 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(340, 460, 90, 32);
+        jButton4.setBounds(340, 460, 90, 25);
 
         jCheckBox1.setVisible(false);
         jCheckBox1.setBackground(new java.awt.Color(117, 230, 218));
@@ -90,7 +99,7 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(90, 350, 280, 50);
+        jButton3.setBounds(100, 340, 280, 50);
 
         jButton1.setBackground(new java.awt.Color(24, 154, 180));
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -108,17 +117,18 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Myriad Pro", 1, 22)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 255));
         jLabel3.setText("userIDvariable");
+        jLabel3.setText("userID: " + userId);
         jPanel1.add(jLabel3);
         jLabel3.setBounds(150, 220, 170, 30);
 
         jLabel4.setFont(new java.awt.Font("Myriad Pro", 1, 22)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 153, 255));
         jLabel4.setText("userRevenueVariable");
+        jLabel4.setText("userRevenue: RM"+ userMoney);
         jPanel1.add(jLabel4);
         jLabel4.setBounds(120, 250, 220, 30);
 
         jTextField3.setVisible(false);
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -340,10 +350,11 @@ public class UserFrame extends javax.swing.JFrame {
     
     /////////////////////////////////////////////////////////////////// Method to write encrypted string from registration to PENDING file //////////////////////////////
     public static void updatePendingFile(String name, String password) throws IOException{
+        System.out.println("userId: "+userId);
         BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Pending.txt"),true));
         bw.write(String.valueOf(MyTree.getIDCounter()));
         bw.write("\n"+ newpassword);
-        bw.write("\n"+ MyTree.getIDCounter());        
+        bw.write("\n"+ userId);        
         bw.write("\n" + newfullname);
         bw.write("\n" + String.valueOf(0));
         bw.close();

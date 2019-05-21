@@ -1,11 +1,16 @@
 
 package dreamco;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class LoginFrame extends javax.swing.JFrame {
@@ -52,9 +57,9 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel3.setText("Username");
+        jLabel3.setText("UserID");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(15, 101, 78, 19);
+        jLabel3.setBounds(15, 101, 52, 19);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
@@ -85,9 +90,8 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(190, 200, 117, 32);
+        jButton1.setBounds(190, 200, 117, 25);
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +107,6 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel2.add(jTextField1);
         jTextField1.setBounds(111, 92, 338, 39);
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
@@ -117,7 +120,6 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel2.add(jPasswordField1);
         jPasswordField1.setBounds(111, 149, 338, 39);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\jerry\\Desktop\\backgroundtemplate.png")); // NOI18N
         jLabel5.setText("jLabel5");
         jPanel2.add(jLabel5);
         jLabel5.setBounds(0, 0, 520, 270);
@@ -156,7 +158,10 @@ public class LoginFrame extends javax.swing.JFrame {
         
         /////////////////////////////////////////to read user data from file/////////////////////////////////////
         String username="";
+        int userid;
         String password = "-";
+        String name="";
+        String userMoney="";
         try{
             Scanner scan = new Scanner(new FileInputStream("Userdata.txt"));
             while (scan.hasNextLine()) {
@@ -164,11 +169,12 @@ public class LoginFrame extends javax.swing.JFrame {
                 password = scan.nextLine();
                 System.out.println("user: " + username);
                 System.out.println("pass: "+ password);
+                
+                scan.nextLine();
+                name =scan.nextLine();
+                userMoney = scan.nextLine();
                 if(password.equals(adminpassinput) && username.equals(adminuserinput))
                     break;
-                scan.nextLine();
-                scan.nextLine();
-                scan.nextLine();
             }
             
         }catch(FileNotFoundException e){
@@ -181,16 +187,20 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
         }
         else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
-            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.ERROR_MESSAGE);
-            System.out.println("YESS NI USER FRAME");            
+            JOptionPane.showMessageDialog(null, "Welcome back "+ name, "  DreamCo Says...", JOptionPane.ERROR_MESSAGE);
+            System.out.println("YESS NI USER FRAME"); 
+            UserFrame f = new UserFrame(adminuserinput, userMoney);
+            f.runUserFrame();
+            
+            
         }
-        if(adminuserinput.equals("") && adminpassinput.equals("")){
+        else if(adminuserinput.equals("") && adminpassinput.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
         }
-        if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+        else if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
             JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
         }
-        if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
+        else if(!adminuserinput.equals("admin") && !adminpassinput.equals("123")){
             JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
         }        
     }//GEN-LAST:event_jButton1ActionPerformed

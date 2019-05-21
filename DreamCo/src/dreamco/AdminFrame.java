@@ -47,7 +47,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 153));
         jLabel2.setText("Admin");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(190, 130, 70, 23);
+        jLabel2.setBounds(190, 130, 70, 29);
 
         jButton2.setBackground(new java.awt.Color(5, 68, 94));
         jButton2.setForeground(new java.awt.Color(255, 255, 204));
@@ -129,7 +129,8 @@ public class AdminFrame extends javax.swing.JFrame {
 
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    ViewGraphFrame.runViewGraphFrame();
+    MyTree k =  new MyTree();
+        k.displayGraph();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     
@@ -157,6 +158,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        AdminRegistrationFrame.runAdminRegistrationFrame();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
