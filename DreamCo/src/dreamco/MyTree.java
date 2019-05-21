@@ -2,6 +2,7 @@
 package dreamco;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -18,8 +19,8 @@ public class MyTree {
 
     ///////////////////////////////////////////////////////////// Static VARIABLE and OBJECT declarations //////////////////////////////////////////////////////////////////////
 
-    public NodeTree root = new NodeTree("DreamCo");
-    public static int idcounter;    
+    public NodeTree root = new NodeTree("DreamCo",null,new NodeTree("temp"),idCounter);
+    public static int idCounter;    
     private static double classvariablefee;
     private static double commission_gen1, commission_gen2, commission_gen3, commission_gen4, commission_gen5;
     
@@ -27,7 +28,7 @@ public class MyTree {
 
    ////////////////////////////////////////////////////////////////////////////////// CONSTRUCTOR for variable instatiation upon calling NEW CBJECT /////////////////////////////////////////////////// 
     public MyTree(){
-        idcounter=0;
+        idCounter=0;
         classvariablefee=50;
         commission_gen1=0.5;
         commission_gen3=0.12;
@@ -69,7 +70,7 @@ public class MyTree {
     
     ///////////////////////////////////////////////////////////////////////////////////// GETTERS are all here!!! /////////////////////////////////////////////////
     public static int getIDCounter(){
-        return idcounter;
+        return idCounter;
     }
     public static double getFee() {
         return classvariablefee;
@@ -91,57 +92,110 @@ public class MyTree {
         return commission_gen5;
     }
     
-
+    public void addUser(){
+        try{
+            Scanner scan = new Scanner(new FileInputStream("Userdata.txt"));
+            while (scan.hasNextLine()) {
+                String IDs=scan.nextLine();
+                int ID = Integer.parseInt(IDs);
+                
+                String password = scan.nextLine();
+                String parent=scan.nextLine();
+                String username = scan.nextLine();
+                
+                String moneys=scan.nextLine();
+                double money = Double.parseDouble(moneys);
+                
+                addFromFile(username,password,parent,money,ID);
+                System.out.println("user: " + username);
+                System.out.println("pass: "+ password);
+                System.out.println("ID: " + ID);
+                System.out.println("mponey: "+ money);
+                
+            }
+            
+        }catch(FileNotFoundException e){
+            System.out.println("Error: "+e);
+        } 
+    }
     
  
-    public void addFromFile(String name,String password, String parents, double Money, int id){
+    public void addFromFile(String name,String password, String parent, double Money, int id){
         
         NodeTree temp = new NodeTree(name, password, Money, id);
         
         if(root.child.isEmpty()){
             root.child.add(temp);
+            temp.prev=root;
             System.out.println("Adding: " + name + " to " + root.name);
-          //  def.appendFile(name, password, root.name, idCounter);
-          //  def.fileEncryption();
-         //def.fileDecryption();
         }
         else{
-            if(contain(parents)){
-            getNode(parents).child.add(temp);
-            getNode(name).prev=getNode(parents);
-            System.out.println("Adding: " + getNode(name).name + " to " + getNode(parents).name);
-           //  def.appendFile(name, password,parents, idCounter);
+            if(contain(parent)){
+            getNode(parent).child.add(temp);
+            getNode(name).prev=getNode(parent);
+            System.out.println("Adding: " + getNode(name).name + " to " + getNode(parent).name);
             }
             else
                 System.out.println("Cannot add, parent not found");
         }
     }
     
-    
+     public void appendUser() throws IOException{
+       // DFSdisplayAll();
+        
+        MyStack<NodeTree> s = new MyStack();
+        
+        if(root==null)
+            System.out.println("No user");
+        else{        
+            s.push(root);
+            NodeTree temp = root;
+            //DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, "DreamCo", temp.name, temp.money);
+            while(s.getSize()!=0){
+                temp = s.pop();
+                if(temp==null){
+                    System.out.println("aaaa");
+                    continue;}
+                if(temp.name.equals("DreamCo")){
+                    DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, "DreamCo", temp.name, temp.money);
+                }else{
+                    DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, temp.prev.name, temp.name, temp.money);
+                }
+                    System.out.print(' '+ temp.name + " -RM" + temp.money);
+                    for (int i = 0; i < temp.child.size(); i++) {
+                        s.push(temp.child.get(i));
+                    }
+            }
+        System.out.println("");
+        }
+    }
+     
+     
     // add method to use when to create new user
-    public void add(String name,String password, String parents) throws IOException{
-        idcounter++;
-        NodeTree temp = new NodeTree(name, null, null, idcounter);
+    public void add(String name,String password, String parent) throws IOException{
+        idCounter++;
+        NodeTree temp = new NodeTree(name, null, null, idCounter);
         temp.setPassword(password);
-        //DataEncryptionFile def= new DataEncryptionFile();
+       // DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, temp.prev.name, temp.name, temp.money);
         //Nodee.add(temp);
        // System.out.println("afaf"+root.name);
         if(root.child.isEmpty()){
             root.child.add(temp);
-            System.out.println("Adding: " + name + " to " + root.name);
-        //    def.appendFile(name, password, root.name, idCounter);
-          //  def.fileEncryption();
-         //def.fileDecryption();
+            temp.prev=root;
+            System.out.println("Adding: " + name + " to " + temp.prev.name);
+            System.out.println("ID  :   " + temp.ID);
+            //DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, temp.prev.name, temp.name, temp.money);
         }
         else{
-            if(contain(parents)){
-            getNode(parents).child.add(temp);
-            getNode(name).prev=getNode(parents);
-            System.out.println("Adding: " + getNode(name).name + " to " + getNode(parents).name);
-            // def.appendFile(name, password,parents, idCounter);
+            if(contain(parent)){
+            getNode(parent).child.add(temp);
+            temp.prev=getNode(parent);
+            System.out.println("Adding: " + temp.name + " to " + temp.prev.name);
+            System.out.println("ID  :   " + temp.ID);
+            
             NodeTree current = temp;
                     int level = 0;
-                    idcounter++;
+                    idCounter++;
                     while(current.prev!=null){
                     current = current.prev;
                     
@@ -168,6 +222,7 @@ public class MyTree {
                                 break;
                         }
                     }
+            //DataEncryptionFile.appendUserIntoFile(temp.ID, temp.password, temp.prev.name, temp.name, temp.money);
             }
             else
                 System.out.println("Cannot add, parent not found");
@@ -302,8 +357,8 @@ public class MyTree {
     }
     
     public void clear(){
-        root= new NodeTree("DreamCo"); 
-        idcounter=0;
+        root= new NodeTree("DreamCo",null,new NodeTree("temp"),idCounter);
+        idCounter=0;
         System.out.println("All user have been deleted");
     }
     

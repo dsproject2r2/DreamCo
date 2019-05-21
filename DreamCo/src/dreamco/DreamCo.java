@@ -15,7 +15,7 @@ public class DreamCo {
 public static void main(String[] args) throws IOException {
     ///////////////////////////////////////////These are the OBJECTS to use OTHER classes in the package...............
 
-//     LoginFrame.runLoginFrame(); 
+    LoginFrame.runLoginFrame(); 
     //MyTree.startupAdminConfigFile();
    // System.out.println(MyTree.getIDCounter() );
  
