@@ -18,7 +18,6 @@ public class UserFrame extends javax.swing.JFrame {
     private static String newfullname;
     private static String newpassword, confirmpassword;
     
-    
     public UserFrame() {
         initComponents();
     }
@@ -191,7 +190,7 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel9);
         jLabel9.setBounds(20, 360, 150, 40);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/UserFrameBackground.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/DC.jpg"))); // NOI18N
         jLabel10.setText("jLabel10");
         jPanel1.add(jLabel10);
         jLabel10.setBounds(0, 0, 450, 600);
@@ -216,14 +215,19 @@ public class UserFrame extends javax.swing.JFrame {
         newfullname=jTextField3.getText();
         newpassword=jPasswordField1.getText();
         confirmpassword=jPasswordField2.getText();
+
     
-        encryptNow();
+        encryptNow(newfullname, newpassword);
         MyTree.setIDCounter(MyTree.getIDCounter()+1);
+        
         try {
             updatePendingFile(newfullname, newpassword);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Pending File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
         }
+        newfullname="";
+        newpassword="";
+        confirmpassword="";
         
     
         JOptionPane.showMessageDialog(null, "Thank-you for registering. Your registration request is pending and will be approved by an admin in 2-3 business days.", "  Registration Request Sent", JOptionPane.INFORMATION_MESSAGE);
@@ -297,10 +301,28 @@ public class UserFrame extends javax.swing.JFrame {
     }
     
     //////////////////////////////////////////////////////////////////// Method for Encrypting the text upon input before parsing///////////////////////////////////////////
-    private void encryptNow(){
+    private void encryptNow( String tempnewfullname, String tempnewpassword){
+        newfullname="";
+        newpassword="";
         int key=25;
-        for(int i=0; i<newfullname.length();i++){
-            int a=newfullname.charAt(i);
+        
+        for(int i=0; i<tempnewfullname.length();i++){
+            int a=tempnewfullname.charAt(i);
+            if(Character.isUpperCase(a)){
+                a=a+(key%26);
+                if(a>'Z')
+                     a=a-26;
+        }
+        else if(Character.isLowerCase(a)){
+            a=a+(key%26);
+            if(a>'z')
+                a=a-26;
+        }       
+        newfullname=newfullname +(char) a;                
+        }
+        
+        for(int i=0; i<tempnewpassword.length();i++){
+            int a=tempnewpassword.charAt(i);
             if(Character.isUpperCase(a)){
                 a=a+(key%26);
                 if(a>'Z')
@@ -311,20 +333,8 @@ public class UserFrame extends javax.swing.JFrame {
             if(a>'z')
                 a=a-26;
         }
-    }
-        for(int i=0; i<newpassword.length();i++){
-            int a=newpassword.charAt(i);
-            if(Character.isUpperCase(a)){
-                a=a+(key%26);
-                if(a>'Z')
-                     a=a-26;
+        newpassword=newpassword+(char) a;
         }
-        else if(Character.isLowerCase(a)){
-            a=a+(key%26);
-            if(a>'z')
-                a=a-26;
-        }
-    }
         
     }
     
@@ -333,8 +343,10 @@ public class UserFrame extends javax.swing.JFrame {
     public static void updatePendingFile(String name, String password) throws IOException{
         BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Pending.txt"),true));
         bw.write(String.valueOf(MyTree.getIDCounter()));
+        bw.write("\n"+ newpassword);
+        bw.write("\n"+ MyTree.getIDCounter());        
         bw.write("\n" + newfullname);
-        bw.write("\n"+ newpassword+"\n");
+        bw.write("\n" + String.valueOf(0));
         bw.close();
     }
     
