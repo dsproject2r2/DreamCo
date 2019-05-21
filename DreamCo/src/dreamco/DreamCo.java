@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.JFrame;
 
-//by JERRY <#
 
 public class DreamCo {
     
@@ -26,7 +25,8 @@ public static void main(String[] args) throws IOException {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
+
+    SplashScreen.runSplashScreen();        
         
 //    LoginFrame.runLoginFrame(); 
     //MyTree.startupAdminConfigFile();
@@ -36,8 +36,8 @@ public static void main(String[] args) throws IOException {
 //    MyTree.readFee();
 //    System.out.println(MyTree.getFee());
    //  AdminFrame.runAdminFrame();
-     UserFrame.runUserFrame();
-//    SplashScreen.runSplashScreen();
+//     UserFrame.runUserFrame();
+
     
 //    Scanner s=new Scanner(System.in);
 //    System.out.println("enter name");

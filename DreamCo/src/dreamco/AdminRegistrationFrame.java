@@ -175,9 +175,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Thank-you for registering. Welcome to DreamCo!", "  Registration Complete!", JOptionPane.PLAIN_MESSAGE);  
     }//GEN-LAST:event_registrationbuttonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void runAdminRegistrationFrame() {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -189,7 +187,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
     
     
     /////////////////////////////////////////////////////////////////// Method to write encrypted string from registration to PENDING file //////////////////////////////
-    public static void updatePendingFile(String name, String password) throws IOException{
+    public static void updateUserFile(String name, String password) throws IOException{
         BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Userdata.txt"),true));
         bw.write(String.valueOf(MyTree.getIDCounter()));
         bw.write("\n"+ newpassword);

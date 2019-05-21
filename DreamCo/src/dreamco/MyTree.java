@@ -35,7 +35,6 @@ public class MyTree {
         commission_gen2=0.09;
         commission_gen4=0.06;
         commission_gen5=0.03;
-     //   root=null;
     }
     
     
@@ -409,7 +408,8 @@ public class MyTree {
     }
     
     //method to read FEE from textfile upon startup
-    public static void startupAdminConfigFile() throws FileNotFoundException, IOException{
+    public static void startupAdminConfigFile(){
+        try{
         Scanner s= new Scanner(new FileReader("AdminConfig.txt"));
         while(s.hasNextLine()){
             setIDCounter(Integer.parseInt(s.next()));
@@ -421,9 +421,14 @@ public class MyTree {
             setGen5Commission(Double.parseDouble(s.next()));          
         }
         s.close();
+        }
+        catch(IOException e){
+            JOptionPane.showMessageDialog(null, "System File Not Found!", "  System Error!", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
-    public static void updateAdminConfigFile() throws IOException{  
+    public static void updateAdminConfigFile() {  //called by my adminframe class 
+        try{
         PrintWriter pw= new PrintWriter(new FileWriter(new File("AdminConfig.txt")));
         pw.print(getIDCounter());
         pw.print("\n"+getFee());
@@ -433,6 +438,10 @@ public class MyTree {
         pw.print("\n"+getGen4Commission());
         pw.print("\n"+getGen5Commission());
         pw.close();
+        }
+        catch(IOException e){
+            JOptionPane.showMessageDialog(null, "System File Not Found!", "  System Error!", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     

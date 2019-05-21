@@ -1,12 +1,12 @@
 
 package dreamco;
 
-//import java.awt.event.WindowEvent;
-//import java.awt.event.WindowListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-public class AdminFrame extends javax.swing.JFrame /*implements WindowListener*/ {
+public class AdminFrame extends javax.swing.JFrame implements WindowListener {
    
     
     
@@ -32,7 +32,6 @@ public class AdminFrame extends javax.swing.JFrame /*implements WindowListener*/
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,10 +105,6 @@ public class AdminFrame extends javax.swing.JFrame /*implements WindowListener*/
         jPanel1.add(jButton6);
         jButton6.setBounds(60, 490, 330, 50);
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(190, 160, 77, 32);
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/UserFrameBackground.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(450, 600));
@@ -143,11 +138,7 @@ public class AdminFrame extends javax.swing.JFrame /*implements WindowListener*/
         String fee= JOptionPane.showInputDialog(null,"Enter new registration fee", "New Registration Fee", JOptionPane.INFORMATION_MESSAGE);
         if(fee!=null){
             MyTree.setFee(Double.parseDouble(fee));
-            try {
-                MyTree.updateAdminConfigFile();
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "AdminConfig File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
-            }
+            MyTree.updateAdminConfigFile();
             JOptionPane.showMessageDialog(null, "New Registration Fee of RM"+ MyTree.getFee()+ " has been set!" , " SCAM SUCCESS!", JOptionPane.PLAIN_MESSAGE); 
             
             
@@ -183,14 +174,8 @@ public class AdminFrame extends javax.swing.JFrame /*implements WindowListener*/
         });
     }
 
-
-
-    
-    
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -201,47 +186,49 @@ public class AdminFrame extends javax.swing.JFrame /*implements WindowListener*/
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
-//    @Override
-//    public void windowOpened(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    @Override
-//    public void windowClosing(WindowEvent e) {
-//        int prompt=JOptionPane.showConfirmDialog(this, "Are you sure you want to exit sir?", "  Confirm Exit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-//        if(prompt==JOptionPane.YES_OPTION){
-//            System.exit(0);
-//        }
-//        else{
-//            ;
-//        }
-//               
-//    }
-//
-//    @Override
-//    public void windowClosed(WindowEvent e) {
-// 
-//    }
-//
-//    @Override
-//    public void windowIconified(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    @Override
-//    public void windowDeiconified(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    @Override
-//    public void windowActivated(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    @Override
-//    public void windowDeactivated(WindowEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//    
+    @Override
+    public void windowOpened(WindowEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        int prompt=JOptionPane.showConfirmDialog(this, "Are you sure you want to exit sir?", "  Confirm Exit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(prompt==JOptionPane.YES_OPTION){
+            DataEncryptionFile.pendingEncryption();
+            DataEncryptionFile.userDataEncryption();            
+            System.exit(0);
+        }
+        else{
+            ;
+        }
+               
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+ 
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 
 }

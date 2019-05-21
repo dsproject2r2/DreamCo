@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.swing.JOptionPane;
 
 
 public class DataEncryptionFile {
@@ -19,12 +20,12 @@ private static String encryptedtxt1="";
 private static String encryptedtxt2="";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////METHODS ARE ALL BELOW THIS LINE //////////////////////////////////////////////////
-public static void writeEncryptionFile1() throws IOException{
+public static void writeUserDataFile() throws IOException{
     PrintWriter pw= new PrintWriter(new FileWriter(new File("Userdata.txt")));
     pw.print(encryptedtxt1);
     pw.close();
 }
-public static void writeEncryptionFile2() throws IOException{
+public static void writePendingFile() throws IOException{
     PrintWriter pw= new PrintWriter(new FileWriter(new File("Pending.txt")));
     pw.print(encryptedtxt2);
     pw.close();
@@ -42,7 +43,8 @@ public static void appendUserIntoFile(int ID, String password, String parent, St
     pw.close();
     }
 
-public static void userDataEncryption() throws IOException{
+public static void userDataEncryption(){
+    try{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
     StringBuilder br = new StringBuilder();
     String line;
@@ -67,11 +69,16 @@ public static void userDataEncryption() throws IOException{
         encryptedtxt1=encryptedtxt1+(char) a;
     } 
     bufferedreader.close();
-    writeEncryptionFile1();
+    writeUserDataFile();
     encryptedtxt1="";
+    }
+    catch(IOException e){
+        JOptionPane.showMessageDialog(null, "System File Not Found!", "  System Error!", JOptionPane.ERROR_MESSAGE);
+    }
 }
 
-public static void pendingEncryption() throws IOException{
+public static void pendingEncryption(){
+    try{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Pending.txt"));
     StringBuilder br = new StringBuilder();
     String line;
@@ -96,12 +103,17 @@ public static void pendingEncryption() throws IOException{
         encryptedtxt2=encryptedtxt2+(char) a;
     } 
     bufferedreader.close();
-    writeEncryptionFile2();
+    writePendingFile();
     encryptedtxt2="";
+    }
+    catch(IOException e){
+        JOptionPane.showMessageDialog(null, "System File Not Found!", "  System Error!", JOptionPane.ERROR_MESSAGE);
+    }
 }
 
 
-public static void userDataDecryption() throws IOException{
+public static void userDataDecryption() {
+    try{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
     StringBuilder br= new StringBuilder();
     String line;
@@ -126,11 +138,16 @@ public static void userDataDecryption() throws IOException{
         encryptedtxt1=encryptedtxt1+(char) a;
     }
     bufferedreader.close();
-    writeEncryptionFile1();
+    writeUserDataFile();
     encryptedtxt1="";
+    }
+    catch(IOException e){
+        JOptionPane.showMessageDialog(null, "System File Not Found!", "  System Error!", JOptionPane.ERROR_MESSAGE);
+    }
 }
 
-public static void pendingDecryption() throws IOException{
+public static void pendingDecryption() {
+    try{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Pending.txt"));
     StringBuilder br= new StringBuilder();
     String line;
@@ -155,8 +172,12 @@ public static void pendingDecryption() throws IOException{
         encryptedtxt2=encryptedtxt2+(char) a;
     }
     bufferedreader.close();
-    writeEncryptionFile2();
+    writePendingFile();
     encryptedtxt2="";
+    }
+    catch(IOException e){
+        JOptionPane.showMessageDialog(null, "System File Not Found!", "  System Error!", JOptionPane.ERROR_MESSAGE);
+    }
 }
 
 }
