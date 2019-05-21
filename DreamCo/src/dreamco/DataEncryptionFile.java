@@ -15,23 +15,22 @@ import java.io.PrintWriter;
 
 public class DataEncryptionFile {
 
-private static String encryptedtxt="";
+private static String encryptedtxt1="";
+private static String encryptedtxt2="";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////METHODS ARE ALL BELOW THIS LINE //////////////////////////////////////////////////
-public static void writeEncryptionFile() throws IOException{
+public static void writeEncryptionFile1() throws IOException{
     PrintWriter pw= new PrintWriter(new FileWriter(new File("Userdata.txt")));
-    pw.print(encryptedtxt);
+    pw.print(encryptedtxt1);
+    pw.close();
+}
+public static void writeEncryptionFile2() throws IOException{
+    PrintWriter pw= new PrintWriter(new FileWriter(new File("Pending.txt")));
+    pw.print(encryptedtxt2);
     pw.close();
 }
 
-/////////////////////////////////////////////////////This method is to add any names or entries to the file.........................................
-//public static void appendFile(String name, String password, String parent, double total ) throws IOException{
-//    BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Userdata.txt"),true));
-//    bw.write(name);
-//    bw.write("\n" + password);
-//    bw.write("\n"+parent +"\n");
-//    bw.close();
-//    }
+
 
 public static void appendUserIntoFile(int ID, String password, String parent, String name, double money  ) throws IOException{
     PrintWriter pw=new PrintWriter(new FileWriter(new File("Userdata.txt"),true));
@@ -43,7 +42,7 @@ public static void appendUserIntoFile(int ID, String password, String parent, St
     pw.close();
     }
 
-public static void fileEncryption() throws IOException{
+public static void userDataEncryption() throws IOException{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
     StringBuilder br = new StringBuilder();
     String line;
@@ -65,15 +64,44 @@ public static void fileEncryption() throws IOException{
             if(a>'z')
                 a=a-26;
         }
-        encryptedtxt=encryptedtxt+(char) a;
+        encryptedtxt1=encryptedtxt1+(char) a;
     } 
     bufferedreader.close();
-    writeEncryptionFile();
-    encryptedtxt="";
+    writeEncryptionFile1();
+    encryptedtxt1="";
+}
+
+public static void pendingEncryption() throws IOException{
+    BufferedReader bufferedreader = new BufferedReader(new FileReader("Pending.txt"));
+    StringBuilder br = new StringBuilder();
+    String line;
+    int key=25;
+    
+    while((line =bufferedreader.readLine())!=null){
+         br.append(line).append("\n");
+    }
+                  
+    for(int i=0; i<br.length();i++){
+        int a=br.charAt(i);
+            if(Character.isUpperCase(a)){
+                a=a+(key%26);
+                if(a>'Z')
+                     a=a-26;
+        }
+        else if(Character.isLowerCase(a)){
+            a=a+(key%26);
+            if(a>'z')
+                a=a-26;
+        }
+        encryptedtxt2=encryptedtxt2+(char) a;
+    } 
+    bufferedreader.close();
+    writeEncryptionFile2();
+    encryptedtxt2="";
 }
 
 
-public static void fileDecryption() throws IOException{
+public static void userDataDecryption() throws IOException{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
     StringBuilder br= new StringBuilder();
     String line;
@@ -95,11 +123,40 @@ public static void fileDecryption() throws IOException{
             if(a<'a')
                 a=a+26;
         }
-        encryptedtxt=encryptedtxt+(char) a;
+        encryptedtxt1=encryptedtxt1+(char) a;
     }
     bufferedreader.close();
-    writeEncryptionFile();
-    encryptedtxt="";
+    writeEncryptionFile1();
+    encryptedtxt1="";
+}
+
+public static void pendingDecryption() throws IOException{
+    BufferedReader bufferedreader = new BufferedReader(new FileReader("Pending.txt"));
+    StringBuilder br= new StringBuilder();
+    String line;
+    int key=25;
+    
+    while((line =bufferedreader.readLine())!=null){
+        br.append(line).append("\n");
+    }
+
+    for(int i=0; i<br.length();i++){
+        int a=br.charAt(i);
+        if(Character.isUpperCase(a)){
+            a=a-(key%26);        
+            if(a<'A')
+                a=a+26;
+        }
+        else if(Character.isLowerCase(a)){
+            a=a-(key%26);
+            if(a<'a')
+                a=a+26;
+        }
+        encryptedtxt2=encryptedtxt2+(char) a;
+    }
+    bufferedreader.close();
+    writeEncryptionFile2();
+    encryptedtxt2="";
 }
 
 }

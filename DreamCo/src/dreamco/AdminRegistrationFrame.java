@@ -172,7 +172,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
         confirmpassword="";
         
     
-        JOptionPane.showMessageDialog(null, "Thank-you for registering. Your registration request is pending and will be approved by an admin in 2-3 business days.", "  Registration Request Sent", JOptionPane.INFORMATION_MESSAGE);  
+        JOptionPane.showMessageDialog(null, "Thank-you for registering. Welcome to DreamCo!", "  Registration Complete!", JOptionPane.PLAIN_MESSAGE);  
     }//GEN-LAST:event_registrationbuttonActionPerformed
 
     /**

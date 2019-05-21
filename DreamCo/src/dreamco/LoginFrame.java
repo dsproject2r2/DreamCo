@@ -11,13 +11,14 @@ import javax.swing.JOptionPane;
 public class LoginFrame extends javax.swing.JFrame {
     
     //To instantiate the LoginFrame
-    private static LoginFrame lf=new LoginFrame();
     private String adminuserinput;
     private String adminpassinput;
     
     public LoginFrame() {
         initComponents();
     }
+    
+    public static LoginFrame lf= new LoginFrame();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -178,7 +179,16 @@ public class LoginFrame extends javax.swing.JFrame {
         if(adminuserinput.equals("admin") && adminpassinput.equals("123")){
             AdminFrame.runAdminFrame();
             lf.dispose();
-            JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            try{
+            DataEncryptionFile.userDataDecryption();
+            DataEncryptionFile.pendingDecryption();
+            }
+            catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Program File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            
+            JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
         else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
             JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.ERROR_MESSAGE);
@@ -203,8 +213,18 @@ public class LoginFrame extends javax.swing.JFrame {
             if(adminuserinput.equals("admin") && adminpassinput.equals("123")){
                 AdminFrame.runAdminFrame();
                 lf.dispose();
+            try{
+            DataEncryptionFile.userDataDecryption();
+            DataEncryptionFile.pendingDecryption();
+            }
+            catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Program File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+            
                 JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
             }
+            
             if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
                 JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
             }
@@ -223,8 +243,18 @@ public class LoginFrame extends javax.swing.JFrame {
             if(adminuserinput.equals("admin") && adminpassinput.equals("123")){
                 AdminFrame.runAdminFrame();
                 lf.dispose();
+            try{
+            DataEncryptionFile.userDataDecryption();
+            DataEncryptionFile.pendingDecryption();
+            }
+            catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Program File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+            }  
+            
                 JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
             }
+            
+            
             if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
                 JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
             }
@@ -242,9 +272,19 @@ public class LoginFrame extends javax.swing.JFrame {
         
             if(adminuserinput.equals("admin") && adminpassinput.equals("123")){
                 AdminFrame.runAdminFrame();
-                lf.dispose();
+                lf.dispose();            
+            try{
+            DataEncryptionFile.userDataDecryption();
+            DataEncryptionFile.pendingDecryption();
+            }
+            catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Program File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
                 JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
             }
+            
+            
             if(adminuserinput.equals("admin") && !adminpassinput.equals("123")){
                 JOptionPane.showMessageDialog(null, "Invalid Password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
             }
@@ -291,20 +331,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }
     
     
-    ///////////////////////////////////////////////////////////  METHOD TO LOOP THROUGH THE TEXT FILE TO LOOK FOR USER ID /////////////////////////////
-    private void userFileReader(){
-        try{
-        Scanner s= new Scanner(new FileReader("Userdata.txt"));
-        while(s.hasNext()){
-            
-        }
-        
-        }
-        catch(IOException e){
-            JOptionPane.showMessageDialog(null, "Userdata File Not Found!", "File Not Found Error!", JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
