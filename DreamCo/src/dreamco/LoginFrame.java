@@ -42,14 +42,15 @@ public class LoginFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel2.setBackground(new java.awt.Color(31, 97, 147));
+        jPanel2.setForeground(new java.awt.Color(31, 97, 147));
         jPanel2.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Login Authentication");
         jPanel2.add(jLabel2);
@@ -57,28 +58,28 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(102, 102, 102));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel3.setText("UserID");
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("User ID");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(15, 101, 52, 19);
+        jLabel3.setBounds(15, 101, 60, 19);
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome to Dream Corporation! ");
         jPanel2.add(jLabel1);
         jLabel1.setBounds(6, 17, 467, 32);
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password");
         jLabel4.setToolTipText("");
         jPanel2.add(jLabel4);
         jLabel4.setBounds(15, 158, 77, 19);
 
-        jButton1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.darcula.selection.color1"));
-        jButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1.setBackground(new java.awt.Color(255, 255, 153));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Sign In");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,8 +92,9 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(190, 200, 117, 25);
+        jButton1.setBounds(190, 200, 117, 32);
 
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +110,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel2.add(jTextField1);
         jTextField1.setBounds(111, 92, 338, 39);
 
+        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
@@ -120,10 +123,6 @@ public class LoginFrame extends javax.swing.JFrame {
         });
         jPanel2.add(jPasswordField1);
         jPasswordField1.setBounds(111, 149, 338, 39);
-
-        jLabel5.setText("jLabel5");
-        jPanel2.add(jLabel5);
-        jLabel5.setBounds(0, 0, 520, 270);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -435,7 +434,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
