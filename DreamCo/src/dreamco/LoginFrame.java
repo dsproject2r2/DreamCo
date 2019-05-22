@@ -160,21 +160,23 @@ public class LoginFrame extends javax.swing.JFrame {
         adminpassinput=jPasswordField1.getText();
         encryptCheck(adminpassinput, adminuserinput);
         /////////////////////////////////////////to read user data from file/////////////////////////////////////
-        String username="";
+        String userid="";
         String password ="";
+        String name="";
+        String money="";
         try{
             Scanner s = new Scanner(new FileReader("Userdata.txt"));
             while (s.hasNextLine()) {
-                username = s.nextLine();
+                userid = s.nextLine();
                 password = s.nextLine();
-                System.out.println("user: " + username);
+                System.out.println("user: " + userid);
                 System.out.println("pass: "+ password);
-                if(password.equals(adminpassinput) && username.equals(adminuserinput)){
+                s.nextLine();
+                name = s.nextLine();
+                money = s.nextLine();
+                if(password.equals(adminpassinput) && userid.equals(adminuserinput)){
                     break;
-                }   
-                s.nextLine();
-                s.nextLine();
-                s.nextLine();
+                } 
             }            
         }
         catch(FileNotFoundException e){
@@ -192,9 +194,10 @@ public class LoginFrame extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
-        else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
-            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-            UserFrame.runUserFrame();
+        else if(adminuserinput.equals(userid) && adminpassinput.equals(password)){
+            JOptionPane.showMessageDialog(null, "Welcome back "+ userid, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            UserFrame user = new UserFrame(name,money);
+            user.runUserFrame();
         }
         else if(adminuserinput.equals("") && adminpassinput.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
@@ -214,21 +217,23 @@ public class LoginFrame extends javax.swing.JFrame {
         adminpassinput=jPasswordField1.getText();
         encryptCheck(adminpassinput, adminuserinput);
         /////////////////////////////////////////to read user data from file/////////////////////////////////////
-        String username="";
+        String userid="";
         String password ="";
+        String name="";
+        String money="";
         try{
             Scanner s = new Scanner(new FileReader("Userdata.txt"));
             while (s.hasNextLine()) {
-                username = s.nextLine();
+                userid = s.nextLine();
                 password = s.nextLine();
-                System.out.println("user: " + username);
+                System.out.println("user: " + userid);
                 System.out.println("pass: "+ password);
-                if(password.equals(adminpassinput) && username.equals(adminuserinput)){
+                s.nextLine();
+                name = s.nextLine();
+                money = s.nextLine();
+                if(password.equals(adminpassinput) && userid.equals(adminuserinput)){
                     break;
-                }   
-                s.nextLine();
-                s.nextLine();
-                s.nextLine();
+                } 
             }            
         }
         catch(FileNotFoundException e){
@@ -244,9 +249,10 @@ public class LoginFrame extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
-        else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
-            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-            UserFrame.runUserFrame();
+        else if(adminuserinput.equals(userid) && adminpassinput.equals(password)){
+            JOptionPane.showMessageDialog(null, "Welcome back "+ userid, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            UserFrame user = new UserFrame(name,money);
+            user.runUserFrame();
         }
         else if(adminuserinput.equals("") && adminpassinput.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
@@ -266,21 +272,23 @@ public class LoginFrame extends javax.swing.JFrame {
         adminpassinput=jPasswordField1.getText();
         encryptCheck(adminpassinput, adminuserinput);
         /////////////////////////////////////////to read user data from file/////////////////////////////////////
-        String username="";
+        String userid="";
         String password ="";
+        String name="";
+        String money="";
         try{
             Scanner s = new Scanner(new FileReader("Userdata.txt"));
             while (s.hasNextLine()) {
-                username = s.nextLine();
+                userid = s.nextLine();
                 password = s.nextLine();
-                System.out.println("user: " + username);
+                System.out.println("user: " + userid);
                 System.out.println("pass: "+ password);
-                if(password.equals(adminpassinput) && username.equals(adminuserinput)){
+                s.nextLine();
+                name = s.nextLine();
+                money = s.nextLine();
+                if(password.equals(adminpassinput) && userid.equals(adminuserinput)){
                     break;
-                }   
-                s.nextLine();
-                s.nextLine();
-                s.nextLine();
+                } 
             }            
         }
         catch(FileNotFoundException e){
@@ -297,9 +305,10 @@ public class LoginFrame extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
-        else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
-            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-            UserFrame.runUserFrame();
+        else if(adminuserinput.equals(userid) && adminpassinput.equals(password)){
+            JOptionPane.showMessageDialog(null, "Welcome back "+ userid, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            UserFrame user = new UserFrame(name,money);
+            user.runUserFrame();
         }
         else if(adminuserinput.equals("") && adminpassinput.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
@@ -319,21 +328,23 @@ public class LoginFrame extends javax.swing.JFrame {
         adminpassinput=jPasswordField1.getText();
         encryptCheck(adminpassinput, adminuserinput);
         /////////////////////////////////////////to read user data from file/////////////////////////////////////
-        String username="";
+                String userid="";
         String password ="";
+        String name="";
+        String money="";
         try{
             Scanner s = new Scanner(new FileReader("Userdata.txt"));
             while (s.hasNextLine()) {
-                username = s.nextLine();
+                userid = s.nextLine();
                 password = s.nextLine();
-                System.out.println("user: " + username);
+                System.out.println("user: " + userid);
                 System.out.println("pass: "+ password);
-                if(password.equals(adminpassinput) && username.equals(adminuserinput)){
+                s.nextLine();
+                name = s.nextLine();
+                money = s.nextLine();
+                if(password.equals(adminpassinput) && userid.equals(adminuserinput)){
                     break;
-                }   
-                s.nextLine();
-                s.nextLine();
-                s.nextLine();
+                } 
             }            
         }
         catch(FileNotFoundException e){
@@ -350,9 +361,10 @@ public class LoginFrame extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
-        else if(adminuserinput.equals(username) && adminpassinput.equals(password)){
-            JOptionPane.showMessageDialog(null, "Welcome back "+ username, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-            UserFrame.runUserFrame();
+        else if(adminuserinput.equals(userid) && adminpassinput.equals(password)){
+            JOptionPane.showMessageDialog(null, "Welcome back "+ userid, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            UserFrame user = new UserFrame(name,money);
+            user.runUserFrame();
         }
         else if(adminuserinput.equals("") && adminpassinput.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter your username and password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
