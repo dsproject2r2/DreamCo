@@ -76,7 +76,7 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(340, 460, 90, 25);
+        jButton4.setBounds(340, 460, 90, 32);
 
         jCheckBox1.setVisible(false);
         jCheckBox1.setBackground(new java.awt.Color(0, 153, 153));
@@ -202,7 +202,7 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel9);
         jLabel9.setBounds(20, 360, 150, 40);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/UserFrameBackground.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/DC.jpg"))); // NOI18N
         jLabel10.setText("jLabel10");
         jPanel1.add(jLabel10);
         jLabel10.setBounds(0, 0, 450, 600);
