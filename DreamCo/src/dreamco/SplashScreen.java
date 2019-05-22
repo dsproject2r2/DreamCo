@@ -38,7 +38,7 @@ public class SplashScreen extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 390, 700, 20);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/DreamCoSplash.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/SplashScreen.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(0, 0, 700, 460);
@@ -73,7 +73,7 @@ public class SplashScreen extends javax.swing.JFrame {
         ///////////////////////////////////////////////////////////////////Progress Counter Starts here
         try{
             for(int i=0;i<=100;i++){
-                Thread.sleep(20);
+                Thread.sleep(40);
                 sc.loadingbar.setValue(i);
                 
                 
