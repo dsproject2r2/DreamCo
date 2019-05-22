@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author Jeremiah
  */
-public class AdminRegistrationFrame extends javax.swing.JFrame {
+public class AdminRegistrationFrame extends javax.swing.JFrame  {
 
 
     private static String newfullname;
@@ -29,6 +29,8 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
     public AdminRegistrationFrame() {
         initComponents();
     }
+    
+    public static AdminRegistrationFrame adminregistrationframe = new AdminRegistrationFrame();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,10 +52,11 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
         cancelbutton = new javax.swing.JButton();
         registrationbutton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(null);
 
+        namefield.setEnabled(true);
         namefield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namefieldActionPerformed(evt);
@@ -108,7 +111,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cancelbutton);
-        cancelbutton.setBounds(370, 210, 90, 25);
+        cancelbutton.setBounds(370, 210, 90, 32);
 
         registrationbutton.setBackground(new java.awt.Color(24, 154, 180));
         registrationbutton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -192,7 +195,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminRegistrationFrame().setVisible(true);
+                adminregistrationframe.setVisible(true);
             }
         });
     }

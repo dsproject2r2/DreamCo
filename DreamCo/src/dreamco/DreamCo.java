@@ -29,8 +29,10 @@ public static void main(String[] args) throws IOException {
     }
 
     MyTree.startupAdminConfigFiles();
-    SplashScreen.runSplashScreen();        
-
+    
+    SplashScreen sc= new SplashScreen();
+    sc.runSplashScreen();        
+ 
 //DataEncryptionFile.metadataDecryption();
 //DataEncryptionFile.metadataEncryption();
 

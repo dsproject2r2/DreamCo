@@ -62,7 +62,7 @@ public class SplashScreen extends javax.swing.JFrame {
     
     
     
-    public static void runSplashScreen() {      
+    public void runSplashScreen() {      
         SplashScreen sc= new SplashScreen();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -100,7 +100,8 @@ public class SplashScreen extends javax.swing.JFrame {
         catch(Exception e){
         }
         sc.setVisible(false);
-        LoginFrame.runLoginFrame();
+        LoginFrame lf= new LoginFrame();
+        lf.runLoginFrame();
         sc.dispose();        
         
     }

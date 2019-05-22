@@ -182,7 +182,8 @@ public class LoginFrame extends javax.swing.JFrame {
         } 
         /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
         if(adminuserinput.equals(MyTree.getAdminID()) && adminpassinput.equals(MyTree.getAdminPass())){
-            AdminFrame.runAdminFrame();
+            AdminFrame af= new AdminFrame();
+            af.runAdminFrame();
             lf.dispose();
             DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
@@ -235,8 +236,8 @@ public class LoginFrame extends javax.swing.JFrame {
         } 
         /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
         if(adminuserinput.equals(MyTree.getAdminID()) && adminpassinput.equals(MyTree.getAdminPass())){
-            AdminFrame.runAdminFrame();
-            lf.dispose();
+            AdminFrame af= new AdminFrame();
+            af.runAdminFrame();
             DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
             DataEncryptionFile.metadataDecryption();
@@ -287,7 +288,8 @@ public class LoginFrame extends javax.swing.JFrame {
         } 
         /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
         if(adminuserinput.equals(MyTree.getAdminID()) && adminpassinput.equals(MyTree.getAdminPass())){
-            AdminFrame.runAdminFrame();
+            AdminFrame af= new AdminFrame();
+            af.runAdminFrame();
             lf.dispose();
             DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
@@ -339,7 +341,8 @@ public class LoginFrame extends javax.swing.JFrame {
         } 
         /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
         if(adminuserinput.equals(MyTree.getAdminID()) && adminpassinput.equals(MyTree.getAdminPass())){
-            AdminFrame.runAdminFrame();
+            AdminFrame af= new AdminFrame();
+            af.runAdminFrame();
             lf.dispose();
             DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
@@ -366,7 +369,7 @@ public class LoginFrame extends javax.swing.JFrame {
     
     
     /////////////////////////////////////////////////////////// CALL THIS METHOD TO RUN THE LOGIN FRAME //////////////////////////////////////////////
-    public static void runLoginFrame() {        
+    public void runLoginFrame() {        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 lf.setVisible(true);

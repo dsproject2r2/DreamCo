@@ -1,20 +1,27 @@
 
 package dreamco;
 
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-public class AdminFrame extends javax.swing.JFrame implements WindowListener {
+
+
+
+
+public class AdminFrame extends javax.swing.JFrame {
    
-    
+
     
     public AdminFrame() {
         initComponents();
     }
+    
+        
 
-    public static AdminFrame adminframe= new AdminFrame();    
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -169,18 +176,55 @@ public class AdminFrame extends javax.swing.JFrame implements WindowListener {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     ////////////////////////////////////////////////////////////////////////////////////////////////MAIN METHOD TO RUN THIS CLASS JFRAME ////////////////////////
-    public static void runAdminFrame() {
+    public void runAdminFrame() {
 
         
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {                
+            public void run() {        
+                AdminFrame adminframe= new AdminFrame();   
                 adminframe.setVisible(true);
                 adminframe.setSize(455,635);
-                adminframe.addWindowListener(adminframe);
+                adminframe.addWindowListener( new WindowAdapter()
+                {
+                 public void windowClosing(WindowEvent e)
+                {
+                        AdminFrame frame = (AdminFrame)e.getSource();
+ 
+                     int result = JOptionPane.showConfirmDialog(
+                    frame,
+                    "Are you sure you want to exit the application?",
+                    "Exit Application",
+                    JOptionPane.YES_NO_OPTION);
+ 
+                    if (result == JOptionPane.YES_OPTION)
+                    DataEncryptionFile.userdataEncryption();
+                    DataEncryptionFile.pendingEncryption();
+                    DataEncryptionFile.metadataEncryption();
+                    adminframe.setDefaultCloseOperation(AdminFrame.EXIT_ON_CLOSE);
+                }
+            });
+                adminframe.setVisible( true );
                  
             }
         });
     }
+//  WindowListener exitListener = new WindowAdapter() {
+
+//    @Override
+//    public void windowClosing(WindowEvent e) {
+//        int confirm = JOptionPane.showOptionDialog(
+//             null, "Are You Sure to Close Application?", 
+//             "Exit Confirmation", JOptionPane.YES_NO_OPTION, 
+//             JOptionPane.QUESTION_MESSAGE, null, null, null);
+//        if (confirm == 0) {
+//           System.exit(0);
+//        }
+//    }
+//};
+
+    
+
+
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -194,52 +238,10 @@ public class AdminFrame extends javax.swing.JFrame implements WindowListener {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void windowOpened(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public void windowClosing(WindowEvent e) {
-        int prompt=JOptionPane.showConfirmDialog(this, "Are you sure you want to exit sir?", "  Confirm Exit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if(prompt==JOptionPane.YES_OPTION){
 
-            DataEncryptionFile.pendingEncryption();
-            DataEncryptionFile.userdataEncryption();  
-            DataEncryptionFile.metadataEncryption();
 
-            System.exit(0);
-        }
-        else{
-            ;
-        }
-               
-    }
 
-    @Override
-    public void windowClosed(WindowEvent e) {
- 
-    }
 
-    @Override
-    public void windowIconified(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void windowDeiconified(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void windowActivated(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 
 }
