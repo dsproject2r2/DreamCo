@@ -6,13 +6,20 @@
 package dreamco;
 
 import static dreamco.UserFrame.updatePendingFile;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -20,12 +27,21 @@ import javax.swing.JOptionPane;
  */
 public class AdminRegistrationFrame extends javax.swing.JFrame  {
 
-
+    private static DefaultListModel dlm1= new DefaultListModel();
+    private static DefaultListModel dlm2= new DefaultListModel();    
     private static String newfullname;
     private static String newpassword, confirmpassword;
+    private static ArrayList <String> idlist1 = new ArrayList<>(); 
+    private static ArrayList <String> namelist1= new ArrayList<>();
+    private static ArrayList <String> passwordlist1= new ArrayList<>();
+    private static ArrayList <String> parentidlist1= new ArrayList<>();
+    private static ArrayList <String> idlist2 = new ArrayList<>(); 
+    private static ArrayList <String> namelist2= new ArrayList<>();
+    private static ArrayList <String> passwordlist2= new ArrayList<>();
+    private static ArrayList <String> parentidlist2= new ArrayList<>();
+    private static ArrayList <String> moneylist2= new ArrayList<>();
     
-    
-    
+ 
     public AdminRegistrationFrame() {
         initComponents();
     }
@@ -51,6 +67,14 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         checkboxtc = new javax.swing.JCheckBox();
         cancelbutton = new javax.swing.JButton();
         registrationbutton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        addbutton1 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,7 +87,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(namefield);
-        namefield.setBounds(200, 60, 260, 40);
+        namefield.setBounds(190, 40, 260, 40);
 
         jLabel6.setBackground(new java.awt.Color(102, 102, 102));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -71,7 +95,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jLabel6.setText("Enter Full Name");
         jLabel6.setToolTipText("This will be your username when logging in");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(50, 60, 150, 40);
+        jLabel6.setBounds(40, 40, 150, 40);
 
         jLabel9.setBackground(new java.awt.Color(102, 102, 102));
         jLabel9.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -79,9 +103,9 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jLabel9.setText("New Password");
         jLabel9.setToolTipText("make sure your password is secure but easy to  remember as well!");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(50, 110, 150, 40);
+        jLabel9.setBounds(40, 90, 150, 40);
         jPanel1.add(newpasswordfield);
-        newpasswordfield.setBounds(200, 110, 260, 40);
+        newpasswordfield.setBounds(190, 90, 260, 40);
 
         jLabel7.setBackground(new java.awt.Color(102, 102, 102));
         jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -89,9 +113,9 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jLabel7.setText("Confirm Password");
         jLabel7.setToolTipText("make sure your password is secure but easy to  remember as well!");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(50, 160, 150, 40);
+        jLabel7.setBounds(40, 140, 150, 40);
         jPanel1.add(confirmpasswordfield);
-        confirmpasswordfield.setBounds(200, 160, 260, 40);
+        confirmpasswordfield.setBounds(190, 140, 260, 40);
 
         checkboxtc.setBackground(new java.awt.Color(117, 230, 218));
         checkboxtc.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,7 +126,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(checkboxtc);
-        checkboxtc.setBounds(50, 210, 200, 30);
+        checkboxtc.setBounds(40, 190, 200, 30);
 
         cancelbutton.setText("Cancel");
         cancelbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -111,12 +135,12 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(cancelbutton);
-        cancelbutton.setBounds(370, 210, 90, 32);
+        cancelbutton.setBounds(360, 190, 90, 32);
 
         registrationbutton.setBackground(new java.awt.Color(24, 154, 180));
         registrationbutton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         registrationbutton.setForeground(new java.awt.Color(255, 255, 255));
-        registrationbutton.setText("Register User and get that bread!");
+        registrationbutton.setText("Register User!");
         registrationbutton.setVisible(false);
         registrationbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,13 +148,61 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(registrationbutton);
-        registrationbutton.setBounds(120, 270, 280, 50);
+        registrationbutton.setBounds(110, 250, 280, 50);
+
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(30, 430, 260, 300);
+
+        addbutton1.setText("Approve");
+        addbutton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addbutton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addbutton1);
+        addbutton1.setBounds(300, 430, 77, 32);
+
+        jButton1.setText("Remove");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(300, 470, 76, 32);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(410, 430, 250, 300);
+
+        jList2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList2MouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jList2);
+
+        jPanel1.add(jScrollPane3);
+        jScrollPane3.setBounds(810, 430, 290, 300);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 989, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,19 +261,188 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
     
         JOptionPane.showMessageDialog(null, "Thank-you for registering. Welcome to DreamCo!", "  Registration Complete!", JOptionPane.PLAIN_MESSAGE);  
     }//GEN-LAST:event_registrationbuttonActionPerformed
+  ////////////////////////////////////////////////////////////////////////////////////////////// Method for Pending User selection ////////////////////////////////////////////
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+       
+        boolean checkselection = !jList2.isSelectionEmpty();
+        if(checkselection){
+            jList2.clearSelection();
+        }
+        
+        
+        String selected=jList1.getSelectedValue().toString();
+        String parent="";
+             
+        for(int i=0; i<namelist1.size(); i++){
+            if(selected.equals(namelist1.get(i))){
+                for(int j=0; j<namelist1.size(); j++){
+                    if(parentidlist1.get(i).equals(idlist1.get(j))){
+                        parent=namelist1.get(j);
+                    }
+                }
+                if(parent.equals("")){
+                    parent="( N/A - ADMIN )";
+                }
+                jTextArea1.setText(" Full Name: "+jList1.getSelectedValue().toString()+ "\n\n UserID: dcuser"+idlist1.get(i)+ "\n\n Password: "+ passwordlist1.get(i)+"\n\n Product Referrer: "+parent);
+                break;
+            }
+        }
+    }//GEN-LAST:event_jList1MouseClicked
+  
+////////////////////////////////////////////////////////////////////////////////////////// Method for Registered user selection //////////////////////////////////////////////////
+    private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
+                                  
+        boolean checkselection = !jList1.isSelectionEmpty();
+        if(checkselection){
+            jList1.clearSelection();
+        }
+        
+        String selected=jList2.getSelectedValue().toString();
+        String parent="";
+
+        for(int i=0; i<namelist2.size(); i++){
+            if(selected.equals(namelist2.get(i))){
+                for(int j=0; j<namelist2.size(); j++){
+                    if(parentidlist2.get(i).equals(idlist2.get(j))){
+                        parent=namelist2.get(j);
+                    }
+                }
+                if(parent.equals("")){
+                    parent="( N/A - ADMIN )";
+                }
+                jTextArea1.setText(" Full Name: "+jList2.getSelectedValue().toString()+ "\n\n UserID: dcuser"+idlist2.get(i)+ "\n\n Password: "+ passwordlist2.get(i)+"\n\n Product Referrer: "+parent+"\n\n Total Revenue Generated: RM"+moneylist2.get(i));
+                break;
+            }
+        }
+    }//GEN-LAST:event_jList2MouseClicked
+
+    /////////////////////////////////////////////////////////////////////////////////////  NI UTK BUTTON APPROVE PENDING USERS - HELLO RAIHAN KAT SINI! ////////////////////////////
+    private void addbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbutton1ActionPerformed
+        String selected=jList1.getSelectedValue().toString();
+        String parent="";
+             
+        for(int i=0; i<namelist1.size(); i++){
+            if(selected.equals(namelist1.get(i))){
+                for(int j=0; j<namelist1.size(); j++){
+                    if(parentidlist1.get(i).equals(idlist1.get(j))){
+                        parent=namelist1.get(j);
+                    }
+                }
+                if(parent.equals("")){
+                    parent="( N/A - ADMIN )";
+                }
+                /* Insert your code here bagi approve user and append UserDataFile just put the method for what you want to do when you click the APPROVE button
+                /////////////////
+                ////////////////  bahagian ni gunna arraylist dgn forloop. bhgn ni akan bandingkan selected value kat jlist dgn element kat index for loop. 
+                //////////////       so just guna    
+                ///////////////
+                ///////////////       !variable to get!          ! what variable you will get!
+                //////////////     parentidlist1.get(i)       -user parent yg recommend DreamCo   
+                //////////////     namelist1.get(i)           -user full name
+                //////////////     passwordlist1.get(i)       - user password
+                                   idlist1.get(i)             - user id
+                */
+                break;
+            }
+        }
+    }//GEN-LAST:event_addbutton1ActionPerformed
+  
+    
+/////////////////////////////////////////////////////////////////////// REMOVE USER FROM PENDING LIST /////////////////////////////////////////////////////
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String selected=jList1.getSelectedValue().toString();
+        String parent="";
+        File newfile= new File("Temp.txt");
+        File oldfile= new File("Pending");
+        
+        System.out.println(namelist1);
+        System.out.println(idlist1);
+        System.out.println(passwordlist1);
+        System.out.println(parentidlist1);
+        
+        
+        
+        for(int i=0; i<namelist1.size(); i++){
+            if(selected.equals(namelist1.get(i))){
+                for(int j=0; j<namelist1.size(); j++){
+                    if(parentidlist1.get(i).equals(idlist1.get(j))){
+                        parent=namelist1.get(j);
+                    }
+                }
+                if(parent.equals("")){
+                    parent="( N/A - ADMIN )";
+                }
+                System.out.println(namelist1.get(i));
+                
+                try{                   
+                    PrintWriter pw= new PrintWriter(new BufferedWriter( new FileWriter("Temp.txt",true)));
+                    Scanner s= new Scanner(new File("Pending.txt"));
+                    s.useDelimiter("[,\n]");
+                    
+                    while(s.hasNext()){       
+                        for(int j=0; j<namelist1.size(); j++){
+                            if(j==i){
+                                s.nextLine();
+                                s.nextLine();
+                                s.nextLine();
+                                s.nextLine();
+                                s.nextLine();
+                            }
+                            else{
+                                pw.print(s.nextLine());
+                                pw.print("\n"+s.nextLine());
+                                pw.print("\n"+s.nextLine());
+                                pw.print("\n"+s.nextLine());
+                                pw.print("\n0\n");
+                                s.nextLine();
+                            }
+                        }   
+                    }
+                    s.close();
+                    pw.flush();
+                    pw.close(); 
+                    oldfile.delete();
+                    File dump= new File("Pending.txt");
+                    newfile.renameTo(dump);
+                       
+                }
+                catch(IOException e){
+                    JOptionPane.showMessageDialog(null, "System File Not Found! ", " System File Error! ", JOptionPane.ERROR_MESSAGE);
+                }
+                
+                idlist1.remove(i);
+                passwordlist1.remove(i);
+                namelist1.remove(i);
+                dlm1.removeElement(selected); 
+                System.out.println(i);
+
+                break;
+            }
+        }
+ 
 
 
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+
+    
+    /////////////////////////////////////////////////////////////////// MAIN RUNNING METHOD FOR THE FRAME  ///////////////////////////////////////////////////
     public static void runAdminRegistrationFrame() {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 adminregistrationframe.setVisible(true);
+                jList1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                jList2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                getPendingNameList();
+                getDreamCoNameList();
+
             }
         });
     }
     
     
-    /////////////////////////////////////////////////////////////////// Method to write encrypted string from registration to PENDING file //////////////////////////////
+    ///////////////////////////////////////////////////// Method to write encrypted string from registration to PENDING file for registration //////////////////////////////USELESS???
     public static void updateUserFile(String name, String password) throws IOException{
         BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Userdata.txt"),true));
         bw.write(String.valueOf(MyTree.getIDCounter()));
@@ -211,15 +452,72 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         bw.write("\n" + String.valueOf(0));
         bw.close();
     }
+    
+    
+    ///////////////////////////////////////////////////////////// Method ArrayList to get PENDING namelist      //////////////////////////////////////
+    public static void getPendingNameList(){  
+        try{
+            Scanner s= new Scanner(new FileReader("Pending.txt"));        
+            while(s.hasNextLine()){
+                idlist1.add(s.nextLine());
+                passwordlist1.add(s.nextLine());                
+                parentidlist1.add(s.nextLine());
+                namelist1.add(s.nextLine());     
+                s.nextLine();
+            } 
+        }
+        catch (IOException e){
+            JOptionPane.showMessageDialog(null, "User Files Not Found! ", "  System File Error!",  JOptionPane.ERROR_MESSAGE);
+        }     
+            jList1.setModel(dlm1);
+            
+            for(int i=0; i<namelist1.size(); i++){
+                dlm1.addElement(namelist1.get(i));            
+            }
+    }
+    ////////////////////////////////////////////////////////////// Method ArrayList to get DREAMCO USERDATA namelist      //////////////////////////////
+    public static void getDreamCoNameList(){  
+        try{
+            Scanner s= new Scanner(new FileReader("Userdata.txt"));        
+            while(s.hasNextLine()){
+                idlist2.add(s.nextLine());
+                passwordlist2.add(s.nextLine());                
+                parentidlist2.add(s.nextLine());
+                namelist2.add(s.nextLine());     
+                moneylist2.add(s.nextLine());
+            } 
+        }
+        catch (IOException e){
+            JOptionPane.showMessageDialog(null, "User Files Not Found! ", "  System File Error!",  JOptionPane.ERROR_MESSAGE);
+        }     
+            jList2.setModel(dlm2);
+            
+            for(int i=0; i<namelist2.size(); i++){
+                dlm2.addElement(namelist2.get(i));            
+            }
+    }
+    
+
+    
+
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addbutton1;
     private javax.swing.JButton cancelbutton;
     private javax.swing.JCheckBox checkboxtc;
     private javax.swing.JPasswordField confirmpasswordfield;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private static javax.swing.JList<String> jList1;
+    private static javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField namefield;
     private javax.swing.JPasswordField newpasswordfield;
     private javax.swing.JButton registrationbutton;
