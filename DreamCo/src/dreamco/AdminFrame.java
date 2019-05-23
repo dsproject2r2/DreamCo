@@ -51,14 +51,14 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Lucida Fax", 1, 30)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Fax", 1, 22)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 153));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Admin");
         jLabel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(140, 130, 190, 60);
+        jLabel2.setBounds(170, 160, 110, 40);
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
