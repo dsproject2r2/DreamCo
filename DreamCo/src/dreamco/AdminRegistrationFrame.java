@@ -264,6 +264,12 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
   ////////////////////////////////////////////////////////////////////////////////////////////// Method for Pending User selection ////////////////////////////////////////////
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
        
+        System.out.println("namelist"+namelist1);
+        System.out.println("idlist"+idlist1);
+        System.out.println("password"+passwordlist1);
+        System.out.println("parent"+parentidlist1);
+        System.out.println("\n");
+        
         boolean checkselection = !jList2.isSelectionEmpty();
         if(checkselection){
             jList2.clearSelection();
@@ -363,76 +369,27 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String selected=jList1.getSelectedValue().toString();
         String parent="";
-        File newfile= new File("Temp.txt");
-        File oldfile= new File("Pending");
-        
-        System.out.println(namelist1);
-        System.out.println(idlist1);
-        System.out.println(passwordlist1);
-        System.out.println(parentidlist1);
-        
-        
-        
+
+        System.out.println("namelist"+namelist1);
+        System.out.println("idlist"+idlist1);
+        System.out.println("password"+passwordlist1);
+        System.out.println("parent"+parentidlist1);
+                
         for(int i=0; i<namelist1.size(); i++){
             if(selected.equals(namelist1.get(i))){
-                for(int j=0; j<namelist1.size(); j++){
-                    if(parentidlist1.get(i).equals(idlist1.get(j))){
-                        parent=namelist1.get(j);
-                    }
-                }
-                if(parent.equals("")){
-                    parent="( N/A - ADMIN )";
-                }
+                
                 System.out.println(namelist1.get(i));
                 
-                try{                   
-                    PrintWriter pw= new PrintWriter(new BufferedWriter( new FileWriter("Temp.txt",true)));
-                    Scanner s= new Scanner(new File("Pending.txt"));
-                    s.useDelimiter("[,\n]");
-                    
-                    while(s.hasNext()){       
-                        for(int j=0; j<namelist1.size(); j++){
-                            if(j==i){
-                                s.nextLine();
-                                s.nextLine();
-                                s.nextLine();
-                                s.nextLine();
-                                s.nextLine();
-                            }
-                            else{
-                                pw.print(s.nextLine());
-                                pw.print("\n"+s.nextLine());
-                                pw.print("\n"+s.nextLine());
-                                pw.print("\n"+s.nextLine());
-                                pw.print("\n0\n");
-                                s.nextLine();
-                            }
-                        }   
-                    }
-                    s.close();
-                    pw.flush();
-                    pw.close(); 
-                    oldfile.delete();
-                    File dump= new File("Pending.txt");
-                    newfile.renameTo(dump);
-                       
-                }
-                catch(IOException e){
-                    JOptionPane.showMessageDialog(null, "System File Not Found! ", " System File Error! ", JOptionPane.ERROR_MESSAGE);
-                }
                 
                 idlist1.remove(i);
                 passwordlist1.remove(i);
                 namelist1.remove(i);
+                parentidlist1.remove(i);
                 dlm1.removeElement(selected); 
                 System.out.println(i);
-
                 break;
             }
         }
- 
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
