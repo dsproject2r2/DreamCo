@@ -91,9 +91,8 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.add(jCheckBox1);
         jCheckBox1.setBounds(20, 460, 200, 30);
 
-        jButton3.setBackground(new java.awt.Color(31, 97, 148));
+        jButton3.setBackground(new java.awt.Color(255, 255, 153));
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Register a NEW CLIENT!");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,9 +102,8 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.add(jButton3);
         jButton3.setBounds(90, 330, 280, 50);
 
-        jButton1.setBackground(new java.awt.Color(31, 97, 148));
+        jButton1.setBackground(new java.awt.Color(255, 255, 153));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Register User and get that bread!");
         jButton1.setVisible(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
