@@ -167,8 +167,8 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        AdminRegistrationFrame.runAdminRegistrationFrame();
+        AdminRegistrationFrame ar= new AdminRegistrationFrame();
+        ar.runAdminRegistrationFrame();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -208,25 +208,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
     }
-//  WindowListener exitListener = new WindowAdapter() {
 
-//    @Override
-//    public void windowClosing(WindowEvent e) {
-//        int confirm = JOptionPane.showOptionDialog(
-//             null, "Are You Sure to Close Application?", 
-//             "Exit Confirmation", JOptionPane.YES_NO_OPTION, 
-//             JOptionPane.QUESTION_MESSAGE, null, null, null);
-//        if (confirm == 0) {
-//           System.exit(0);
-//        }
-//    }
-//};
-
-    
-
-
-
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

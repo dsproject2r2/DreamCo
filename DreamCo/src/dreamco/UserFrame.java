@@ -54,8 +54,9 @@ public class UserFrame extends javax.swing.JFrame {
         jPasswordField2 = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
         jScrollPane1.setViewportView(jTree1);
@@ -100,7 +101,7 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(100, 340, 280, 50);
+        jButton3.setBounds(90, 330, 280, 50);
 
         jButton1.setBackground(new java.awt.Color(31, 97, 148));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -115,19 +116,21 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(90, 520, 280, 50);
 
-        jLabel3.setFont(new java.awt.Font("Myriad Pro Light", 0, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(153, 153, 255));
+        jLabel3.setFont(new java.awt.Font("Myriad Pro", 1, 22)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("userIDvariable");
-        jLabel3.setText("userID: " + userId);
+        jLabel3.setText("User ID: dcuser" + userId);
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(150, 220, 170, 30);
+        jLabel3.setBounds(0, 180, 450, 30);
 
         jLabel4.setFont(new java.awt.Font("Myriad Pro", 1, 22)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 153, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 153));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("userRevenueVariable");
-        jLabel4.setText("userRevenue: RM"+ userMoney);
+        jLabel4.setText("Total Revenue Today:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(120, 250, 220, 30);
+        jLabel4.setBounds(0, 210, 450, 30);
 
         jTextField3.setVisible(false);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -164,35 +167,6 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel7);
         jLabel7.setBounds(20, 410, 150, 40);
 
-        jLabel8.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel8.setFont(new java.awt.Font("Myriad Pro Light", 0, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 153));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Daily Message");
-        jLabel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
-        Random r= new Random();
-        int randomselector;
-        randomselector=r.nextInt(4);
-        switch (randomselector){
-            case 0:
-            jLabel8.setText("It's all about your perception! Build your empire now!");
-            break;
-            case 1:
-            jLabel8.setText("register now for a special surprise <3");
-            break;
-            case 2:
-            jLabel8.setText("Money money money, must be funny, in a rich man's world");
-            break;
-            case 3:
-            jLabel8.setText("Bring me the money!");
-            break;
-            case 4:
-            jLabel8.setText("Get more people into the mlm sca...did I say scam? I mean business...");
-            break;
-        }
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(0, 120, 450, 30);
-
         jLabel9.setVisible(false);
         jLabel9.setBackground(new java.awt.Color(102, 102, 102));
         jLabel9.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -201,6 +175,43 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel9.setToolTipText("make sure your password is secure but easy to  remember as well!");
         jPanel1.add(jLabel9);
         jLabel9.setBounds(20, 360, 150, 40);
+
+        jLabel1.setBackground(new java.awt.Color(121, 192, 234));
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 153));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("jLabel1");
+        Random r= new Random();
+        int randomselector;
+        randomselector=r.nextInt(4);
+        switch (randomselector){
+            case 0:
+            jLabel1.setText("It's all about your perception! Build your empire now!");
+            break;
+            case 1:
+            jLabel1.setText("register now for a special surprise <3");
+            break;
+            case 2:
+            jLabel1.setText("Money money money, must be funny, in a rich man's world");
+            break;
+            case 3:
+            jLabel1.setText("Bring me the money!");
+            break;
+            case 4:
+            jLabel1.setText("Get more people into the mlm sca...did I say scam? I mean business...");
+            break;
+        }
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 110, 450, 30);
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("jLabel2");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel2.setText("RM "+userMoney);
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(0, 240, 450, 70);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/DC.jpg"))); // NOI18N
         jLabel10.setText("jLabel10");
@@ -384,7 +395,6 @@ public class UserFrame extends javax.swing.JFrame {
     
     /////////////////////////////////////////////////////////////////// Method to write encrypted string from registration to PENDING file //////////////////////////////
     public static void updatePendingFile(String name, String password) throws IOException{
-        System.out.println("userId: "+userId);
         BufferedWriter bw=new BufferedWriter(new FileWriter(new File("Pending.txt"),true));
         bw.write(String.valueOf(MyTree.getIDCounter()));
         bw.write("\n"+ newpassword);
@@ -408,12 +418,13 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private static javax.swing.JLabel jLabel3;
     private static javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;

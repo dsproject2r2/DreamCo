@@ -30,6 +30,7 @@ public static void main(String[] args) throws IOException {
 
    
     MyTree.startupAdminConfigFiles();
+
 //    
     SplashScreen sc= new SplashScreen();
     sc.runSplashScreen();        
