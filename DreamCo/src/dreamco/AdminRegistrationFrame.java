@@ -78,6 +78,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(121, 194, 234));
         jPanel1.setLayout(null);
 
         namefield.setEnabled(true);
@@ -137,9 +138,8 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jPanel1.add(cancelbutton);
         cancelbutton.setBounds(360, 190, 90, 32);
 
-        registrationbutton.setBackground(new java.awt.Color(24, 154, 180));
+        registrationbutton.setBackground(new java.awt.Color(255, 255, 153));
         registrationbutton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        registrationbutton.setForeground(new java.awt.Color(255, 255, 255));
         registrationbutton.setText("Register User!");
         registrationbutton.setVisible(false);
         registrationbutton.addActionListener(new java.awt.event.ActionListener() {
