@@ -55,6 +55,7 @@ public static void clearFile() throws IOException{
 
 
 public static void userdataEncryption(){
+    
     try{
     BufferedReader bufferedreader = new BufferedReader(new FileReader("Userdata.txt"));
     StringBuilder br = new StringBuilder();

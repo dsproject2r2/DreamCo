@@ -23,25 +23,9 @@ public static void main(String[] args) throws IOException {
         java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
 
-   
-
-    
-
-// MyTree.startupAdminConfigFiles();
-//    SplashScreen sc= new SplashScreen();
-//   sc.runSplashScreen();        
-// 
-//UpdateUser us= new UpdateUser();
-//us.runUpdateUser();
-//DataEncryptionFile.metadataDecryption();
-//DataEncryptionFile.metadataEncryption();
-
-//AdminRegistrationFrame ar= new AdminRegistrationFrame();
-//ar.runAdminRegistrationFrame();
-
-    AdminFrame af= new AdminFrame();
-    af.runAdminFrame();
-//    UserFrame.runUserFrame();
+ MyTree.startupAdminConfigFiles();
+    SplashScreen sc= new SplashScreen();
+   sc.runSplashScreen();        
     }
 
 }

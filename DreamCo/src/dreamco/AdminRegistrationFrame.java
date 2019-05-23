@@ -79,6 +79,10 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jList2 = new javax.swing.JList<>();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -140,7 +144,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(cancelbutton);
-        cancelbutton.setBounds(360, 190, 90, 32);
+        cancelbutton.setBounds(360, 190, 90, 25);
 
         registrationbutton.setBackground(new java.awt.Color(255, 255, 153));
         registrationbutton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -171,7 +175,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(addbutton1);
-        addbutton1.setBounds(30, 710, 90, 32);
+        addbutton1.setBounds(30, 710, 90, 25);
 
         jButton1.setText("Remove");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +184,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(230, 710, 90, 32);
+        jButton1.setBounds(230, 710, 90, 25);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -207,7 +211,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(1000, 710, 90, 32);
+        jButton2.setBounds(1000, 710, 90, 25);
 
         jButton3.setText("Edit");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +220,31 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(800, 710, 90, 32);
+        jButton3.setBounds(800, 710, 90, 25);
+
+        jButton4.setText("Show Commission Level");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4);
+        jButton4.setBounds(520, 40, 180, 160);
+
+        jLabel1.setFont(new java.awt.Font("Sitka Display", 1, 24)); // NOI18N
+        jLabel1.setText("User Pending");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(90, 360, 200, 30);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("User's data");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(500, 350, 140, 40);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setText("All User");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(890, 350, 110, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -380,7 +408,6 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
                 MyTree t = new MyTree();
                 t.addUser();
                 t.add(namelist1.get(i), passwordlist1.get(i), parentidlist1.get(i));
-                System.out.println("pasdafw patents:  " + parentidlist1.get(i) + " qwd    " + parent);
                 try {
                     t.appendUserClearFile();
                 } catch (IOException ex) {
@@ -399,10 +426,6 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         String selected=jList1.getSelectedValue().toString();
         String parent="";
 
-        System.out.println("namelist"+namelist1);
-        System.out.println("idlist"+idlist1);
-        System.out.println("password"+passwordlist1);
-        System.out.println("parent"+parentidlist1);
                 
         for(int i=0; i<namelist1.size(); i++){
             if(selected.equals(namelist1.get(i))){
@@ -421,7 +444,6 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
                 namelist1.remove(i);
                 
                 try{
-                    System.out.println("jhgjhghjgjgjhgjh");
                     PrintWriter pw = new PrintWriter(new FileWriter("Pending.txt"));
                     for(int a=0; a<namelist1.size(); a++){
                         pw.print(idlist1.get(a));
@@ -487,6 +509,20 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        MyTree t = new MyTree();
+            t.addUser();
+            double[] levelrevenue = t.gettotalLevel();
+            
+            StringBuilder sb = new StringBuilder();
+            
+            for (int i = 0; i < levelrevenue.length; i++) {
+            sb.append("Level: " + i +" = RM" + levelrevenue[i] + "\n");
+        }
+            JOptionPane.showMessageDialog(null, sb.toString(), "  Level Revenue", JOptionPane.ERROR_MESSAGE);
+            
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     
     /////////////////////////////////////////////////////////////////// MAIN RUNNING METHOD FOR THE FRAME  ///////////////////////////////////////////////////
@@ -506,13 +542,6 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
                 {
                         AdminRegistrationFrame frame = (AdminRegistrationFrame)e.getSource();
  
-//                     int result = JOptionPane.showConfirmDialog(
-//                    frame,
-//                    "Are you sure you want to exit the application?",
-//                    "Exit Application",
-//                    JOptionPane.YES_NO_OPTION);
-// 
-//                    if (result == JOptionPane.YES_OPTION)
                     idlist1.clear();
                     namelist1.clear();
                     passwordlist1.clear();
@@ -600,6 +629,10 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;

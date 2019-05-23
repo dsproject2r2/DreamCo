@@ -164,6 +164,11 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        MyTree tree =  new MyTree();
+        tree.addUser();
+        double adminMoney = tree.root.money;
+        JOptionPane.showMessageDialog(null, "Admin Revenue: RM" + String.valueOf(adminMoney), " Admin Revenue", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

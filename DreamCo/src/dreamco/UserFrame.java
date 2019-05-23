@@ -266,7 +266,7 @@ public class UserFrame extends javax.swing.JFrame {
             jPasswordField2.setText("");
         
     
-            JOptionPane.showMessageDialog(null, "Thank-you for registering. Your registration request is pending and will be approved by an admin in 2-3 business days. \n\n Your userID is:  dcuser"+ MyTree.getIDCounter() , "  Registration Request Sent", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Thank-you for registering. Your registration request is pending and will be approved by an admin in 2-3 business days. \n\n Please contact admin in 2/3 days" /*+ MyTree.getIDCounter() */, "  Registration Request Sent", JOptionPane.INFORMATION_MESSAGE);
             jButton3.setVisible(true);
             jButton4.setVisible(false);
             jButton1.setVisible(false);
@@ -284,7 +284,7 @@ public class UserFrame extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if(jCheckBox1.isSelected()){
         jButton1.setVisible(true);
-        JOptionPane.showMessageDialog(null, "You agree to the collection of a one-off payment of RM50 to register as a member of DreamCo. A membership card will given upon registration.", "  Terms & Conditions", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You agree to the collection of a one-off payment of RM"+ MyTree.getFee()+" to register as a member of DreamCo. A membership card will given upon registration.", "  Terms & Conditions", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
         jButton1.setVisible(false);
