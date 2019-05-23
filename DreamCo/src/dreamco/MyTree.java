@@ -271,10 +271,20 @@ public class MyTree {
                                 current.addMoney(classvariablefee*getGen4Commission());
                                 level++;
                                 break;
-                            default:
+                            case 5:
                                 current.addMoney(classvariablefee*getGen5Commission());
                                 level++;
                                 break;
+                            case 6:
+                                root.addMoney(classvariablefee*(100-getGen1Commission()-getGen2Commission()-getGen3Commission()-getGen4Commission()-getGen5Commission()));
+                                level++;
+                                break;
+                            default:
+                                level++;
+                                break;
+                                
+                                
+                                
                         }
                     }
             }
