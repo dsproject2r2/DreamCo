@@ -43,6 +43,7 @@ public class UpdateUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(121, 194, 234));
         jPanel1.setLayout(null);
         jPanel1.add(jTextField1);
         jTextField1.setBounds(70, 60, 260, 30);
@@ -84,11 +85,14 @@ public class UpdateUser extends javax.swing.JFrame {
         jPanel1.add(jTextField2);
         jTextField2.setBounds(70, 190, 260, 30);
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Update name");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(70, 30, 260, 30);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Reset Password");
         jPanel1.add(jLabel2);
