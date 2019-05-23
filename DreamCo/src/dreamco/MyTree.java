@@ -613,4 +613,52 @@ public class MyTree {
         getNode(id).setPassword(newPassword);
     }
     
+       public void totalLevel(){
+        
+        MyStack<NodeTree> s = new MyStack();
+        
+        int max=0;
+        s.push(getNode(root.ID));
+        NodeTree temp = getNode(root.ID);
+        while(s.getSize()!=0){
+            temp = s.pop();
+            if(temp==null)
+                continue;
+            
+            if(temp.level>max)
+                max=temp.level;
+            
+            for (int i = 0; i < temp.child.size(); i++) {
+                s.push(temp.child.get(i));
+            }
+        }System.out.println("");
+        
+        double [] level =  new double[max+1];
+        for (int i = 0; i < level.length; i++) {
+            level[i]=0;
+        }
+        
+        
+        MyStack<NodeTree> s1 = new MyStack();
+        s1.push(getNode(root.ID));
+        NodeTree temp1 = getNode(root.ID);
+        while(s1.getSize()!=0){
+            temp1 = s1.pop();
+            if(temp1==null)
+                continue;
+            
+            
+            level[temp1.level]+=temp1.getMoney();
+            
+            for (int i = 0; i < temp1.child.size(); i++) {
+                s1.push(temp1.child.get(i));
+            }
+        }System.out.println("");
+        
+        for (int i = 0; i < level.length; i++) {
+            System.out.print("level: "+ i +" - " + level[i]);
+        }
+        
+    }
+    
 }

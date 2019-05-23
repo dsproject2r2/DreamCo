@@ -17,6 +17,17 @@ public class NodeTree {
     NodeTree prev;
     String ID;
     String password;
+    int level=0;
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+    
+    
     
     public NodeTree(String name){
         this.name=name;
@@ -69,5 +80,6 @@ public class NodeTree {
         return money;
     }
    
+    
     
 }
