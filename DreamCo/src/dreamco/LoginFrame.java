@@ -362,7 +362,7 @@ public class LoginFrame extends javax.swing.JFrame {
         }
         else{
             JOptionPane.showMessageDialog(null, "Invalid username or password!", "  Invalid Login Credentials!", JOptionPane.ERROR_MESSAGE);
-        }    
+        }     
         }
     }//GEN-LAST:event_jTextField1KeyPressed
 

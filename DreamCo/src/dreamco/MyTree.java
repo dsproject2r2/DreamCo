@@ -594,4 +594,13 @@ public class MyTree {
     }
     
     
+    
+    public void setNewName(String id, String newName){
+        getNode(id).setName(newName);
+    }
+    
+    public void setNewPassword(String id, String newPassword){
+        getNode(id).setPassword(newPassword);
+    }
+    
 }

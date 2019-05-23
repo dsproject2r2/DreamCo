@@ -133,11 +133,6 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel4.setBounds(0, 210, 450, 30);
 
         jTextField3.setVisible(false);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jTextField3);
         jTextField3.setBounds(170, 310, 260, 40);
 
@@ -204,7 +199,7 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 110, 450, 30);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Myriad Pro", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("jLabel2");
@@ -256,7 +251,7 @@ public class UserFrame extends javax.swing.JFrame {
         else if(!newfullname.equals("") && !newpassword.equals(confirmpassword)){
             JOptionPane.showMessageDialog(null, "Passwords do not match!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
         }
-        if(!newfullname.equals("") && newpassword.equals(confirmpassword) && newpassword.length()>=8){               
+        else if(!newfullname.equals("") && newpassword.equals(confirmpassword) && newpassword.length()>=8){               
             encryptNow(newfullname, newpassword);
             MyTree.setIDCounter(MyTree.getIDCounter()+1);
         
@@ -287,13 +282,7 @@ public class UserFrame extends javax.swing.JFrame {
             jCheckBox1.setSelected(false);
         }    
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    
+  
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if(jCheckBox1.isSelected()){
         jButton1.setVisible(true);

@@ -28,6 +28,14 @@ public class NodeTree {
         this.prev = prev;
         this.ID=String.valueOf(id);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
     public NodeTree(String name, String password, double Money, int id){
         this.name=name;

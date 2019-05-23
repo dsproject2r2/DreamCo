@@ -1,12 +1,7 @@
-
+//
 package dreamco;
 
 import java.io.IOException;
-import java.util.Iterator;
-import org.graphstream.graph.Graph;
-import org.graphstream.graph.Node;
-import org.graphstream.graph.implementations.SingleGraph;
-
 
 public class DreamCo {
     
@@ -29,17 +24,20 @@ public static void main(String[] args) throws IOException {
     }
 
    
-    MyTree.startupAdminConfigFiles();
 
-//    
-    SplashScreen sc= new SplashScreen();
-    sc.runSplashScreen();        
+    
+
+// MyTree.startupAdminConfigFiles();
+//    SplashScreen sc= new SplashScreen();
+//   sc.runSplashScreen();        
 // 
+//UpdateUser us= new UpdateUser();
+//us.runUpdateUser();
 //DataEncryptionFile.metadataDecryption();
 //DataEncryptionFile.metadataEncryption();
 
-
-//  AdminRegistrationFrame.runAdminRegistrationFrame();
+AdminRegistrationFrame ar= new AdminRegistrationFrame();
+ar.runAdminRegistrationFrame();
 
 
    //  AdminFrame.runAdminFrame();

@@ -78,6 +78,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jScrollPane3 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -161,7 +162,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jScrollPane1.setViewportView(jList1);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 430, 260, 300);
+        jScrollPane1.setBounds(30, 400, 290, 300);
 
         addbutton1.setText("Approve");
         addbutton1.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +171,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(addbutton1);
-        addbutton1.setBounds(300, 430, 77, 32);
+        addbutton1.setBounds(30, 710, 90, 32);
 
         jButton1.setText("Remove");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +180,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(300, 470, 76, 32);
+        jButton1.setBounds(230, 710, 90, 32);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -187,7 +188,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jScrollPane2.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(410, 430, 250, 300);
+        jScrollPane2.setBounds(440, 400, 250, 300);
 
         jList2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -197,7 +198,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jScrollPane3.setViewportView(jList2);
 
         jPanel1.add(jScrollPane3);
-        jScrollPane3.setBounds(810, 430, 290, 300);
+        jScrollPane3.setBounds(800, 400, 290, 300);
 
         jButton2.setText("Remove");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -206,15 +207,22 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(700, 430, 77, 32);
+        jButton2.setBounds(1000, 710, 90, 32);
+
+        jButton3.setText("Edit");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3);
+        jButton3.setBounds(800, 710, 90, 32);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1128, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,31 +255,43 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         newfullname=namefield.getText();
         newpassword=newpasswordfield.getText();
         confirmpassword=confirmpasswordfield.getText();
-            MyTree t = new MyTree();
-            t.addUser();
-           // String zero = String.valueOf(0);
-            
+        if(newfullname.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter a valid username and password!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(newfullname.equals(newpassword)){
+            JOptionPane.showMessageDialog(null, "Your name and password cannot match!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(newfullname.length()<8){
+            JOptionPane.showMessageDialog(null, "Please enter your REAL name. I doubt your name is less than 8 characters!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(newpassword.length()<8){
+            JOptionPane.showMessageDialog(null, "Please enter a password with a MINIMUM length of 8 characters!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!newfullname.equals("") && newpassword.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter a valid password!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!newfullname.equals("") && !newpassword.equals(confirmpassword)){
+            JOptionPane.showMessageDialog(null, "Passwords do not match!", "  Registration Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!newfullname.equals("") && newpassword.equals(confirmpassword) && newpassword.length()>=8){               
+        MyTree t = new MyTree();        
+        t.addUser();   
         try {
-            //t.a
+         
             t.add(newfullname, newpassword, String.valueOf(0));
             t.appendUserClearFile();
-            
-            //MyTree.setIDCounter(MyTree.getIDCounter()+1);
-        
-//        try {
-//            updatePendingFile(newfullname, newpassword);
-//        } catch (IOException ex) {
-//            JOptionPane.showMessageDialog(null, "Pending File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
-//        }
-//        newfullname="";
-//        newpassword="";
-//        confirmpassword="";
         } catch (IOException ex) {
             Logger.getLogger(AdminRegistrationFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    
         JOptionPane.showMessageDialog(null, "Thank-you for registering. Welcome to DreamCo!", "  Registration Complete!", JOptionPane.PLAIN_MESSAGE);  
+        newfullname="";
+        newpassword="";
+        confirmpassword="";
+        namefield.setText("");
+        newpasswordfield.setText("");
+        confirmpasswordfield.setText("");
+        }
+
     }//GEN-LAST:event_registrationbuttonActionPerformed
   ////////////////////////////////////////////////////////////////////////////////////////////// Method for Pending User selection ////////////////////////////////////////////
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
@@ -281,7 +301,10 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         System.out.println("password"+passwordlist1);
         System.out.println("parent"+parentidlist1);
         System.out.println("\n");
-        
+        jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+        jButton1.setEnabled(true);
+        addbutton1.setEnabled(true);
         boolean checkselection = !jList2.isSelectionEmpty();
         if(checkselection){
             jList2.clearSelection();
@@ -299,7 +322,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
                     }
                 }
                 if(parent.equals("")){
-                    parent="( N/A - ADMIN )";
+                    parent="N/A";
                 }
                 jTextArea1.setText(" Full Name: "+jList1.getSelectedValue().toString()+ "\n\n UserID: dcuser"+idlist1.get(i)+ "\n\n Password: "+ passwordlist1.get(i)+"\n\n Product Referrer: "+parent);
                 break;
@@ -309,7 +332,11 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
   
 ////////////////////////////////////////////////////////////////////////////////////////// Method for Registered user selection //////////////////////////////////////////////////
     private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
-                                  
+        jButton2.setEnabled(true);
+        jButton3.setEnabled(true);              
+        jButton1.setEnabled(false);
+        addbutton1.setEnabled(false);
+        
         boolean checkselection = !jList1.isSelectionEmpty();
         if(checkselection){
             jList1.clearSelection();
@@ -341,13 +368,13 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
              
         for(int i=0; i<namelist1.size(); i++){
             if(selected.equals(namelist1.get(i))){
-                for(int j=0; j<namelist1.size(); j++){
-                    if(parentidlist1.get(i).equals(idlist1.get(j))){
-                        parent=namelist1.get(j);
+                for(int j=0; j<namelist2.size(); j++){
+                    if(parentidlist1.get(i).equals(idlist2.get(j))){
+                        parent=namelist2.get(j);
                     }
                 }
                 if(parent.equals("")){
-                    parent="( N/A - ADMIN )";
+                    parent="N/A";
                 }
                 //System.out.println(parentidlist1.get(i));
                 MyTree t = new MyTree();
@@ -359,18 +386,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
                 } catch (IOException ex) {
                     Logger.getLogger(AdminRegistrationFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //t.a
-                /* Insert your code here bagi approve user and append UserDataFile just put the method for what you want to do when you click the APPROVE button
-                /////////////////
-                ////////////////  bahagian ni gunna arraylist dgn forloop. bhgn ni akan bandingkan selected value kat jlist dgn element kat index for loop. 
-                //////////////       so just guna    
-                ///////////////
-                ///////////////       !variable to get!          ! what variable you will get!
-                //////////////     parentidlist1.get(i)       -user parent yg recommend DreamCo   
-                //////////////     namelist1.get(i)           -user full name
-                //////////////     passwordlist1.get(i)       - user password
-                                   idlist1.get(i)             - user id
-                */
+
                 dlm1.removeElement(selected); 
                 break;
             }
@@ -390,16 +406,38 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
                 
         for(int i=0; i<namelist1.size(); i++){
             if(selected.equals(namelist1.get(i))){
-                
-                System.out.println(namelist1.get(i));
-                
+                for(int j=0; j<namelist2.size(); j++){
+                    if(parentidlist1.get(i).equals(idlist2.get(j))){
+                        parent=namelist2.get(j);
+                    }
+                }
+                if(parent.equals("")){
+                    parent="N/A";
+                }
                 
                 idlist1.remove(i);
                 passwordlist1.remove(i);
-                namelist1.remove(i);
                 parentidlist1.remove(i);
+                namelist1.remove(i);
+                
+                try{
+                    System.out.println("jhgjhghjgjgjhgjh");
+                    PrintWriter pw = new PrintWriter(new FileWriter("Pending.txt"));
+                    for(int a=0; a<namelist1.size(); a++){
+                        pw.print(idlist1.get(a));
+                        pw.print("\n"+passwordlist1.get(a));
+                        pw.print("\n"+parentidlist1.get(a));
+                        pw.print("\n"+namelist1.get(a));
+                        pw.print("\n"+String.valueOf("0")+"\n");
+                    }
+                    pw.flush();
+                    pw.close();
+                }
+                catch(IOException e){
+                    JOptionPane.showMessageDialog(null, "System File Not Found", "System File Error! ", JOptionPane.ERROR_MESSAGE);
+                }
+
                 dlm1.removeElement(selected); 
-                System.out.println(i);
                 break;
             }
         }
@@ -425,6 +463,29 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             Logger.getLogger(AdminRegistrationFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+            
+    String selected=jList2.getSelectedValue().toString();
+    String parent="";
+             
+        for(int i=0; i<namelist2.size(); i++){
+            if(selected.equals(namelist2.get(i))){
+                for(int j=0; j<namelist2.size(); j++){
+                    if(parentidlist2.get(i).equals(idlist2.get(j))){
+                        parent=namelist2.get(j);
+                    }
+                }
+                if(parent.equals("")){
+                    parent="N/A";
+                }
+                System.out.println("hahahaha: " + idlist2.get(i));
+                UpdateUser updateuser= new UpdateUser(idlist2.get(i));
+                updateuser.runUpdateUser();
+                break;
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     
@@ -538,6 +599,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
     private javax.swing.JPasswordField confirmpasswordfield;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
