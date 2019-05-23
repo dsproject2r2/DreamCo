@@ -331,6 +331,17 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
                 if(parent.equals("")){
                     parent="( N/A - ADMIN )";
                 }
+                //System.out.println(parentidlist1.get(i));
+                MyTree t = new MyTree();
+                t.addUser();
+                t.add(namelist1.get(i), passwordlist1.get(i), parentidlist1.get(i));
+                System.out.println("pasdafw patents:  " + parentidlist1.get(i) + " qwd    " + parent);
+                try {
+                    t.appendUserClearFile();
+                } catch (IOException ex) {
+                    Logger.getLogger(AdminRegistrationFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //t.a
                 /* Insert your code here bagi approve user and append UserDataFile just put the method for what you want to do when you click the APPROVE button
                 /////////////////
                 ////////////////  bahagian ni gunna arraylist dgn forloop. bhgn ni akan bandingkan selected value kat jlist dgn element kat index for loop. 

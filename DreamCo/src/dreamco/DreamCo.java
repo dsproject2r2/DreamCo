@@ -29,16 +29,16 @@ public static void main(String[] args) throws IOException {
     }
 
    
-//    MyTree.startupAdminConfigFiles();
+    MyTree.startupAdminConfigFiles();
 //    
-//    SplashScreen sc= new SplashScreen();
-//    sc.runSplashScreen();        
+    SplashScreen sc= new SplashScreen();
+    sc.runSplashScreen();        
 // 
 //DataEncryptionFile.metadataDecryption();
 //DataEncryptionFile.metadataEncryption();
 
 
-  AdminRegistrationFrame.runAdminRegistrationFrame();
+//  AdminRegistrationFrame.runAdminRegistrationFrame();
 
 
    //  AdminFrame.runAdminFrame();

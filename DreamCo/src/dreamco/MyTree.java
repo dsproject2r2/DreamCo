@@ -127,10 +127,10 @@ public class MyTree {
                 //double money = Double.parseDouble(moneys);
                 idCounter++;
                 addFromFile(username,password,parent,Double.parseDouble(moneys),ID);
-                System.out.println("user: " + username);
-                System.out.println("pass: "+ password);
-                System.out.println("ID: " + ID);
-                System.out.println("mooney: "+ Double.parseDouble(moneys));
+//                System.out.println("user: " + username);
+//                System.out.println("pass: "+ password);
+//                System.out.println("ID: " + ID);
+//                System.out.println("mooney: "+ Double.parseDouble(moneys));
                 
             }
             
@@ -140,19 +140,20 @@ public class MyTree {
     }
     
  
-    public void addFromFile(String name,String password, String parentid, double Money, String id){
+    private void addFromFile(String name,String password, String parentid, double Money, String id){
         int idint = Integer.parseInt(id);
-        
-        
+        System.out.println("Parent: " + parentid);
         if(parentid.equals("Admin")){
             NodeTree temp = new NodeTree(name, password, Money, idint);
+            System.out.println("Money: " + Money + " Id: " + idint);
             temp.prev=new NodeTree("Admin");
             root=temp;
             System.out.println("Root: " + name + " to Admin" );
         }
         else{
             if(contain(parentid)){
-                NodeTree temp = new NodeTree(name, password, Money, idint);
+                System.out.println("Money: " + Money + " Id: " + idint);
+            NodeTree temp = new NodeTree(name, password, Money, idint);
             getNode(parentid).child.add(temp);
             temp.prev=getNode(parentid);
             System.out.println("Adding: " + temp.name + " to " + temp.prev.name);
@@ -177,7 +178,6 @@ public class MyTree {
             while(s.getSize()!=0){
                 temp = s.pop();
                 if(temp==null){
-                    System.out.println("aaaa");
                     continue;}
                 if(temp.name.equals("DreamCo")){
                     DataEncryptionFile.appendUserIntoFile(temp.ID, "123", "Admin", temp.name, temp.money);
@@ -225,7 +225,7 @@ public class MyTree {
      
      
     // add method to use when to create new user
-    public void add(String name,String password, String parentId) throws IOException{
+    public void add(String name,String password, String parentId) /*throws IOException*/{
        
        // NodeTree temp = new NodeTree(name, null, idCounter);
         
@@ -235,6 +235,7 @@ public class MyTree {
             temp.setPassword(password);
             root.child.add(temp);
             temp.prev=root;
+            root.addMoney(classvariablefee*getGen1Commission());
             System.out.println("Adding: " + name + " to " + temp.prev.name);
             System.out.println("ID  :   " + temp.ID);
         }
@@ -249,7 +250,7 @@ public class MyTree {
             System.out.println("ID  :   " + temp.ID);
             
             NodeTree current = temp;
-                    int level = 0;
+                    int level = 1;
                     while(current.prev!=null){
                     current = current.prev;
                     
@@ -337,11 +338,10 @@ public class MyTree {
     }
     
     //display all parents from the child
-    public void displayAncestor(String name){
-        NodeTree temp = getNode(name);
-        if(contain(name)){
+    public void displayAncestor(String id){
+        NodeTree temp = getNode(id);
+        if(contain(id)){
             while(temp.prev!=null){
-
                 System.out.print(' '+temp.name + " -RM" + temp.money);        
                 temp = temp.prev;
             }
@@ -367,7 +367,7 @@ public class MyTree {
         }System.out.println("");
     }
     
-    public void DFSdisplayAll(){
+    private void DFSdisplayAll(){
         MyStack<NodeTree> s = new MyStack();
         
         if(root==null)
@@ -379,7 +379,7 @@ public class MyTree {
                 temp = s.pop();
                 if(temp==null)
                     continue;
-                System.out.println(" "+ temp.name + " -RM " + temp.money  + " ID: " + temp.ID  + " password: " + temp.password  + " parents: " + temp.prev.ID  );
+               System.out.println(" "+ temp.name + " -RM " + temp.money  + " ID: " + temp.ID  + " password: " + temp.password  + " parents: " + temp.prev.ID  );
                 for (int i = 0; i < temp.child.size(); i++) {
                     s.push(temp.child.get(i));
                 }
@@ -415,39 +415,50 @@ public class MyTree {
         System.out.println("All user have been deleted");
     }
     
-    public void remove(String id){
+    public void remove(String id) throws IOException{
         if(contain(id)){
             if(root==getNode(id)){
                 clear();
             }else{
-               NodeTree []temp = new NodeTree[getNode(id).child.size()];
+                
+                NodeTree []temp=new NodeTree[1]; 
                 boolean remove=false;
-                String prev = getNode(id).prev.name;
-                if(getNode(id).child.size()!=0){
+                String prevID = getNode(id).prev.ID;
+                
+                if(!getNode(id).child.isEmpty()){
+                    temp= new NodeTree[getNode(id).child.size()];
                     remove=true;
                         for (int i = 0; i < getNode(id).child.size(); i++) {
                             temp[i] = getNode(id).child.get(i);
                         }
                 }
-                int numbtemp=-1;
-                    for (int i = 0; i < getNode(id).prev.child.size(); i++) {
-                        if(getNode(prev).child.get(i)==(getNode(id))){
-                            numbtemp = i;
-                            break;
+                
+                    int numbtemp=-1;
+                        for (int i = 0; i < getNode(id).prev.child.size(); i++) {
+                            if(getNode(getNode(id).prev.ID).child.get(i)==(getNode(id))){
+                                numbtemp = i;
+                                break;
+                            }
+                        }
+                    if(numbtemp!=-1){    
+                        System.out.println(getNode(id).ID);
+                        getNode(id).prev.child.remove(numbtemp);
+                        
+                    }
+                    if(remove){
+                        for (int i = 0; i < temp.length; i++) {
+                            System.out.println(prevID);
+                            getNode(prevID).child.add(temp[i]);
+                            temp[i].prev=getNode(prevID);
                         }
                     }
-                if(numbtemp!=-1){    
-                    getNode(id).prev.child.remove(numbtemp);
-                }
-                if(remove){
-                    for (int i = 0; i < temp.length; i++) {
-                        getNode(prev).child.add(temp[i]);
-                    }
-                }
-                System.out.println("Removed: "+ id);
+                    System.out.println("Removed: "+ id);
+                appendUserClearFile();
             }
         }else
             System.out.println("User not found");
+        
+        
     }
     
     //method to be used for password reset
@@ -511,6 +522,7 @@ public class MyTree {
     public void displayGraph(){
         clear();
         addUser();
+        System.out.println("moneykkasdadw"+root.money);
         Graph g= new SingleGraph("MLM");
         g.addAttribute("ui.stylesheet", "graph { fill-color: lightblue; } node { shape: box;\n" +
 "	size: 20px, 20px;\n" +
@@ -576,26 +588,9 @@ public class MyTree {
         System.out.println("");
         }
         
-//        for (Node i = 0; i < 2; i++) {
-//            
-//        }
-//        
-//        for (Node node : g) {
-//                node.addAttribute("ui.label", "yy");
-//                
-//            }
-        //g.addAttribute("ui.quality");
-        //g.addAttribute("ui.antialias");
-        //g.getEachNode();
-       //g.setStrict(true);
-       Viewer viewer = g.display();
+        Viewer viewer = g.display();
         viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
-// Let the layout work ...
-//viewer.disableAutoLayout();
-// Do some work ...
-viewer.enableAutoLayout();
-     //   g.display();
-       // viewer.getGraphicGraph();
+        viewer.enableAutoLayout();
     }
     
     

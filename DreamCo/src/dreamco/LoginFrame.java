@@ -194,8 +194,8 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
         else if(adminuserinput.equals(userid) && adminpassinput.equals(password)){
-            JOptionPane.showMessageDialog(null, "Welcome back "+ userid, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-            UserFrame user = new UserFrame(name,money);
+            JOptionPane.showMessageDialog(null, "Welcome back "+ name, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            UserFrame user = new UserFrame(userid,money);
             user.runUserFrame();
         }
         else if(adminuserinput.equals("") && adminpassinput.equals("")){
@@ -249,8 +249,8 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
         else if(adminuserinput.equals(userid) && adminpassinput.equals(password)){
-            JOptionPane.showMessageDialog(null, "Welcome back "+ userid, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-            UserFrame user = new UserFrame(name,money);
+            JOptionPane.showMessageDialog(null, "Welcome back "+ name, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            UserFrame user = new UserFrame(userid,money);
             user.runUserFrame();
         }
         else if(adminuserinput.equals("") && adminpassinput.equals("")){
@@ -305,8 +305,8 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
         else if(adminuserinput.equals(userid) && adminpassinput.equals(password)){
-            JOptionPane.showMessageDialog(null, "Welcome back "+ userid, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-            UserFrame user = new UserFrame(name,money);
+            JOptionPane.showMessageDialog(null, "Welcome back "+ name, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            UserFrame user = new UserFrame(userid,money);
             user.runUserFrame();
         }
         else if(adminuserinput.equals("") && adminpassinput.equals("")){
@@ -361,8 +361,8 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
         else if(adminuserinput.equals(userid) && adminpassinput.equals(password)){
-            JOptionPane.showMessageDialog(null, "Welcome back "+ userid, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
-            UserFrame user = new UserFrame(name,money);
+            JOptionPane.showMessageDialog(null, "Welcome back "+ name, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
+            UserFrame user = new UserFrame(userid,money);
             user.runUserFrame();
         }
         else if(adminuserinput.equals("") && adminpassinput.equals("")){
