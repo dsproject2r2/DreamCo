@@ -172,7 +172,8 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+    CommissionFrame commissionframe= new CommissionFrame();
+    commissionframe.runCommissionFrame();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     ////////////////////////////////////////////////////////////////////////////////////////////////MAIN METHOD TO RUN THIS CLASS JFRAME ////////////////////////

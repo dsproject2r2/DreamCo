@@ -150,7 +150,7 @@ public class UpdateUser extends javax.swing.JFrame {
     
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                setVisible(true);
+                new UpdateUser().setVisible(true);
             }
         });
     }

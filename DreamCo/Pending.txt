@@ -1,10 +1,10 @@
 1
-zzzzzzzz
+xxxxxxxx
 1
-zrcefgijk
+xpacdeghi
 0
 2
-ssssssss
-1
 qqqqqqqq
+1
+oooooooo
 0
