@@ -6,6 +6,8 @@
 package dreamco;
 
 import static dreamco.UserFrame.updatePendingFile;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -46,7 +48,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         initComponents();
     }
     
-    public static AdminRegistrationFrame adminregistrationframe = new AdminRegistrationFrame();
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -75,8 +77,9 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
+        jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setLayout(null);
 
@@ -195,6 +198,15 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
 
         jPanel1.add(jScrollPane3);
         jScrollPane3.setBounds(810, 430, 290, 300);
+
+        jButton2.setText("Remove");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(700, 430, 77, 32);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -359,6 +371,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
                 //////////////     passwordlist1.get(i)       - user password
                                    idlist1.get(i)             - user id
                 */
+                dlm1.removeElement(selected); 
                 break;
             }
         }
@@ -392,19 +405,67 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String selected=jList2.getSelectedValue().toString();
+        String userid="";
+             
+        for(int i=0; i<namelist2.size(); i++){
+            if(selected.equals(namelist2.get(i))){
+                userid=idlist2.get(i);
+                dlm2.removeElement(selected); 
+                break;
+            }
+        }
+       MyTree t = new MyTree();
+                t.addUser();
+        try {
+            t.remove(userid);
+            t.appendUserClearFile();
+        } catch (IOException ex) {
+            Logger.getLogger(AdminRegistrationFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     
     /////////////////////////////////////////////////////////////////// MAIN RUNNING METHOD FOR THE FRAME  ///////////////////////////////////////////////////
-    public static void runAdminRegistrationFrame() {
+    public void runAdminRegistrationFrame() {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                AdminRegistrationFrame adminregistrationframe = new AdminRegistrationFrame();
                 adminregistrationframe.setVisible(true);
                 jList1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                 jList2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                 getPendingNameList();
                 getDreamCoNameList();
-
+                adminregistrationframe.addWindowListener( new WindowAdapter()
+                {
+                 public void windowClosing(WindowEvent e)
+                {
+                        AdminRegistrationFrame frame = (AdminRegistrationFrame)e.getSource();
+ 
+//                     int result = JOptionPane.showConfirmDialog(
+//                    frame,
+//                    "Are you sure you want to exit the application?",
+//                    "Exit Application",
+//                    JOptionPane.YES_NO_OPTION);
+// 
+//                    if (result == JOptionPane.YES_OPTION)
+                    idlist1.clear();
+                    namelist1.clear();
+                    passwordlist1.clear();
+                    parentidlist1.clear();
+                    idlist2.clear();
+                    namelist2.clear();
+                    passwordlist2.clear();
+                    parentidlist2.clear();
+                    moneylist2.clear();
+                    dlm2.removeAllElements();
+                    
+                    adminregistrationframe.setDefaultCloseOperation(AdminRegistrationFrame.DISPOSE_ON_CLOSE);
+                }
+            });
             }
         });
     }
@@ -476,6 +537,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
     private javax.swing.JCheckBox checkboxtc;
     private javax.swing.JPasswordField confirmpasswordfield;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
