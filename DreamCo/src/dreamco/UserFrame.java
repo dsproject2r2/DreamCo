@@ -169,7 +169,7 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 153));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Daily Message");
-        jLabel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true));
+        jLabel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         Random r= new Random();
         int randomselector;
         randomselector=r.nextInt(4);
