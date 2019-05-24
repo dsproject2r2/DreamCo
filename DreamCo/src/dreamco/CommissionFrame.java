@@ -118,8 +118,6 @@ public class CommissionFrame extends javax.swing.JFrame {
     double com5=Double.parseDouble(scom5);
     double sumcom=com1+com2+com3+com4+com5;
         
-    if(sumcom>0.8)
-        JOptionPane.showMessageDialog(null, "Total Commission must less than 0.8", "  System said", JOptionPane.INFORMATION_MESSAGE); 
     
     if(!jTextField1.equals("") && !jTextField2.equals("") && !jTextField3.equals("") && !jTextField4.equals("") && !jTextField5.equals("") && sumcom<0.8){
     MyTree.setGen1Commission(Double.parseDouble(jTextField1.getText()));
