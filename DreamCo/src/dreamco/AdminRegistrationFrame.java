@@ -83,6 +83,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -96,7 +97,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(namefield);
-        namefield.setBounds(190, 40, 260, 40);
+        namefield.setBounds(190, 60, 260, 40);
 
         jLabel6.setBackground(new java.awt.Color(102, 102, 102));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -104,7 +105,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jLabel6.setText("Enter Full Name");
         jLabel6.setToolTipText("This will be your username when logging in");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(40, 40, 150, 40);
+        jLabel6.setBounds(40, 60, 150, 40);
 
         jLabel9.setBackground(new java.awt.Color(102, 102, 102));
         jLabel9.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -112,9 +113,9 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jLabel9.setText("New Password");
         jLabel9.setToolTipText("make sure your password is secure but easy to  remember as well!");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(40, 90, 150, 40);
+        jLabel9.setBounds(40, 110, 150, 40);
         jPanel1.add(newpasswordfield);
-        newpasswordfield.setBounds(190, 90, 260, 40);
+        newpasswordfield.setBounds(190, 110, 260, 40);
 
         jLabel7.setBackground(new java.awt.Color(102, 102, 102));
         jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -122,9 +123,9 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jLabel7.setText("Confirm Password");
         jLabel7.setToolTipText("make sure your password is secure but easy to  remember as well!");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(40, 140, 150, 40);
+        jLabel7.setBounds(40, 160, 150, 40);
         jPanel1.add(confirmpasswordfield);
-        confirmpasswordfield.setBounds(190, 140, 260, 40);
+        confirmpasswordfield.setBounds(190, 160, 260, 40);
 
         checkboxtc.setBackground(new java.awt.Color(117, 230, 218));
         checkboxtc.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,7 +136,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(checkboxtc);
-        checkboxtc.setBounds(40, 190, 200, 30);
+        checkboxtc.setBounds(40, 210, 200, 30);
 
         cancelbutton.setText("Cancel");
         cancelbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +145,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(cancelbutton);
-        cancelbutton.setBounds(360, 190, 90, 25);
+        cancelbutton.setBounds(360, 210, 90, 32);
 
         registrationbutton.setBackground(new java.awt.Color(255, 255, 153));
         registrationbutton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -156,7 +157,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(registrationbutton);
-        registrationbutton.setBounds(110, 250, 280, 50);
+        registrationbutton.setBounds(110, 270, 280, 50);
 
         jList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -175,7 +176,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(addbutton1);
-        addbutton1.setBounds(30, 710, 90, 25);
+        addbutton1.setBounds(30, 710, 90, 32);
 
         jButton1.setText("Remove");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +185,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(230, 710, 90, 25);
+        jButton1.setBounds(230, 710, 90, 32);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -211,7 +212,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(1000, 710, 90, 25);
+        jButton2.setBounds(1000, 710, 90, 32);
 
         jButton3.setText("Edit");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -220,31 +221,46 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(800, 710, 90, 25);
+        jButton3.setBounds(800, 710, 90, 32);
 
-        jButton4.setText("Show Commission Level");
+        jButton4.setText("Show Revenue by generation");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(520, 40, 180, 160);
+        jButton4.setBounds(480, 60, 200, 140);
 
-        jLabel1.setFont(new java.awt.Font("Sitka Display", 1, 24)); // NOI18N
-        jLabel1.setText("User Pending");
+        jLabel1.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("New User Registration");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(90, 360, 200, 30);
+        jLabel1.setBounds(20, 20, 420, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setText("User's data");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("User data");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(500, 350, 140, 40);
+        jLabel2.setBounds(440, 350, 250, 40);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setText("All User");
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Registered Users");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(890, 350, 110, 40);
+        jLabel3.setBounds(800, 350, 290, 40);
+
+        jLabel4.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Pending Users");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(30, 360, 290, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -468,7 +484,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String selected=jList2.getSelectedValue().toString();
         String userid="";
-             
+        
         for(int i=0; i<namelist2.size(); i++){
             if(selected.equals(namelist2.get(i))){
                 userid=idlist2.get(i);
@@ -511,16 +527,16 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         MyTree t = new MyTree();
-            t.addUser();
-            double[] levelrevenue = t.gettotalLevel();
-            
-            StringBuilder sb = new StringBuilder();
-            
-            for (int i = 0; i < levelrevenue.length; i++) {
+        t.addUser();
+        double[] levelrevenue = t.gettotalLevel();
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < levelrevenue.length; i++) {
             sb.append("Level: " + i +" = RM" + levelrevenue[i] + "\n");
         }
-            JOptionPane.showMessageDialog(null, sb.toString(), "  Level Revenue", JOptionPane.ERROR_MESSAGE);
-            
+        JOptionPane.showMessageDialog(null, sb.toString(), "  Level Revenue", JOptionPane.PLAIN_MESSAGE);
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
@@ -633,6 +649,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;

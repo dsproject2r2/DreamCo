@@ -91,7 +91,6 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.add(jCheckBox1);
         jCheckBox1.setBounds(20, 460, 200, 30);
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 153));
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jButton3.setText("Register a NEW CLIENT!");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
