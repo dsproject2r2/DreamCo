@@ -1,6 +1,8 @@
 
 package dreamco;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jeremiah
@@ -117,6 +119,10 @@ public class CommissionFrame extends javax.swing.JFrame {
     MyTree.setGen4Commission(Double.parseDouble(jTextField4.getText()));
     MyTree.setGen5Commission(Double.parseDouble(jTextField5.getText()));
     MyTree.updateAdminConfigFile();
+    dispose();
+    }
+    else{
+        JOptionPane.showMessageDialog(null, "Please make sure the total commission for all generations does NOT EXCEED 80%",  " Trying to lose money ?", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_jButton1ActionPerformed
 
