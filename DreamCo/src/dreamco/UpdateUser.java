@@ -127,16 +127,21 @@ public class UpdateUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-      newpass=jTextField2.getText();
-      MyTree t = new MyTree();
-      t.addUser();
-      t.setNewPassword(userID, newpass);
-        try {
+        newpass=jTextField2.getText();
+        if(newpass.length()>=8){
+            MyTree t = new MyTree();
+            t.addUser();
+            t.setNewPassword(userID, newpass);
+            try {
             t.appendUserClearFile();
-        } catch (IOException ex) {
+            }
+            catch (IOException ex) {
             JOptionPane.showMessageDialog(null, " System File Not Found!", " System File Error!", JOptionPane.ERROR_MESSAGE);
+            }
+        }   
+        else{
+            JOptionPane.showMessageDialog(null, "  New password must be at least 8 characters. Please try again!", "  Password Too Short!", JOptionPane.ERROR_MESSAGE);
         }
-      
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
