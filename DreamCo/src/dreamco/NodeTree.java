@@ -26,12 +26,9 @@ public class NodeTree {
     public void setLevel(int level) {
         this.level = level;
     }
-    
-    
-    
+
     public NodeTree(String name){
         this.name=name;
-      //  this.prev=null;
     }
     
     public NodeTree(String name, NodeTree prev, int id){

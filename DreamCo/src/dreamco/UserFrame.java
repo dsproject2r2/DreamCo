@@ -114,21 +114,21 @@ public class UserFrame extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(90, 520, 280, 50);
 
-        jLabel3.setFont(new java.awt.Font("Myriad Pro", 1, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("userIDvariable");
         jLabel3.setText("User ID: dcuser" + userId);
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(0, 180, 450, 30);
+        jLabel3.setBounds(0, 150, 450, 30);
 
         jLabel4.setFont(new java.awt.Font("Myriad Pro", 1, 22)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 153));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("userRevenueVariable");
-        jLabel4.setText("Total Revenue Today:");
+        jLabel4.setText("Current Total Revenue:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(0, 210, 450, 30);
+        jLabel4.setBounds(0, 230, 450, 30);
 
         jTextField3.setVisible(false);
         jPanel1.add(jTextField3);
@@ -204,7 +204,7 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel2.setText("RM "+userMoney);
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 240, 450, 70);
+        jLabel2.setBounds(0, 260, 450, 50);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dreamco/DC.jpg"))); // NOI18N
         jLabel10.setText("jLabel10");
@@ -266,7 +266,7 @@ public class UserFrame extends javax.swing.JFrame {
             jPasswordField2.setText("");
         
     
-            JOptionPane.showMessageDialog(null, "Thank-you for registering. Your registration request is pending and will be approved by an admin in 2-3 business days. \n\n Your userID is:  dcuser"+ MyTree.getIDCounter() , "  Registration Request Sent", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Thank-you for registering. Your registration request is pending and will be approved by an admin in 2-3 business days. \n\n Please contact admin in 2/3 days" /*+ MyTree.getIDCounter() */, "  Registration Request Sent", JOptionPane.INFORMATION_MESSAGE);
             jButton3.setVisible(true);
             jButton4.setVisible(false);
             jButton1.setVisible(false);
@@ -284,7 +284,7 @@ public class UserFrame extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         if(jCheckBox1.isSelected()){
         jButton1.setVisible(true);
-        JOptionPane.showMessageDialog(null, "You agree to the collection of a one-off payment of RM50 to register as a member of DreamCo. A membership card will given upon registration.", "  Terms & Conditions", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "You agree to the collection of a one-off payment of RM"+ MyTree.getFee()+" to register as a member of DreamCo. A membership card will given upon registration.", "  Terms & Conditions", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
         jButton1.setVisible(false);

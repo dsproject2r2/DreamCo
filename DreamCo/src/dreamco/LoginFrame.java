@@ -142,8 +142,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
 ///////////////////////////////////////////////////////////////////////////////////// Algorithm to check for admin //////////////////////////////////////////
-        System.out.println(MyTree.getAdminID());
-        System.out.println(MyTree.getAdminPass());
         adminuserinput=jTextField1.getText();
         adminpassinput=jPasswordField1.getText();
         encryptCheck(adminpassinput,adminuserinput);
@@ -168,7 +166,6 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Program File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
         }
         decryptName(name);
-        System.out.println(name);
         /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
         if(adminuserinput.equals(MyTree.getAdminID()) && adminpassinput.equals(MyTree.getAdminPass())){
             AdminFrame af= new AdminFrame();
@@ -177,13 +174,13 @@ public class LoginFrame extends javax.swing.JFrame {
             DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
             DataEncryptionFile.metadataDecryption();
-            System.out.println(MyTree.getAdminID());
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
         else if(adminuserinput.equals("cbtrdq"+userid) && adminpassinput.equals(password)){
             JOptionPane.showMessageDialog(null, "Welcome back "+ name, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
             UserFrame user = new UserFrame(userid,money);
+            lf.dispose();
             user.runUserFrame();
         }
         else if(adminuserinput.equals("") && adminpassinput.equals("")){
@@ -199,8 +196,6 @@ public class LoginFrame extends javax.swing.JFrame {
         if(evt.getKeyCode()==evt.VK_ENTER){
         
 ///////////////////////////////////////////////////////////////////////////////////// Algorithm to check for admin //////////////////////////////////////////
-        System.out.println(MyTree.getAdminID());
-        System.out.println(MyTree.getAdminPass());
         adminuserinput=jTextField1.getText();
         adminpassinput=jPasswordField1.getText();
         encryptCheck(adminpassinput,adminuserinput);
@@ -225,7 +220,6 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Program File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
         }
         decryptName(name);
-        System.out.println(name);
         /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
         if(adminuserinput.equals(MyTree.getAdminID()) && adminpassinput.equals(MyTree.getAdminPass())){
             AdminFrame af= new AdminFrame();
@@ -234,13 +228,13 @@ public class LoginFrame extends javax.swing.JFrame {
             DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
             DataEncryptionFile.metadataDecryption();
-            System.out.println(MyTree.getAdminID());
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
         else if(adminuserinput.equals("cbtrdq"+userid) && adminpassinput.equals(password)){
             JOptionPane.showMessageDialog(null, "Welcome back "+ name, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
             UserFrame user = new UserFrame(userid,money);
+            lf.dispose();
             user.runUserFrame();
         }
         else if(adminuserinput.equals("") && adminpassinput.equals("")){
@@ -256,8 +250,6 @@ public class LoginFrame extends javax.swing.JFrame {
         if(evt.getKeyCode()==evt.VK_ENTER){
         
 ///////////////////////////////////////////////////////////////////////////////////// Algorithm to check for admin //////////////////////////////////////////
-        System.out.println(MyTree.getAdminID());
-        System.out.println(MyTree.getAdminPass());
         adminuserinput=jTextField1.getText();
         adminpassinput=jPasswordField1.getText();
         encryptCheck(adminpassinput,adminuserinput);
@@ -282,7 +274,6 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Program File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
         }
         decryptName(name);
-        System.out.println(name);
         /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
         if(adminuserinput.equals(MyTree.getAdminID()) && adminpassinput.equals(MyTree.getAdminPass())){
             AdminFrame af= new AdminFrame();
@@ -291,13 +282,13 @@ public class LoginFrame extends javax.swing.JFrame {
             DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
             DataEncryptionFile.metadataDecryption();
-            System.out.println(MyTree.getAdminID());
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
         else if(adminuserinput.equals("cbtrdq"+userid) && adminpassinput.equals(password)){
             JOptionPane.showMessageDialog(null, "Welcome back "+ name, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
             UserFrame user = new UserFrame(userid,money);
+            lf.dispose();
             user.runUserFrame();
         }
         else if(adminuserinput.equals("") && adminpassinput.equals("")){
@@ -313,8 +304,6 @@ public class LoginFrame extends javax.swing.JFrame {
         if(evt.getKeyCode()==evt.VK_ENTER){
         
 ///////////////////////////////////////////////////////////////////////////////////// Algorithm to check for admin //////////////////////////////////////////
-        System.out.println(MyTree.getAdminID());
-        System.out.println(MyTree.getAdminPass());
         adminuserinput=jTextField1.getText();
         adminpassinput=jPasswordField1.getText();
         encryptCheck(adminpassinput,adminuserinput);
@@ -339,7 +328,6 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Program File Not Found!", " System Error", JOptionPane.ERROR_MESSAGE);
         }
         decryptName(name);
-        System.out.println(name);
         /////////////////////////////////////////////////**********************/////////////////////////////////////////////////
         if(adminuserinput.equals(MyTree.getAdminID()) && adminpassinput.equals(MyTree.getAdminPass())){
             AdminFrame af= new AdminFrame();
@@ -348,13 +336,13 @@ public class LoginFrame extends javax.swing.JFrame {
             DataEncryptionFile.userdataDecryption();
             DataEncryptionFile.pendingDecryption();
             DataEncryptionFile.metadataDecryption();
-            System.out.println(MyTree.getAdminID());
             
             JOptionPane.showMessageDialog(null, "Welcome back Sir Admin of the DreamCo Scam!", "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);            
         }
         else if(adminuserinput.equals("cbtrdq"+userid) && adminpassinput.equals(password)){
             JOptionPane.showMessageDialog(null, "Welcome back "+ name, "  DreamCo Says...", JOptionPane.INFORMATION_MESSAGE);
             UserFrame user = new UserFrame(userid,money);
+            lf.dispose();
             user.runUserFrame();
         }
         else if(adminuserinput.equals("") && adminpassinput.equals("")){
@@ -366,10 +354,6 @@ public class LoginFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField1KeyPressed
 
-  
-    
-    
-    
     /////////////////////////////////////////////////////////// CALL THIS METHOD TO RUN THE LOGIN FRAME //////////////////////////////////////////////
     public void runLoginFrame() {        
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -424,12 +408,12 @@ public class LoginFrame extends javax.swing.JFrame {
             int a=encryptedname.charAt(i);
             if(Character.isUpperCase(a)){
                 a=a-(key%26);
-                if(a<'Z')
+                if(a<'A')
                      a=a+26;
         }
         else if(Character.isLowerCase(a)){
             a=a-(key%26);
-            if(a<'z')
+            if(a<'a')
                 a=a+26;
         }
         name=name+(char) a;

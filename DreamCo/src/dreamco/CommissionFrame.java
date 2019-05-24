@@ -38,6 +38,7 @@ public class CommissionFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(121, 194, 234));
         jPanel1.setLayout(null);
         jPanel1.add(jTextField1);
         jTextField1.setBounds(60, 30, 130, 24);
@@ -59,26 +60,31 @@ public class CommissionFrame extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(90, 270, 80, 32);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Commission Gen 5");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 210, 250, 16);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Commission Gen 1");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(0, 10, 250, 16);
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Commission Gen 2");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(0, 60, 250, 16);
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Commission Gen 3");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(0, 110, 250, 16);
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Commission Gen 4");
         jPanel1.add(jLabel5);
@@ -112,6 +118,9 @@ public class CommissionFrame extends javax.swing.JFrame {
     double com5=Double.parseDouble(scom5);
     double sumcom=com1+com2+com3+com4+com5;
         
+    if(sumcom>0.8)
+        JOptionPane.showMessageDialog(null, "Total Commission must less than 0.8", "  System said", JOptionPane.INFORMATION_MESSAGE); 
+    
     if(!jTextField1.equals("") && !jTextField2.equals("") && !jTextField3.equals("") && !jTextField4.equals("") && !jTextField5.equals("") && sumcom<0.8){
     MyTree.setGen1Commission(Double.parseDouble(jTextField1.getText()));
     MyTree.setGen2Commission(Double.parseDouble(jTextField2.getText()));
