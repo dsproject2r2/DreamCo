@@ -40,6 +40,7 @@ public class MyTree {
         commission_gen2=0.09;
         commission_gen4=0.06;
         commission_gen5=0.03;
+        startupAdminConfigFiles();
     }
     
     
@@ -334,7 +335,8 @@ public class MyTree {
         MyStack<NodeTree> s = new MyStack();
         
         s.push(getNode(name));
-        NodeTree temp = getNode(name);;
+        NodeTree temp = getNode(name);
+        
         while(s.getSize()!=0){
             temp = s.pop();
             if(temp==null)

@@ -208,11 +208,13 @@ public class AdminFrame extends javax.swing.JFrame {
                     "Exit Application",
                     JOptionPane.YES_NO_OPTION);
  
-                    if (result == JOptionPane.YES_OPTION)
+                    if (result == JOptionPane.YES_OPTION){
                     DataEncryptionFile.userdataEncryption();
                     DataEncryptionFile.pendingEncryption();
                     DataEncryptionFile.metadataEncryption();
                     adminframe.setDefaultCloseOperation(AdminFrame.EXIT_ON_CLOSE);
+                    }
+                    
                 }
             });
                 adminframe.setVisible( true );

@@ -360,15 +360,15 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
              
         for(int i=0; i<namelist1.size(); i++){
             if(selected.equals(namelist1.get(i))){
-                for(int j=0; j<namelist1.size(); j++){
-                    if(parentidlist1.get(i).equals(idlist1.get(j))){
-                        parent=namelist1.get(j);
+                for(int j=0; j<namelist2.size(); j++){
+                    if(parentidlist1.get(i).equals(idlist2.get(j))){
+                        parent=namelist2.get(j);
                     }
                 }
                 if(parent.equals("")){
                     parent="N/A";
                 }
-                jTextArea1.setText(" Full Name: "+jList1.getSelectedValue().toString()+ "\n\n UserID: dcuser"+idlist1.get(i)+ "\n\n Password: "+ passwordlist1.get(i)+"\n\n Product Referrer: "+parent);
+                jTextArea1.setText(" Full Name: "+jList1.getSelectedValue().toString()+  "\n\n Password: "+ passwordlist1.get(i)+"\n\n Product Referrer: "+parent);
                 break;
             }
         }
@@ -428,6 +428,27 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
                     t.appendUserClearFile();
                 } catch (IOException ex) {
                     Logger.getLogger(AdminRegistrationFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                idlist1.remove(i);
+                passwordlist1.remove(i);
+                parentidlist1.remove(i);
+                namelist1.remove(i);
+                
+                try{
+                    PrintWriter pw = new PrintWriter(new FileWriter("Pending.txt"));
+                    for(int a=0; a<namelist1.size(); a++){
+                        pw.print(idlist1.get(a));
+                        pw.print("\n"+passwordlist1.get(a));
+                        pw.print("\n"+parentidlist1.get(a));
+                        pw.print("\n"+namelist1.get(a));
+                        pw.print("\n"+String.valueOf("0")+"\n");
+                    }
+                    pw.flush();
+                    pw.close();
+                }
+                 catch(IOException e){
+                    JOptionPane.showMessageDialog(null, "System File Not Found", "System File Error! ", JOptionPane.ERROR_MESSAGE);
                 }
 
                 dlm1.removeElement(selected); 
