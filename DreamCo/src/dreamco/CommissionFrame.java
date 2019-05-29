@@ -138,8 +138,9 @@ public class CommissionFrame extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CommissionFrame().setVisible(true);
-                setLocationRelativeTo(null);
+                CommissionFrame commissionframe= new CommissionFrame();
+                commissionframe.setVisible(true);
+                commissionframe.setLocationRelativeTo(null);
                 
             }
         });

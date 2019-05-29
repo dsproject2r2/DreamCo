@@ -86,6 +86,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(121, 194, 234));
         jPanel1.setLayout(null);
@@ -569,6 +570,7 @@ public class AdminRegistrationFrame extends javax.swing.JFrame  {
             public void run() {
                 AdminRegistrationFrame adminregistrationframe = new AdminRegistrationFrame();
                 adminregistrationframe.setVisible(true);
+                adminregistrationframe.setLocationRelativeTo(null);
                 jList1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                 jList2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                 getPendingNameList();
