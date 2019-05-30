@@ -23,9 +23,13 @@ public static void main(String[] args) throws IOException {
         java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
 
- MyTree.startupAdminConfigFiles();
-    SplashScreen sc= new SplashScreen();
-   sc.runSplashScreen();        
+    
+    DataEncryptionFile.userdataDecryption();
+    //DataEncryptionFile.userdataEncryption();
+    
+    //MyTree.startupAdminConfigFiles();
+    //SplashScreen sc= new SplashScreen();
+    //sc.runSplashScreen();        
     }
 
 }

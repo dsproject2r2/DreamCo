@@ -166,7 +166,7 @@ public static void userdataDecryption() {
     int key=25;
     
     while((line =bufferedreader.readLine())!=null){
-        br.append(line).append("\n");
+        br.append(line).append("\n\n");
     }
 
     for(int i=0; i<br.length();i++){
