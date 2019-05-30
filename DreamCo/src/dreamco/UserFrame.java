@@ -1,6 +1,8 @@
 
 package dreamco;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -335,7 +337,28 @@ public class UserFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserFrame().setVisible(true);
+                UserFrame userframe= new UserFrame();
+                userframe.setVisible(true);
+                userframe.addWindowListener( new WindowAdapter()
+                {
+                 public void windowClosing(WindowEvent e)
+                {
+                        AdminFrame frame = (AdminFrame)e.getSource();
+ 
+                     int result = JOptionPane.showConfirmDialog(
+                    frame,
+                    "Are you sure you want to logout and exit the application?",
+                    "Exit Application",
+                    JOptionPane.YES_NO_OPTION);
+ 
+                    if (result == JOptionPane.YES_OPTION){
+                    userframe.setDefaultCloseOperation(AdminFrame.DISPOSE_ON_CLOSE);
+                    LoginFrame lf = new LoginFrame();
+                    lf.runLoginFrame();
+                    }
+                    
+                }
+            });
             }
         });
     }

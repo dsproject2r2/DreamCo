@@ -24,12 +24,12 @@ public static void main(String[] args) throws IOException {
     }
 
     
-    DataEncryptionFile.userdataDecryption();
-    //DataEncryptionFile.userdataEncryption();
+
+
     
-    //MyTree.startupAdminConfigFiles();
-    //SplashScreen sc= new SplashScreen();
-    //sc.runSplashScreen();        
+    MyTree.startupAdminConfigFiles();
+    SplashScreen sc= new SplashScreen();
+    sc.runSplashScreen();        
     }
 
 }

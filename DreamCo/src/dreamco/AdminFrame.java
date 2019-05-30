@@ -204,7 +204,7 @@ public class AdminFrame extends javax.swing.JFrame {
  
                      int result = JOptionPane.showConfirmDialog(
                     frame,
-                    "Are you sure you want to exit the application?",
+                    "Are you sure you want to logout and exit the application?",
                     "Exit Application",
                     JOptionPane.YES_NO_OPTION);
  
@@ -212,7 +212,9 @@ public class AdminFrame extends javax.swing.JFrame {
                     DataEncryptionFile.userdataEncryption();
                     DataEncryptionFile.pendingEncryption();
                     DataEncryptionFile.metadataEncryption();
-                    adminframe.setDefaultCloseOperation(AdminFrame.EXIT_ON_CLOSE);
+                    adminframe.setDefaultCloseOperation(AdminFrame.DISPOSE_ON_CLOSE);
+                    LoginFrame lf = new LoginFrame();
+                    lf.runLoginFrame();
                     }
                     
                 }
